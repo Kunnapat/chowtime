@@ -499,7 +499,7 @@ body {
     width: 20px;
 }
 .active-nav {
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .nav-list {
@@ -511,4 +511,8 @@ body {
     border-style: none;
     border-bottom: #999999 2px solid;
     margin-left: 3px;
+}
+
+.pluspic {
+    padding-right: 5px;
 }
