@@ -69,6 +69,7 @@
         <!-- /.container-fluid -->
     </nav>
 
+
     <header>
         <div class="header-content">
             <div class="header-content-inner">
@@ -262,6 +263,8 @@
         </div>
     </section>
 
+
+
     <!-- jQuery -->
 
     <script src="js/jquery.js"></script>
@@ -280,12 +283,14 @@
     <script>
         $("#menuarea").hide();
         $("#menubutton").click(function(){
-           $("#menuarea").toggle();
+           $("#menuarea").toggle("slow");
            $("#mainNav").toggle();
+            $("#big-container").toggle();
         })
         $("#closemenu").click(function(){
-           $("#menuarea").toggle();
+           $("#menuarea").toggle("slow");
            $("#mainNav").toggle();
+            $("#big-container").toggle();
         })
 
 
