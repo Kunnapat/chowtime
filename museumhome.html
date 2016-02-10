@@ -285,13 +285,14 @@
         $("#menubutton").click(function(){
            $("#menuarea").toggle("slow");
            $("#mainNav").toggle();
-            $("#big-container").toggle();
-        })
+           $('body > :not(#menuarea)').hide(); //hide all nodes directly under the body
+            $('#menuarea').appendTo('body');
+        });
         $("#closemenu").click(function(){
            $("#menuarea").toggle("slow");
            $("#mainNav").toggle();
-            $("#big-container").toggle();
-        })
+            $('body > :not(#menuarea)').show();
+        });
 
 
     </script>
