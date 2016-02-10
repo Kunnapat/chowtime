@@ -489,21 +489,32 @@ body {
 }
 .menuarea{
     height: 100%;
-    background-color: yellow;
+    background-color: #F2F2F2;
+    padding-left: 20px;
 }
 .closebutton{
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-size: 60px;
     font-weight: bolder;
-    padding-left: 10px;
+    padding-right: 70px;
     width: 20px;
+    float: right;
+    color: #EF788C;
+}
+.closebutton:hover{
+    color: white;
 }
 .active-nav {
     font-size: 3em;
+    padding-top: 50px;
+    padding-left: 50px;
 }
 
 .nav-list {
     padding-bottom: 5px;
+}
+.nav-list:hover{
+    text-decoration: underline;
 }
 
 #searchbar {
@@ -515,4 +526,12 @@ body {
 
 .pluspic {
     padding-right: 5px;
+}
+
+.nav-sublist {
+    font-size: 0.5em;
+    padding-bottom: 5px;
+}
+.nav-sublist:hover{
+    text-decoration: underline;
 }

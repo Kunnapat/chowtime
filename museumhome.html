@@ -39,15 +39,30 @@
         <div class="closebutton" id="closemenu">X</div>
         <div class="active-nav">
             <ul style="list-style-type:none;">
-                <li class="nav-list">Home</li>
-                <li class="nav-list"><img src="img/plus32.png" class="pluspic" id="visitpluspic"/>
-                <img src="img/minus32.png" class="minuspic" id="visitminuspic">Visit and do</li>
+                <li class="nav-list">MUSEUM</li>
+                <li class="nav-list">
+                    <img src="img/plus32.png" class="pluspic" id="visitpluspic"/>
+                    <img src="img/minus32.png" class="minuspic" id="visitminuspic">
+                    Visit and do
+                </li>
                 <ul style="list-style-type:none;margin-left:30px;" id="visitndo">
-                    <li>Plan the visit</li>
-                    <li>Things to do</li>
+                    <li class="nav-sublist">Plan your visit</li>
+                    <li class="nav-sublist">Things to do</li>
                 </ul>
-                <li class="nav-list"><img src="img/plus32.png" />
-                Contact</li>
+                
+                <li class="nav-list">
+                    <img src="img/plus32.png" class="pluspic" id="expluspic"/>
+                    <img src="img/minus32.png" class="minuspic" id="exminuspic">
+                    Exhibition
+                </li>
+                <ul style="list-style-type:none;margin-left:30px;" id="ex">
+                    <li class="nav-sublist">Current Exhibition</li>
+                    <li class="nav-sublist">Future Exhibition</li>
+                </ul>
+                <li class="nav-list">
+                    <img src="img/plus32.png" />
+                    Contact
+                </li>
                 <li class="nav-list"><img src="img/mag32.png"/><input type="search" id="searchbar" placeholder="  Search"/></li>
             </ul>
         </div>
@@ -309,15 +324,26 @@
         });
         $(".minuspic").hide();
         $("#visitndo").hide();
+        $("#ex").hide();
         $("#visitpluspic").click(function(){
-           $("#visitndo").toggle();
-            $(".minuspic").show();
-            $(".pluspic").hide();
+            $("#visitndo").toggle();
+            $("#visitminuspic").show();
+            $("#visitpluspic").hide();
         });
         $("#visitminuspic").click(function(){
            $("#visitndo").toggle();
-            $(".minuspic").hide();
-            $(".pluspic").show();
+            $("#visitminuspic").hide();
+            $("#visitpluspic").show();
+        });
+        $("#expluspic").click(function(){
+           $("#ex").toggle();
+            $("#exminuspic").show();
+            $("#expluspic").hide();
+        });
+        $("#exminuspic").click(function(){
+           $("#ex").toggle();
+            $("#exminuspic").hide();
+            $("#expluspic").show();
         });
 
     </script>
