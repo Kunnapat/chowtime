@@ -89,7 +89,6 @@ aside {
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
-    color: #f05f40;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -128,12 +127,12 @@ aside {
     }
 
     .navbar-default .navbar-header .navbar-brand {
-        color: rgba(255,255,255,.7);
+        color: slategray;
     }
 
     .navbar-default .navbar-header .navbar-brand:hover,
     .navbar-default .navbar-header .navbar-brand:focus {
-        color: #fff;
+        color: #EF788C;
     }
 
     .navbar-default .nav > li>a,
@@ -473,6 +472,12 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: #222;
+    background-image: url(../img/gettingherebg.jpg);
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 .maintext {
@@ -537,4 +542,59 @@ body {
 }
 .nav-sublist:hover{
     text-decoration: underline;
+}
+
+
+
+.menubutton {
+    font-size: 1.5em;
+    color: #EF788C;
+}
+
+.box1 {
+    background-color: white;
+    margin-left: auto ;
+    margin-right: auto ;
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 2px;
+    max-width: 884px;
+    overflow: hidden;
+}
+
+.component {
+    margin-top: 200px;
+}
+
+.component-content {
+    background-color: white;
+    padding: 40px 20px 20px;
+    position: relative;
+}
+
+.intro {
+    font-size: 18px;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+.component>h1 p {
+    margin: 0;
+    display: inline;
+    font-size: 36px;
+    line-height: 41px;
+    letter-spacing: -2px;
+    padding-bottom: 1px;
+    padding-left: 2px;
+    padding-right: 5px;
+    background-color: #EF788C;
+    color: white;
 }
