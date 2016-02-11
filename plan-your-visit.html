@@ -37,7 +37,7 @@
 
 
     <body class="bg-primary">
-     <div class="menuarea" id="menuarea">
+       <div class="menuarea" id="menuarea">
         <div class="closebutton" id="closemenu">X</div>
         <div class="active-nav">
             <ul style="list-style-type:none;">
@@ -88,7 +88,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    
+
                     <li>
                         <a class="page-scroll"><div id="menubutton">MUSEUM MENU</div></a>
                     </li>
@@ -99,76 +99,133 @@
         <!-- /.container-fluid -->
     </nav>
     
-    <section class="header-content">
+    <section class="header-content" style="padding-bottom:0;">
         <div class="header-content-inner">
             <div class="textcenter maintext">Plan Your Visit</div>
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-6 box textcenter">
+                <div class="col-md-6 box-def textcenter">
                     <p>All the information you need for your visit to the museum.
-                    <br>The museum looks forward to welcoming you!</p>
+                        <br>The museum looks forward to welcoming you!</p>
                 </div>
                 <div class="col-md-3"></div>
-                
+
             </div>
         </div>
     </section>
+    
+    <section>
+       <div class="row">
+           <div class="col-md-3"></div>
+            <div class="col-md-6 info-box">
+                <h3>Open Hour and Price</h3>
+            </div>
+            <div class="col-md-3"></div>
+       </div>
+        <div class="row">
+           <div class="col-md-3"></div>
+            <div class="col-md-6 info-box">
+                <h3>Getting Here</h3>
+            </div>
+            <div class="col-md-3"></div>
+       </div>
+       <div class="row">
+           <div class="col-md-3"></div>
+            <div class="col-md-6 info-box">
+                <h3>Students</h3>
+            </div>
+            <div class="col-md-3"></div>
+       </div>
+       <div class="row">
+           <div class="col-md-3"></div>
+            <div class="col-md-6 info-box">
+                <h3>Families</h3>
+            </div>
+            <div class="col-md-3"></div>
+       </div>
+       <div class="row">
+           <div class="col-md-3"></div>
+            <div class="col-md-6 info-box">
+                <h3>Group</h3>
+            </div>
+            <div class="col-md-3"></div>
+       </div>
+       <div class="row">
+           <div class="col-md-3"></div>
+            <div class="col-md-6 info-box">
+                <h3>Access</h3>
+            </div>
+            <div class="col-md-3"></div>
+       </div>
+       <div class="row">
+           <div class="col-md-3"></div>
+            <div class="col-md-6 info-box">
+                <h3>Contact</h3>
+            </div>
+            <div class="col-md-3"></div>
+       </div>
+    </section>
 
 
-    <!-- jQuery -->
+        <!-- jQuery -->
 
-    <script src="js/jquery.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.timelinr-0.9.6.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
+        <!-- Plugin JavaScript -->
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/jquery.fittext.js"></script>
+        <script src="js/wow.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="js/creative.js"></script>
 
-    <script>
-    $("#menuarea").hide();
-    $("#menubutton").click(function(){
-     $("#menuarea").toggle("slow");
-     $("#mainNav").toggle();
+        <script>
+        $("#menuarea").hide();
+        $("#menubutton").click(function(){
+           $("#menuarea").toggle("slow");
+           $("#mainNav").toggle();
            $('body > :not(#menuarea)').hide(); //hide all nodes directly under the body
            $('#menuarea').appendTo('body');
        });
-    $("#closemenu").click(function(){
-     $("#menuarea").toggle("slow");
-     $("#mainNav").toggle();
-     $('body > :not(#menuarea)').show();
- });
-    $(".minuspic").hide();
-    $("#visitndo").hide();
-    $("#ex").hide();
-    $("#visitpluspic").click(function(){
-        $("#visitndo").toggle();
-        $("#visitminuspic").show();
-        $("#visitpluspic").hide();
-    });
-    $("#visitminuspic").click(function(){
-     $("#visitndo").toggle();
-     $("#visitminuspic").hide();
-     $("#visitpluspic").show();
- });
-    $("#expluspic").click(function(){
-     $("#ex").toggle();
-     $("#exminuspic").show();
-     $("#expluspic").hide();
- });
-    $("#exminuspic").click(function(){
-     $("#ex").toggle();
-     $("#exminuspic").hide();
-     $("#expluspic").show();
- });
+        $("#closemenu").click(function(){
+           $("#menuarea").toggle("slow");
+           $("#mainNav").toggle();
+           $('body > :not(#menuarea)').show();
+       });
+        $(".minuspic").hide();
+        $("#visitndo").hide();
+        $("#ex").hide();
+        $("#visitpluspic").click(function(){
+            $("#visitndo").toggle();
+            $("#visitminuspic").show();
+            $("#visitpluspic").hide();
+        });
+        $("#visitminuspic").click(function(){
+           $("#visitndo").toggle();
+           $("#visitminuspic").hide();
+           $("#visitpluspic").show();
+       });
+        $("#expluspic").click(function(){
+           $("#ex").toggle();
+           $("#exminuspic").show();
+           $("#expluspic").hide();
+       });
+        $("#exminuspic").click(function(){
+           $("#ex").toggle();
+           $("#exminuspic").hide();
+           $("#expluspic").show();
+       });
+        $(function(){
+         $().timelinr({
+            arrowKeys: 'true'
+        })
+     });
+        </script>
 
-    </script>
-
-</body>
+    </body>
 
 </html>
