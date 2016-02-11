@@ -473,6 +473,7 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #222;
     background-image: url(../img/gettingherebg.jpg);
+    background-attachment: fixed;
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -645,3 +646,55 @@ body {
     -webkit-transition: all ease-in-out .1s;
     transition: all ease-in-out .1s;
 }
+.googlelink {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    color: white;
+}
+
+.googlelink:hover {
+    color: dimgray;
+    font-weight: bolder;
+}
+
+.quote-component {
+    color: #EF788C;
+    margin-top: 70px;
+    text-transform: uppercase;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.quote-component p {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    margin-bottom: 50px;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 35px;
+    word-wrap: break-word;
+}
+.rich-text {
+}
+.page-item {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    position: relative;
+    background-color: white;
+    margin: -15px;
+    min-height: 100px;
+    margin-top: 20px;
+}
+.page-item .item-content {
+    padding: 40px 20px 20px;
+}
+.component ul.link-list {
+    list-style-type: none;
+    float: right;
+    text-align: right;
+    position: relative;
+    right: -30px;
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+.page-item .item-content>.link-list {
+    margin-top: 0;
+}
+

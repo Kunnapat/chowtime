@@ -97,3 +97,7 @@
     font-family: dinproreg, sans-serif;
     position: relative;
 }
+.menubutton {
+    font-size: 1.5em;
+    color: #EF788C;
+}
