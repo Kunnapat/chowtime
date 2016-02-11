@@ -13,7 +13,7 @@
     position: relative;
     margin: 0;
     padding: 0;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 sociales {
@@ -162,5 +162,18 @@ sociales {
 .info-pic {
     width: 200px;
     height: 200px;
-    background: pink url("img/flower.png") center center no-repeat;
+    background-color: pink;
+    background-image: url('img/flower.png');
+    display: block;
+    position: relative;
+    float: left;
+    margin-right: 20px;
+}
+
+.topic {
+    
+}
+
+.bg-plan {
+    background-color: lightgray;
 }
