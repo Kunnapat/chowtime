@@ -32,7 +32,7 @@
     width: 150px;
     height: 150px;
     background-color: pink;
-/*    background-image: url('../img/flower.png');*/
+    background-image: url('../img/cu.png');
     display: block;
     position: relative;
     float: left;
@@ -63,20 +63,37 @@
 
 .content {
     font-family: dinprolight, sans-serif;
+    padding-right: 10px;
 }
 
 .textbold {
     font-family: dinpromed, sans-serif;
 }
 
-.linktag {
+.linktagone {
     width: auto;
     height: auto;
     background-color: hotpink;
     color: white;
     float: right;
-    margin-top: 60px;
+    margin-top: 5px;
     margin-right: 10px;
+/*    margin-bottom: 10px;*/
     padding: 3px 10px 3px 10px;
-    
+    font-family: dinproreg, sans-serif;
+    position: relative;
+}
+
+.linktagtwo {
+    width: auto;
+    height: auto;
+    background-color: hotpink;
+    color: white;
+    float: right;
+    margin-top: -15px;
+    margin-right: 10px;
+/*    margin-bottom: 10px;*/
+    padding: 3px 10px 3px 10px;
+    font-family: dinproreg, sans-serif;
+    position: relative;
 }
