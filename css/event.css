@@ -1,0 +1,29 @@
+.textcenter {
+    text-align: center;
+}
+@font-face {
+    font-family: dinprolight;
+    src: url('../font-awesome/fonts/DINPro-light.ttf');
+}
+@font-face {
+    font-family: dinproreg;
+    src: url('../font-awesome/fonts/DINPro-regular.ttf');
+}
+@font-face {
+    font-family: dinpromed;
+    src: url('../font-awesome/fonts/DINPro-medium.ttf');
+}
+
+.content {
+    font-family: dinprolight, sans-serif;
+    padding-right: 10px;
+    font-size: 1.2em;
+    padding-bottom: 10px;
+}
+.img-pic {
+    width: 100%;
+    height: 100%;
+}
+.img_block {
+    margin-bottom: 30px;
+}
