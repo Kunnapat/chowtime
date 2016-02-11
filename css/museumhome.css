@@ -505,12 +505,18 @@ body {
     color: white;
 }
 .active-nav {
+    color: black;
     font-size: 3em;
     padding-top: 50px;
     padding-left: 50px;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 200
     
+}
+
+.active-nav a{
+    text-decoration-style: none;
+    color: black;
 }
 
 .nav-list {

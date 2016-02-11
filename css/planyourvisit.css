@@ -1,0 +1,14 @@
+
+.textcenter {
+    text-align: center;
+}
+
+.box {
+/*    width: 800px;*/
+    height: auto;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    padding-top: 20px;
+}
