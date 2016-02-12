@@ -175,3 +175,10 @@
 #content {
     margin-top: 100px;
 }
+
+#searchbar {
+    background-color: transparent;
+    border-style: none;
+    border-bottom: #999999 2px solid;
+    margin-left: 3px;
+}
