@@ -472,7 +472,7 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: #222;
+    -webkit-tap-highlight-color: #222;
 }
 
 .maintext {
@@ -509,7 +509,7 @@ body {
     font-size: 3em;
     padding-top: 50px;
     padding-left: 50px;
-    font-family: 'Open Sans','Helvetica Neue',Arial ,sans-serif;
+    font-family: 'Open Sans','Helvetica Neue', Arial ,sans-serif;
     font-weight: 200
     
 }
