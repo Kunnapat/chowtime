@@ -516,8 +516,8 @@ body {
     padding-left: 50px;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 200
-    
 }
+
 
 .nav-list {
     padding-bottom: 5px;
@@ -540,6 +540,10 @@ body {
 .nav-sublist {
     font-size: 0.5em;
     padding-bottom: 5px;
+}
+
+.nav-sublist a{
+    color: black;
 }
 .nav-sublist:hover{
     text-decoration: underline;

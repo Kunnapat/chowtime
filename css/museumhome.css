@@ -514,6 +514,7 @@ body {
     
 }
 
+
 .active-nav a{
     text-decoration-style: none;
     color: black;
@@ -541,6 +542,12 @@ body {
     font-size: 0.5em;
     padding-bottom: 5px;
 }
+
+.nav-sublist a{
+    color: black;
+}
+
+
 .nav-sublist:hover{
     text-decoration: underline;
 }
