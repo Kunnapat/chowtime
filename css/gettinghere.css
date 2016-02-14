@@ -217,7 +217,7 @@ header .header-content .header-content-inner p {
 
     header .header-content {
         position: absolute;
-        top: 50%;
+        top: 60%;
         padding: 0 50px;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -472,13 +472,15 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: #222;
-    background-image: url(../img/gettingherebg.jpg);
+    background-image: url(../img/concrete_seamless.png);
     background-attachment: fixed;
     background-position: center;
+/*
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+*/
 }
 
 .maintext {
@@ -578,7 +580,7 @@ body {
 }
 
 .component {
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .component-content {
@@ -604,11 +606,8 @@ body {
     color: white;
 }
 .logo {
-    margin: 100px 10px 0;
+    margin: 100px  0;
     width: 200px;
-    background-image: url(/static/images/logo-design_museum-black.png);
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 .page-components {
     padding-bottom: 20px;
@@ -705,4 +704,13 @@ body {
 
 .image-component {
     margin-top: 60px;
+}
+
+.symbol {
+    z-index: -1;
+    position: fixed;
+    left: 38%;
+    align-content: center;
+    align-items: center;
+    width: 250px;
 }
