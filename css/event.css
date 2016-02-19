@@ -19,6 +19,7 @@
     padding-right: 10px;
     font-size: 1.2em;
     padding-bottom: 10px;
+    display: relative;
 }
 .img-pic {
     width: 100%;

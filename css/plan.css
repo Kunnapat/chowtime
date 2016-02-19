@@ -355,8 +355,8 @@ img::-moz-selection {
     padding-top: 50px;
     padding-left: 50px;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    font-weight: 200
-    
+    font-weight: 200;
+    padding-right: 50px
 }
 
 .nav-list {
@@ -371,6 +371,8 @@ img::-moz-selection {
     border-style: none;
     border-bottom: #999999 2px solid;
     margin-left: 3px;
+    width: 80%;
+    display: inline-block;
 }
 
 .pluspic {
@@ -437,10 +439,10 @@ img::-moz-selection {
     font-family: 'dinpromed','Open Sans','Helvetica Neue',Arial,sans-serif;
     background-color: white;
     margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
     color: black;
     padding-top: 20px;
+    text-align: center;
+    margin-bottom: 5%;
 }
 
 .info-pic {
@@ -509,9 +511,9 @@ img::-moz-selection {
     background-color: #EF788C;
     color: white;
     float: right;
-    margin-top: -15px;
+    margin-top: auto;
     margin-right: 10px;
-/*    margin-bottom: 10px;*/
+    margin-bottom: 10px;
     padding: 3px 10px 3px 10px;
     font-family: dinproreg, sans-serif;
     position: relative;
@@ -524,7 +526,8 @@ img::-moz-selection {
 
 
 .header-content {
-    margin-top: 40px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .logo {
@@ -536,7 +539,7 @@ img::-moz-selection {
 .texttile {
     font-family: 'dinpromed','Open Sans','Helvetica Neue',Arial,sans-serif;
     
-    margin-left: 172px;
+    margin-left: -15px;
     display: inline;
     font-size: 36px;
     line-height: 41px;
@@ -556,4 +559,37 @@ img::-moz-selection {
     align-content: center;
     align-items: center;
     width: 100px;
+}
+
+#menubutton {
+    float: right !important;
+    width: auto;
+    position: relative;
+    color: #EF788C;
+    cursor: pointer;
+}
+
+#main-content {
+    padding: 50px 15px 0px 15px;
+}
+
+#descrip-box {
+    
+}
+
+.navbar-header {
+    width: 100%;
+}
+
+#searchpic {
+    display: inline-block;
+}
+
+.header-content-inner {
+    margin: 0;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }

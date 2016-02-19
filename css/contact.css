@@ -523,6 +523,7 @@ body {
 
 .nav-list {
     padding-bottom: 5px;
+    
 }
 .nav-list:hover{
     text-decoration: underline;
@@ -533,6 +534,7 @@ body {
     border-style: none;
     border-bottom: #999999 2px solid;
     margin-left: 3px;
+    
 }
 
 .pluspic {

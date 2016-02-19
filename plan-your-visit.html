@@ -63,7 +63,7 @@
                     <img src="img/plus32.png" />
                     Contact
                 </li>
-                <li class="nav-list"><img src="img/mag32.png"/><input type="search" id="searchbar" placeholder="  Search"/></li>
+                <li class="nav-list"><img src="img/mag32.png"/ id="searchpic"><input type="search" id="searchbar" placeholder="  Search"/></li>
             </ul>
         </div>
     </div>
@@ -73,25 +73,29 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
+<!--
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+-->
                 <a class="navbar-brand page-scroll" href="museumhome.html">Museum Home</a>
-                
+                <div class="menubutton navbar-brand page-scroll" id="menubutton">MUSEUM MENU</div>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
+<!--
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 
                     <li>
-                        <a class="page-scroll"><div class="menubutton" id="menubutton">MUSEUM MENU</div></a>
+                        <a class="page-scroll"></a>
                     </li>
                 </ul>
             </div>
+-->
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
@@ -107,24 +111,24 @@
     </div>
     
     <section class="header-content" style="padding-bottom:0;">
-        <div class="header-content-inner">
+       <div class="col-md-2"></div>
+        <div class="header-content-inner col-md-8">
             <div class="texttile">Plan Your Visit</div>
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8 box-def">
+            <div class="row box-def" >
+                
                     <p>All the information you need for your visit to the museum.
                         <br>The museum looks forward to welcoming you!</p>
-                </div>
-                <div class="col-md-3"></div>
+                
 
             </div>
         </div>
+        <div class="col-md-2"></div>
     </section>
     
-    <section style="padding-bottom:0;padding-top:50px;">
+    <section id="main-content">
        <div class="row">
            <div class="col-md-2"></div>
-            <div class="col-md-8 info-box">
+            <div class="col-md-8 info-box col-xs-12">
                <div class="info-pic"></div>
                 <h3 class="topic">Time and Price</h3>
                 <p class="content">Open on Weekdays 9.00 - 16.00. <span class="textbold">FREE!</span></p>
@@ -133,7 +137,7 @@
        </div>
        <div class="row">
            <div class="col-md-2"></div>
-            <div class="col-md-8 info-box">
+            <div class="col-md-8 info-box col-xs-12">
                <div class="info-pic"></div>
                 <h3 class="topic">Getting Here</h3>
                 <p class="content">CU Museum is located at ...</p>
@@ -143,7 +147,7 @@
         </div>
        <div class="row">
            <div class="col-md-2"></div>
-            <div class="col-md-8 info-box">
+            <div class="col-md-8 info-box col-xs-12">
                <div class="info-pic"></div>
                 <h3 class="topic">Families</h3>
                 <p class="content">Bringing the kids? Find out what facilities are on offer to aid your visit.</p>
@@ -153,7 +157,7 @@
        </div>
        <div class="row">
            <div class="col-md-2"></div>
-            <div class="col-md-8 info-box">
+            <div class="col-md-8 info-box col-xs-12">
                <div class="info-pic"></div>
                 <h3 class="topic">Groups</h3>
                 <p class="content">Reserve group admission in advance for more benefits.</p>
@@ -163,17 +167,17 @@
        </div>
        <div class="row">
            <div class="col-md-2"></div>
-            <div class="col-md-8 info-box">
+            <div class="col-md-8 info-box col-xs-12">
                <div class="info-pic"></div>
                 <h3 class="topic">Access</h3>
-                <p class="content">The CU Museum warmly welcomes visitors with disabilities and their companions.</p>
+                <p class="content">The CU Museum warmly welcomes visitors with disabilities.</p>
                 <div class="linktagtwo"> --> ACCESS </div>
             </div>
             <div class="col-md-2"></div>
        </div>
        <div class="row">
            <div class="col-md-2"></div>
-            <div class="col-md-8 info-box">
+            <div class="col-md-8 info-box col-xs-12">
                <div class="info-pic"></div>
                 <h3 class="topic">Contact Information</h3>
                 <p class="content">Get in touch with CU Museum.</p>
