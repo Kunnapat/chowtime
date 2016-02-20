@@ -41,8 +41,8 @@
             <ul style="list-style-type:none;">
                 <li class="nav-list">MUSEUM</li>
                 <li class="nav-list visitpluspic">
-                    <img src="img/plus32.png" class="pluspic visitpluspic"/>
-                    <img src="img/minus32.png" class="minuspic visitminuspic">
+                    <img src="img/plus32.png" class="pluspic" id="visitpluspic"/>
+                    <img src="img/minus32.png" class="minuspic" id="visitminuspic">
                     Visit and do
                 </li>
                 <ul style="list-style-type:none;margin-left:30px;" id="visitndo">
@@ -123,6 +123,7 @@
         </div>
     </section>
 
+<!--
     <section id="services">
         <div class="container">
             <div class="row">
@@ -291,6 +292,7 @@
             </div>
         </div>
     </section>
+-->
 
 
 
@@ -325,12 +327,12 @@
         $(".minuspic").hide();
         $("#visitndo").hide();
         $("#ex").hide();
-        $(".visitpluspic").click(function(){
+        $("#visitpluspic").click(function(){
             $("#visitndo").toggle();
             $("#visitminuspic").show();
             $("#visitpluspic").hide();
         });
-        $(".visitminuspic").click(function(){
+        $("#visitminuspic").click(function(){
            $("#visitndo").toggle();
             $("#visitminuspic").hide();
             $("#visitpluspic").show();
