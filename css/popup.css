@@ -1,6 +1,5 @@
 body {
   font-family: Arial, sans-serif;
-  background: url(http://www.shukatsu-note.com/wp-content/uploads/2014/12/computer-564136_1280.jpg) no-repeat;
   background-size: cover;
   height: 100vh;
 }
@@ -99,4 +98,25 @@ h1 {
     top: 80%;
     left: 90%;
     
+}
+
+.loginButton {
+    
+    width:100px;
+    height:100px;
+    border-radius:50px;
+    font-size:20px;
+    color:#fff;
+    line-height:100px;
+    text-align:center;
+    background: pink;
+    float:right;
+    text-decoration:none;
+  
+}
+
+.loginButton:hover {
+	color:#ccc;
+    text-decoration:none;
+    background:#333
 }
