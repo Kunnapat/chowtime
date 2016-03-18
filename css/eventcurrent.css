@@ -14,6 +14,22 @@
     src: url('../font-awesome/fonts/DINPro-medium.ttf');
 }
 
+
+
+body {
+    webkit-tap-highlight-color: #222;
+    background-image: url(../img/bgnoise_lg.png);
+    background-attachment: fixed;
+    background-position: center;
+/*
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+*/
+}
+
+
 .content {
     font-family: dinprolight, sans-serif;
     padding-right: 10px;
@@ -42,7 +58,6 @@
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
-    color: #f05f40;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -81,12 +96,12 @@
     }
 
     .navbar-default .navbar-header .navbar-brand {
-        color: rgba(255,255,255,.7);
+        color: slategray;
     }
 
     .navbar-default .navbar-header .navbar-brand:hover,
     .navbar-default .navbar-header .navbar-brand:focus {
-        color: #fff;
+        color: #EF788C;
     }
 
     .navbar-default .nav > li>a,
@@ -106,7 +121,7 @@
 
     .navbar-default.affix .navbar-header .navbar-brand {
         font-size: 14px;
-        color: gray;
+        color: #fff;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -125,13 +140,7 @@
     }
 }
 
-.nav-sublist {
-    font-size: 0.5em;
-    padding-bottom: 5px;
-}
-.nav-sublist:hover{
-    text-decoration: underline;
-}
+
 
 .menuarea{
     height: 100%;
@@ -160,9 +169,13 @@
     
 }
 
-.active-nav a{
-    text-decoration-style: none;
-    color: black;
+.active-nav {
+    font-size: 3em;
+    padding-top: 50px;
+    padding-left: 50px;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 200;
+    padding-right: 50px
 }
 
 .nav-list {
@@ -171,7 +184,6 @@
 .nav-list:hover{
     text-decoration: underline;
 }
-
 
 #content {
     margin-top: 80px;
@@ -285,19 +297,6 @@ header .header-content .header-content-inner p {
     color: #fff;
 }
 
-body {
-    webkit-tap-highlight-color: #222;
-    background-image: url(../img/bgnoise_lg.png);
-    background-attachment: fixed;
-    background-position: center;
-/*
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-*/
-}
-
 
 .maintext2 {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
@@ -320,4 +319,9 @@ hr {
 #1234 {
     font-size: 1.2em;
     color: lightslategrey;
+}
+
+.toprightmenu {
+    color: #EF788C;
+    font-size: 15px;
 }

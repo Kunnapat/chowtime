@@ -4,7 +4,6 @@
 	<title>Event</title>
 	<meta charset="utf-8">
 	<meta name = "format-detection" content = "telephone=no" />
-	<link rel="stylesheet" href="css/eventcurrent.css" type="text/css">
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/grid.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -19,9 +18,9 @@
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
-    <!-- Plugin CSS -->
-<!--    <link rel="stylesheet" href="css/animate.min.css" type="text/css">-->
-<!--	<link rel="stylesheet" href="css/museumhome.css" type="text/css">-->
+    
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+	<link rel="stylesheet" href="css/eventcurrent.css" type="text/css">
 
 	<script src="js/jquery.js"></script>
 	<script src="js/touchTouch.jquery.js"></script>
@@ -42,10 +41,40 @@
 -->
     </head>
     
-    <body>
+    <body id="page-top">
     <div class="menuarea" id="menuarea">
-        
+        <div class="closebutton" id="closemenu">X</div>
+        <div class="active-nav">
+            <ul style="list-style-type:none;">
+                <li class="nav-list">MUSIC HALL</li>
+                <li class="nav-list visitpluspic">
+                    <img src="img/plus32.png" class="pluspic" id="visitpluspic"/>
+                    <img src="img/minus32.png" class="minuspic" id="visitminuspic">
+                    Visit and do
+                </li>
+                <ul style="list-style-type:none;margin-left:30px;" id="visitndo">
+                    <li class="nav-sublist">Plan your visit</li>
+                    <li class="nav-sublist">Things to do</li>
+                </ul>
+                
+                <li class="nav-list">
+                    <img src="img/plus32.png" class="pluspic" id="expluspic"/>
+                    <img src="img/minus32.png" class="minuspic" id="exminuspic">
+                    Events
+                </li>
+                <ul style="list-style-type:none;margin-left:30px;" id="ex">
+                    <li class="nav-sublist"><a href="eventcurrent.html">Current Events</a></li>
+                    <li class="nav-sublist">Future Events</li>
+                </ul>
+                <li class="nav-list">
+                    <img src="img/plus32.png" />
+                    Contact
+                </li>
+                <li class="nav-list"><img src="img/mag32.png"/><input type="search" id="searchbar" placeholder="  Search"/></li>
+            </ul>
+        </div>
     </div>
+    
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -56,7 +85,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
                 <a class="navbar-brand page-scroll" href="musichallhome.html">Music Hall Home</a>
             </div>
 
@@ -65,19 +93,19 @@
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li>
-                        <a class="page-scroll"><div id="menubutton">MUSIC HALL MENU</div></a>
+                        <a class="page-scroll"><div class="toprightmenu" id="menubutton">MUSIC HALL MENU</div></a>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
-    </nav>
-       
+    </nav>    
+    
        
         
        
-        <section id="content">
+    <section id="content">
 	<div class="full-width-container block-1">
 		<div class="container">
 			<div class="row">
