@@ -285,6 +285,20 @@ header .header-content .header-content-inner p {
     color: #fff;
 }
 
+body {
+    webkit-tap-highlight-color: #222;
+    background-image: url(../img/bgnoise_lg.png);
+    background-attachment: fixed;
+    background-position: center;
+/*
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+*/
+}
+
+
 .maintext2 {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-size: 60px;
