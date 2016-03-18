@@ -326,14 +326,12 @@ hr {
     color: #EF788C;
     font-size: 15px;
 }
-<<<<<<< Updated upstream
+
 #menubutton {
     color:slategray;
 
 }
 
-
-=======
 
 .texttile {
     font-family: 'dinpromed','Open Sans','Helvetica Neue',Arial,sans-serif;
@@ -348,6 +346,7 @@ hr {
     padding-right: 5px;
     background-color: #EF788C;
     color: white;
+    margin-top: 20px;
 }
 
 .titlediv {
@@ -378,4 +377,4 @@ hr {
 .container {
     margin-bottom: 50px;
 }
->>>>>>> Stashed changes
+
