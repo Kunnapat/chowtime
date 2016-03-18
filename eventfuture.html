@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>CHOWTIME</title>
-
-    <!-- Bootstrap Core CSS -->
+	<head>
+	<title>Event</title>
+	<meta charset="utf-8">
+	<meta name = "format-detection" content = "telephone=no" />
+	<link rel="stylesheet" href="css/eventcurrent.css" type="text/css">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/grid.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/touchTouch.css">
+	
+	<!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/nav.css" type="text/css">
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -20,22 +20,30 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+<!--    <link rel="stylesheet" href="css/animate.min.css" type="text/css">-->
+<!--	<link rel="stylesheet" href="css/museumhome.css" type="text/css">-->
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/musichallhome.css" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
+	<script src="js/jquery.js"></script>
+	<script src="js/touchTouch.jquery.js"></script>
+	<script src="js/jquery-migrate-1.2.1.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/packery.pkgd.min.js"></script>
+	<!--[if (gt IE 9)|!(IE)]><!-->
+	<script src="js/jquery.mobile.customized.min.js"></script>
+	<script src="js/wow.js"></script>
+<!--
+	<script>
+		$(document).ready(function () {
+			if ($('html').hasClass('desktop')) {
+				new WOW().init();
+			}
+		});
+	</script>
+-->
+    </head>
     
-<body id="page-top">
-    <div class="menuarea" id="menuarea">
+    <body>
+     <div class="menuarea" id="menuarea">
         <div class="closebutton" id="closemenu">X</div>
         <div class="active-nav">
             <ul style="list-style-type:none;">
@@ -67,8 +75,7 @@
             </ul>
         </div>
     </div>
-
-
+    
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -79,9 +86,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">CHOWTIME</a>
-                <a class="navbar-brand page-scroll" href="museumhome.html">Museum</a>
-                <a class="navbar-brand page-scroll" href="musichallhome.html"><div class="currentpage">Music Hall</div></a>
+                
+                <a class="navbar-brand page-scroll" href="musichallhome.html">Music Hall Home</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -97,48 +103,76 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
-
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <div class = "maintext">CHULA MUSIC HALL</div>
-                <hr>
-                <p id="1234">Discover a new look of Chula and watch a great performance. Slow your pace down and visit us at Chula Music hall!</p>
-                <!-- <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
-            </div>
+       
+       
+        
+       
+    <section id="content">
+	<div class="full-width-container block-1">
+		<div class="container">
+			
+       
+            <div class="row" id="ftevent">
+            
+				<div class="grid_12">
+					
+						<h2><span>Future Event</span></h2>
+					    <hr>
+				</div>
+				<div id="touch_gallery">
+					<div class="col-md-4">
+						<div class="img_block"><img class="img-pic" src="img/event/riddle.jpg" alt="Event"></div>
+						<article class="eventbox">
+							<h4 class="maintext">Riddle Shadow</h4>
+							<ul>
+							    <li class="content">Date: Sat, May 23  - Thu, June 18</li>
+							    <li class="content">Time: 10:00am - 7:00pm</li>
+							    <li class="content">Organizer: Art Exibition</li>
+							    <li class="content">Event Type: Art/Music/Cultural Event</li>
+							    <li class="content">Conducted in: Thai</li>
+<!--							    <li><div class="reservebu">RESERVE</div></li>-->
+							</ul>
+						</article>
+					</div>
+					<div class="col-md-4">
+						<div class="img_block"><img class="img-pic" src="img/event/adn.jpg" alt="Event"></div>
+						<article class="eventbox">
+							<h4 class="maintext">Art  Dharma Naturally</h4>
+							<ul>
+							    <li class="content">Date: Fri, March 20  - Tue, April 21</li>
+							    <li class="content">Time: 10:00am - 7:00pm</li>
+							    <li class="content">Organizer: Art Exibition</li>
+							    <li class="content">Event Type: Art/Music/Cultural Event</li>
+							    <li class="content">Conducted in: Thai</li>
+<!--							    <li><div class="reservebu">RESERVE</div></li>-->
+							</ul>
+						</article>
+					</div>
+					<div class="col-md-4">
+						<div class="img_block"><img class="img-pic" src="img/event/opensecret.jpg" alt="Event"></div>
+						<article class="eventbox">
+							<h4 class="maintext">Art  Dharma Naturally</h4>
+							<ul>
+							    <li class="content">Date: Fri, February 27 - Fri, April 10</li>
+							    <li class="content">Time: 12:00am - 12:00am</li>
+							    <li class="content">Organizer: Art Exibition</li>
+							    <li class="content">Event Type: Art/Music/Cultural Event</li>
+							    <li class="content">Conducted in: Thai</li>
+<!--							    <li><div class="reservebu">RESERVE</div></li>-->
+							</ul>
+						</article>
+					</div>
+			    </div>
+		    </div>
         </div>
-    </header>
-
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h3 class="section-heading">Reserve an event in advance for your convenient.</h3>
-                    <hr class="light">
-                    <a href="#" class="btn btn-default btn-xl">View all Current Events</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- jQuery -->
-
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
-
-    <script>
-        $("#menuarea").hide();
+	</div>
+</section>
+   <script>
+	$(function(){
+		$('#touch_gallery a').touchTouch();
+	});
+       
+       $("#menuarea").hide();
         $("#menubutton").click(function(){
            $("#menuarea").toggle("slow");
            $("#mainNav").toggle();
@@ -173,11 +207,6 @@
             $("#exminuspic").hide();
             $("#expluspic").show();
         });
-
-    </script>
-
-    
-
-</body>
-
+</script>
+    </body>
 </html>

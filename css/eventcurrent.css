@@ -321,7 +321,12 @@ hr {
     color: lightslategrey;
 }
 
+<<<<<<< Updated upstream
 .toprightmenu {
     color: #EF788C;
     font-size: 15px;
+=======
+#menubutton {
+    color:slategray;
+>>>>>>> Stashed changes
 }
