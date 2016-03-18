@@ -175,7 +175,7 @@ body {
     padding-left: 50px;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 200;
-    padding-right: 50px
+    padding-right: 50px;
 }
 
 .nav-list {
@@ -378,3 +378,8 @@ hr {
     margin-bottom: 50px;
 }
 
+
+.fullscreen {
+    max-height: 100%;
+    background-color: #F2F2F2;
+}
