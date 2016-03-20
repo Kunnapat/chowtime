@@ -1,0 +1,259 @@
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pinkcolor {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-size: 60px;
+    font-weight: bolder;
+    white-space: nowrap;
+    margin-top: 50px;
+}
+  
+.content {
+    text-align: right;
+}
+.registext {
+   margin-top: 50px;
+}
+
+.newbox {
+    height:50px;
+    display: block;
+}
+
+input
+{
+  -moz-border-radius: 15px;
+ border-radius: 15px;
+    border:solid 0.px black;
+    padding:3px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.registcontent {
+    margin-left: auto;
+    margin-right: auto;
+}
+table, th, td {
+    height: 60px;
+    font-size: 20px;
+    font-family: helvetica, serif;
+}
+
+
+.myButton {
+    
+}
+
+.button {
+   border: 2px solid #d1c6d1;
+   background: #ef788c;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ef788c), to(#ef788c));
+   background: -webkit-linear-gradient(top, #ef788c, #ef788c);
+   background: -moz-linear-gradient(top, #ef788c, #ef788c);
+   background: -ms-linear-gradient(top, #ef788c, #ef788c);
+   background: -o-linear-gradient(top, #ef788c, #ef788c);
+   background-image: -ms-linear-gradient(top, #ef788c 0%, #ef788c 100%);
+   padding: 11px 22px;
+   -webkit-border-radius: 23px;
+   -moz-border-radius: 23px;
+   border-radius: 23px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   text-shadow: #ef788c 0 1px 0;
+   color: #ffffff;
+   font-size: 16px;
+   font-family: helvetica, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border: 2px solid #cccaca;
+   text-shadow: #ed667f 0 1px 0;
+   background: #ed667f;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ed667f), to(#ed667f));
+   background: -webkit-linear-gradient(top, #ed667f, #ed667f);
+   background: -moz-linear-gradient(top, #ed667f, #ed667f);
+   background: -ms-linear-gradient(top, #ed667f, #ed667f);
+   background: -o-linear-gradient(top, #ed667f, #ed667f);
+   background-image: -ms-linear-gradient(top, #ed667f 0%, #ed667f 100%);
+   color: #000000;
+   }
+.button:active {
+   text-shadow: #ed667f 0 1px 0;
+   border: 2px solid #c2c2c2;
+   background: #ed667f;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ed667f), to(#ed667f));
+   background: -webkit-linear-gradient(top, #ed667f, #ed667f);
+   background: -moz-linear-gradient(top, #ed667f, #ed667f);
+   background: -ms-linear-gradient(top, #ed667f, #ed667f);
+   background: -o-linear-gradient(top, #ed667f, #ed667f);
+   background-image: -ms-linear-gradient(top, #ed667f 0%, #ed667f 100%);
+   color: #000000;
+   }
+
+
+.navbar-default {
+    border-color: rgba(34,34,34,.05);
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    background-color: #fff;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.navbar-default .navbar-header .navbar-brand {
+    text-transform: uppercase;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 700;
+    color: #f05f40;
+}
+
+.navbar-default .navbar-header .navbar-brand:hover,
+.navbar-default .navbar-header .navbar-brand:focus {
+    color: #eb3812;
+}
+
+.navbar-default .nav > li>a,
+.navbar-default .nav>li>a:focus {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+}
+
+.navbar-default .nav > li>a:hover,
+.navbar-default .nav>li>a:focus:hover {
+    color: #f05f40;
+}
+
+.navbar-default .nav > li.active>a,
+.navbar-default .nav>li.active>a:focus {
+    color: red!important;
+    background-color: transparent;
+}
+
+.navbar-default .nav > li.active>a:hover,
+.navbar-default .nav>li.active>a:focus:hover {
+    background-color: transparent;
+}
+
+@media(min-width:768px) {
+    .navbar-default {
+        border-color: rgba(255,255,255,.3);
+        background-color: transparent;
+    }
+
+    .navbar-default .navbar-header .navbar-brand {
+        color: rgba(255,255,255,.7);
+    }
+
+    .navbar-default .navbar-header .navbar-brand:hover,
+    .navbar-default .navbar-header .navbar-brand:focus {
+        color: #fff;
+    }
+
+    .navbar-default .nav > li>a,
+    .navbar-default .nav>li>a:focus {
+        color: rgba(255,255,255,.7);
+    }
+
+    .navbar-default .nav > li>a:hover,
+    .navbar-default .nav>li>a:focus:hover {
+        color: #fff;
+    }
+
+    .navbar-default.affix {
+        border-color: rgba(34,34,34,.05);
+        background-color: #fff;
+    }
+
+    .navbar-default.affix .navbar-header .navbar-brand {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .navbar-default.affix .navbar-header .navbar-brand:hover,
+    .navbar-default.affix .navbar-header .navbar-brand:focus {
+        color: #eb3812;
+    }
+
+    .navbar-default.affix .nav > li>a,
+    .navbar-default.affix .nav>li>a:focus {
+        color: #222;
+    }
+
+    .navbar-default.affix .nav > li>a:hover,
+    .navbar-default.affix .nav>li>a:focus:hover {
+        color: #EF788C;
+    }
+}
+.active-nav {
+    color: black;
+    font-size: 3em;
+    padding-top: 50px;
+    padding-left: 50px;
+    font-family: 'Open Sans','Helvetica Neue', Arial ,sans-serif;
+    font-weight: 200
+    
+}
+
+
+.active-nav a{
+    text-decoration-style: none;
+    color: black;
+}
+
+.nav-list {
+    padding-bottom: 5px;
+}
+.nav-list:hover{
+    text-decoration: underline;
+}
+
+#searchbar {
+    background-color: transparent;
+    border-style: none;
+    border-bottom: #999999 2px solid;
+    margin-left: 3px;
+}
+.nav-sublist {
+    font-size: 0.5em;
+    padding-bottom: 5px;
+}
+
+.nav-sublist a{
+    color: black;
+}
+
+
+.nav-sublist:hover{
+    text-decoration: underline;
+}   
+.currentpage {
+    color: #EF788C;
+}
+
+h1 {
+     color: #EF788C ; font-family: 'Raleway',sans-serif; font-size: 50px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase;
+}
+
+.bg-plan {
+    webkit-tap-highlight-color: #222;
+    background-image: url(../img/witewall_3.png);
+    background-attachment:fixed;
+    background-position: center;
+
+}
+
+
+.btncenter {
+    margin-top: 20px;
+    margin-left:auto;
+    margin-right: auto;
+}
