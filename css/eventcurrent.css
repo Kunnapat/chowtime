@@ -333,25 +333,8 @@ hr {
 }
 
 
-.texttile {
-    font-family: 'dinpromed','Open Sans','Helvetica Neue',Arial,sans-serif;
-    
-    margin-left: -15px;
-    display: inline;
-    font-size: 36px;
-    line-height: 41px;
-    letter-spacing: -2px;
-    padding-bottom: 1px;
-    padding-left: 2px;
-    padding-right: 5px;
-    background-color: #EF788C;
-    color: white;
-    margin-top: 20px;
-}
 
-.titlediv {
-    
-}
+
 .texttile {
     font-family: 'dinpromed','Open Sans','Helvetica Neue',Arial,sans-serif;
     
