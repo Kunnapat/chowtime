@@ -13,7 +13,7 @@
 }
 
 .textTab {
-   margin-top: 20%
+   margin-top: 17%
     
 }
 
@@ -33,17 +33,36 @@ hr {
 }
 
 .tabtab {
-    max-width: 45%;
-    min-width: 30%;
+    max-width: 80%;
+    min-width: 80%;
     min-height: 310px;
     max-height: 100%;
-    margin-left: 6%;
+    margin-left: 18%;
     border-style: solid;
     border-color: #FDD7E4;
     border-width: 2px;
-   border-radius: 10px;
+    border-radius: 10px;
+    background: 	#ffbfd3;
 }
 
 .text {
     margin-left: 2
+}
+
+.webboardTab {
+    margin-left: 18%;
+    
+}
+
+.rightTab {
+    border-style: solid;
+    border-color: #FDD7E4;
+    border-width: 2px;
+    border-radius: 10px;
+    background: 	#ffbfd3;
+}
+
+.add {
+    font-size: 15px;
+    color:grey;
 }
