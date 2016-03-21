@@ -539,7 +539,6 @@ img::-moz-selection {
 .texttile {
     font-family: 'dinpromed','Open Sans','Helvetica Neue',Arial,sans-serif;
     
-    margin-left: -15px;
     display: inline;
     font-size: 36px;
     line-height: 41px;

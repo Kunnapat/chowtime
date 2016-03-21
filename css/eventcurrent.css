@@ -200,15 +200,25 @@ body {
     width: 100%;
     background-color: pink;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.3em;
     text-align: center;
     padding: 3px 0 3px 0;
 }
 
+.reservebu:hover {
+    font-size: 1.5em;
+}
 .eventbox {
     margin-bottom: 50px;
 }
 
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
 
 
 

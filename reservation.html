@@ -42,40 +42,7 @@
 </head>
 
 <body>
-   <div class="menuarea fullscreen" id="menuarea">
-
-    <div class="closebutton" id="closemenu">X</div>
-    <div class="active-nav">
-        <ul style="list-style-type:none;">
-            <li class="nav-list">MUSIC HALL</li>
-            <li class="nav-list visitpluspic">
-                <img src="img/plus32.png" class="pluspic" id="visitpluspic"/>
-                <img src="img/minus32.png" class="minuspic" id="visitminuspic">
-                Visit and do
-            </li>
-            <ul style="list-style-type:none;margin-left:30px;" id="visitndo">
-                <li class="nav-sublist">Plan your visit</li>
-                <li class="nav-sublist">Things to do</li>
-            </ul>
-            
-            <li class="nav-list">
-                <img src="img/plus32.png" class="pluspic" id="expluspic"/>
-                <img src="img/minus32.png" class="minuspic" id="exminuspic">
-                Events
-            </li>
-            <ul style="list-style-type:none;margin-left:30px;" id="ex">
-                <li class="nav-sublist"><a href="eventcurrent.html">Current Events</a></li>
-                <li class="nav-sublist"><a href="eventfuture.html">Future Events</a></li>
-            </ul>
-            <li class="nav-list">
-                <img src="img/plus32.png" />
-                Contact
-            </li>
-            <li class="nav-list"><img src="img/mag32.png"/><input type="search" id="searchbar" placeholder="  Search"/></li>
-        </ul>
-        <div class="fullscreen" style="background-color: #F2F2F2;"><br><br><br><br><br></div>
-    </div>
-</div>
+   
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -87,18 +54,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="musichallhome.html">Back to current events</a>
+            <a class="navbar-brand page-scroll" href="eventcurrent.html">CANCEL RESERVATION</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                
-                <li>
-                    <a class="page-scroll"><div class="toprightmenu" id="menubutton">MUSIC HALL MENU</div></a>
-                </li>
-            </ul>
-        </div>
+        
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
@@ -109,16 +69,92 @@
 
 <section id="content">
     <div class="full-width-container block-1">
+        
+        
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="texttile">
-                        EVENT NAME
-                    </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                     <img class="eventimg" src="img/event/orchestra.jpg" />     
                 </div>
-
+                <div class="col-md-1"></div>
             </div>
         </div>
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="texttile">
+                        CHOOSE DATE
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="page-item clearfix">
+                        <div class="item-content">
+                            <h1><b>EVENT INFO</b></h1>
+                            <ul>
+                                <li>
+                                    NAME - Chulalongkorn University Symphony Orchestra
+                                </li>
+                                <li>
+                                    ORGANISED BY - Cultural Center of Chulalongkorn University
+                                </li>
+                                <li>
+                                    Conducted in  - english
+                                </li>
+                                <li>
+                                    TYPE - Arts / music / culture
+                                </li>
+                                <li>
+                                    ROUNDS - WED, APRIL 20, 19.00 - 21.00 / THUR, APRIL 21, 19.00 - 21.00
+                                </li>
+                            </ul>
+                            
+                        </div>
+                        <div class="item-content2">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+        
+        
+         <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <a href="#">
+                        <div class="texttile2">
+                            reserve
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    
+        
     </div>
 
 </section>
@@ -132,43 +168,5 @@
 </html>
 
 <script>
-$(function(){
-  $('#touch_gallery a').touchTouch();
-});
 
-$("#menuarea").hide();
-$("#menubutton").click(function(){
- $("#menuarea").toggle("slow");
- $("#mainNav").toggle();
-           $('body > :not(#menuarea)').hide(); //hide all nodes directly under the body
-           $('#menuarea').appendTo('body');
-       });
-$("#closemenu").click(function(){
- $("#menuarea").toggle("slow");
- $("#mainNav").toggle();
- $('body > :not(#menuarea)').show();
-});
-$(".minuspic").hide();
-$("#visitndo").hide();
-$("#ex").hide();
-$("#visitpluspic").click(function(){
-    $("#visitndo").toggle();
-    $("#visitminuspic").show();
-    $("#visitpluspic").hide();
-});
-$("#visitminuspic").click(function(){
- $("#visitndo").toggle();
- $("#visitminuspic").hide();
- $("#visitpluspic").show();
-});
-$("#expluspic").click(function(){
- $("#ex").toggle();
- $("#exminuspic").show();
- $("#expluspic").hide();
-});
-$("#exminuspic").click(function(){
- $("#ex").toggle();
- $("#exminuspic").hide();
- $("#expluspic").show();
-});
 </script>

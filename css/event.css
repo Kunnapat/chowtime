@@ -14,6 +14,32 @@
     src: url('../font-awesome/fonts/DINPro-medium.ttf');
 }
 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family:     font-family: 
+}
+
+body {
+    webkit-tap-highlight-color: #222;
+    background-image: url(../img/bgnoise_lg.png);
+    background-attachment: fixed;
+    background-position: center;
+    font-family:    font-family: 
+
+/*
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+*/
+}
+
+
 .content {
     font-family: dinprolight, sans-serif;
     padding-right: 10px;
@@ -42,7 +68,6 @@
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
-    color: #f05f40;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -77,16 +102,16 @@
 @media(min-width:768px) {
     .navbar-default {
         border-color: rgba(255,255,255,.3);
-        background-color: transparent;
+        background-color: rgba(30, 30, 30, .1); 
     }
 
     .navbar-default .navbar-header .navbar-brand {
-        color: rgba(255,255,255,.7);
+        color: slategray;
     }
 
     .navbar-default .navbar-header .navbar-brand:hover,
     .navbar-default .navbar-header .navbar-brand:focus {
-        color: #fff;
+        color: #EF788C;
     }
 
     .navbar-default .nav > li>a,
@@ -106,7 +131,7 @@
 
     .navbar-default.affix .navbar-header .navbar-brand {
         font-size: 14px;
-        color: gray;
+        color: #fff;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -125,13 +150,7 @@
     }
 }
 
-.nav-sublist {
-    font-size: 0.5em;
-    padding-bottom: 5px;
-}
-.nav-sublist:hover{
-    text-decoration: underline;
-}
+
 
 .menuarea{
     height: 100%;
@@ -160,9 +179,13 @@
     
 }
 
-.active-nav a{
-    text-decoration-style: none;
-    color: black;
+.active-nav {
+    font-size: 3em;
+    padding-top: 50px;
+    padding-left: 50px;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 200;
+    padding-right: 50px;
 }
 
 .nav-list {
@@ -171,7 +194,6 @@
 .nav-list:hover{
     text-decoration: underline;
 }
-
 
 #content {
     margin-top: 80px;
@@ -196,114 +218,110 @@
 .eventbox {
     margin-bottom: 50px;
 }
-header {
-    position: relative;
-    width: 100%;
-    min-height: auto;
-    text-align: center;
-    color: #fff;
-    background-image: url(../img/header2.jpg);
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+
+
+
+
+
+
+
+
+
+
+
+.toprightmenu {
+    color: #EF788C;
+    font-size: 15px;
 }
 
-header .header-content {
-    position: relative;
-    width: 100%;
-    padding: 100px 15px;
-    text-align: center;
+#menubutton {
+    color:slategray;
+
 }
 
-header .header-content .header-content-inner h1 {
-    margin-top: 0;
-    margin-bottom: 0;
+
+
+
+.texttile {
+    font-family: 'dinpromed','Open Sans','Helvetica Neue',Arial,sans-serif;
+    
+
+    display: inline;
+    font-size: 38px;
+    line-height: 41px;
+    letter-spacing: -2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 5px;
+    background-color: #EF788C;
+    color: white;
+}
+
+.texttile2 {
+    font-family: 'dinpromed','Open Sans','Helvetica Neue',Arial,sans-serif;
+    float: right;
+    margin-top: -30px;
+    display: inline;
+    font-size: 25px;
+    line-height: 41px;
+    letter-spacing: -2px;
+    padding: 10px;
+    background-color: rgba(99,99,99,.90);;
+    color: white;
     text-transform: uppercase;
-    font-weight: 700;
 }
 
-header .header-content .header-content-inner hr {
-    margin: 30px auto;
+.texttile2:hover{
+    color: #EF788C;
+    font-size: 28px;
 }
 
-header .header-content .header-content-inner p {
+
+
+.titlecontainer {
+    margin-left: 110px;
+    margin-bottom: 40px;
+}
+
+.container {
     margin-bottom: 50px;
-    font-size: 16px;
-    font-weight: 300;
-    color: rgba(255,255,255,.7);
-}
-
-@media(min-width:768px) {
-    header {
-        min-height: 100%;
-    }
-
-    header .header-content {
-        position: absolute;
-        top: 50%;
-        padding: 0 50px;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-    }
-
-    header .header-content .header-content-inner {
-        margin-right: auto;
-        margin-left: auto;
-        max-width: 1000px;
-    }
-
-    header .header-content .header-content-inner p {
-        margin-right: auto;
-        margin-left: auto;
-        max-width: 80%;
-        font-size: 18px;
-    }
 }
 
 
+.fullscreen {
+    max-height: 100%;
+    background-color: #F2F2F2;
+}
 
-.head-content {
-    margin-top: 45px;
-    color: #fff;
-    background-image: url(../img/header2.jpg);
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    min-height: 300px;
+#footer {
+    clear: both;
     position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+    background: red;
+}
+.eventimg {
     width: 100%;
-    padding: 100px 15px;
-
+    height: 100%;
 }
 
-.head-content p{
-    color: #fff;
+.page-item {
+    font-family: dinprolight, sans-serif;
+    font-size: 20px;
+    position: relative;
+    background-color: white;
+    min-height: 100px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    line-height: 180%;
 }
 
-.maintext2 {
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    font-size: 60px;
-    font-weight: bolder;
-    white-space: nowrap;
+.page-item .item-content {
+    padding: 0px 20px 20px;
 }
-
-header .header-content .header-content-inner {
-        margin-right: auto;
-        margin-left: auto;
-        max-width: 1000px;
-    }
-hr {
-    max-width: 50px;
-    border-color: #EF788C;
-    border-width: 4px;
-}
-
-#1234 {
-    font-size: 1.2em;
-    color: lightslategrey;
+.page-item .item-content2 {
+    padding: 0px 20px 20px;
+    font-style: italic;
+    font-size: 18px;
 }
