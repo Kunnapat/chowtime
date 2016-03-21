@@ -168,3 +168,14 @@ ul.cats .badge {
     margin-right: 1.5em;
     position: relative;
 }
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.paginationforum {
+    margin: 19px auto;
+    padding: 0;
+    display: inline-flex;
+}
