@@ -65,26 +65,81 @@
      <p>This is Chowtime admin dashboard for managing the contents of the museum.</p>
 
             <div id="box">
-                    <div class="box-top">News</div>
+                    <div class="box-top">Note:</div>
                     <div class="box-panel">
-        TOP's To-Do
-        -embed google analytics API
-        -link to ploy's subscription page (admin)
-        -create ev,ex
-        -design how to manage current ev,ex                    </div>
+        This page is for managing newsletter subscriptions.                 </div>
 
              </div>
 
                <div id="box">
-                    <div class="box-top">News</div>
+                    <div class="box-top">Manage Subscribers</div>
                     <div class="box-panel">
-                            This is some simple text. 22
+                        You can subscribe/unsubscribe a user here.
+                             <section>
+            <h1>HELLO</h1>
+        
+            <?php
+            if($_POST) {
+                include "connection.php";
+
+                $email = $_POST['email'];
+                $class = ' class="err"';
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $msg = "invalid email";
+                }
+                else {
+                    if($_POST['subscribe']=="subscribe") {
+                        $sql = "SELECT COUNT(*) FROM newsletter WHERE email = '$email'";
+                        $rs = mysqli_query($link, $sql);
+                        $data = mysqli_fetch_array($rs);
+                        if($data[0] != 0) {
+                            $msg = "you are already subscribed";
+                        }
+                        else {
+                            $sql = "INSERT INTO newsletter VALUES('$email', CURRENT_DATE())";
+                            mysqli_query($link, $sql);
+                            $msg = "subscribed";
+                            $class = "";
+                        }
+                    }
+                    else if($_POST['subscribe']=="unsubscribe") {
+                        $sql = "DELETE FROM newsletter WHERE email = '$email'";
+                        mysqli_query($link, $sql);
+                    }
+                }
+                echo "<h3$class>$msg</h3>";
+                mysqli_close($link);
+            }
+            ?>
+        </section>
+        
+     
+      <section>
+        <form method="post">
+            <h4>Subscribe:</h4>
+            <div class="col-xs-4">
+               <input type="radio" name="subscribe" value="subscribe" class=".radio-inline" checked>Subscribe
+                <input type="radio" name="subscribe" value="unsubscribe" class=".radio-inline" style="margin-left:5px;">Unsubscribe
+                <hr>
+                
+                Email: <input type="email" name="email" class="form-control">
+                <br>
+                <button class="btn btn-primary">Subscribe</button>
+            </div>
+        </form>
+      </section>
+       
                     </div>
                     
              </div>
 
 
-<form method="post">
+<div id="box">
+ <div class="box-top">Create Newsletter</div>
+    
+    <div class="box-panel">
+        You can create Newsletter to send to subscribers here.
+            <form method="post">
            <div class="col-xs-10">
                <input type="text" class="form-control .col-sm-8" name="subject" placeholder="Subject" value="<?php echo stripslashes($_POST['subject']); ?>" required><br>
             <textarea class="form-control .input-lg" row="15" name="body" placeholder="Content"><?php echo stripslashes($_POST['body']); ?></textarea>
@@ -186,6 +241,8 @@
         mysqli_close($link);
     }
 ?>
+            </div>
+     </div>
 
         </div>
     </div>
