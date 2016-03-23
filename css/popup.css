@@ -82,6 +82,7 @@ h1 {
   width: 30%;
   position: relative;
   transition: all 5s ease-in-out;
+
 }
 
 .popup h2 {
@@ -100,10 +101,10 @@ h1 {
   color: #333;
 }
 .popup .close:hover {
-  color: #06D85F;
+  color: deeppink;
 }
 .popup .content {
-  max-height: 30%;
+  max-height: 40%;
   overflow: auto;
 }
 
@@ -124,7 +125,7 @@ h1 {
 
 .loginButton {
     
-    width:100px;
+  width:100px;
     height:100px;
     border-radius:50%;
     font-size:20px;
