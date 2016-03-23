@@ -51,7 +51,7 @@
                             $msg = "you are already subscribed";
                         }
                         else {
-                            $sql = "INSERT INTO newsletter VALUES('$email', CURRENT_DATE())";
+                            $sql = "INSERT INTO newsletter VALUES('$email',DATE_SUB(CURRENT_DATE(),INTERVAL 1 DAY))";
                             mysqli_query($link, $sql);
                             $msg = "subscribed";
                             $class = "";
