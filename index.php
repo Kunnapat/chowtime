@@ -37,28 +37,28 @@
             if($_POST) {
                 include "connection.php";
 
-                $email = $_POST['email'];
+                $address = $_POST['address'];
                 $class = ' class="err"';
-                if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                if(!filter_var($address, FILTER_VALIDATE_EMAIL)) {
                     $msg = "invalid email";
                 }
                 else {
                     if($_POST['subscribe']=="subscribe") {
-                        $sql = "SELECT COUNT(*) FROM newsletter WHERE email = '$email'";
+                        $sql = "SELECT COUNT(*) FROM email WHERE address = '$address'";
                         $rs = mysqli_query($link, $sql);
                         $data = mysqli_fetch_array($rs);
                         if($data[0] != 0) {
                             $msg = "you are already subscribed";
                         }
                         else {
-                            $sql = "INSERT INTO newsletter VALUES('$email',DATE_SUB(CURRENT_DATE(),INTERVAL 1 DAY))";
+                            $sql = "INSERT INTO email VALUES(0,'$address',DATE_SUB(CURRENT_DATE(),INTERVAL 1 DAY))";
                             mysqli_query($link, $sql);
                             $msg = "subscribed";
                             $class = "";
                         }
                     }
                     else if($_POST['subscribe']=="unsubscribe") {
-                        $sql = "DELETE FROM newsletter WHERE email = '$email'";
+                        $sql = "DELETE FROM email WHERE address = '$address'";
                         mysqli_query($link, $sql);
                     }
                 }
@@ -78,7 +78,7 @@
                 <input type="radio" name="subscribe" value="unsubscribe" class=".radio-inline" style="margin-left:5px;">Unsubscribe
                 <hr>
                 
-                Email: <input type="email" name="email" class="form-control">
+                Email: <input type="email" name="address" class="form-control">
                 <br>
                 <button class="btn btn-primary">Subscribe</button>
             </div>

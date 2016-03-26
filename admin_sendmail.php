@@ -68,7 +68,7 @@
 //            or die(mysqli_connect_error()."</body></html>");
 
 //เลือกอีเมลมาเป็นจำนวนเท่ากับที่เลือกจากฟอร์ม
-            $sql = "SELECT email FROM newsletter WHERE last_sent < CURRENT_DATE() LIMIT $limit";
+            $sql = "SELECT address FROM email WHERE last_sent < CURRENT_DATE() LIMIT $limit";
             $rs = mysqli_query($link, $sql);
 //ส่งอีเมลไปยังสมาชิกเหล่านั้น
 //            $eml = array();
@@ -80,14 +80,14 @@
 //            mail_to("$to");
 //            $mail->addAddress($to);
             foreach ($rs as $row) {
-                $e = $row['email'];
+                $e = $row['address'];
                 $mail->addAddress($e);
                 if($mail->send()) {   //ถ้าส่งสำเร็จให้อัปเดตวันที่ส่งข่าวสารล่าสุดเป็นวันที่ปัจจุบัน
                     mysqli_data_seek($rs, 0);
                     while($data = mysqli_fetch_array($rs)) {
-                        $e = $data['email'];
-                        $sql = "UPDATE newsletter SET last_sent = CURRENT_DATE()
-                        WHERE email = '$e'";
+                        $e = $data['address'];
+                        $sql = "UPDATE email SET last_sent = CURRENT_DATE()
+                        WHERE address = '$e'";
                         @mysqli_query($link, $sql);
                     }
                 echo "newsletter is sent";
@@ -99,20 +99,20 @@
             
         
         //ต่อไปเป็นขั้นตอนตรวจสอบว่ามีจำนวนสมาชิกทั้งหมดเท่าไหร่
-        $sql = "SELECT COUNT(*) FROM newsletter";
+        $sql = "SELECT COUNT(*) FROM email";
         $rs = @mysqli_query($link, $sql);
         $data = @mysqli_fetch_array($rs);
         $subscribers = $data[0];		
 
         //ยังเหลืออีกกี่คนที่ยังไม่ได้ส่งข่าวสารไปให้
-        $sql = "SELECT COUNT(*) FROM newsletter 
+        $sql = "SELECT COUNT(*) FROM email 
         WHERE last_sent < CURRENT_DATE()";
 
         $rs = @mysqli_query($link, $sql);
         $data = @mysqli_fetch_array($rs);
         $pending = $data[0];			
 
-        echo "<br><b>จำนวนสมาชิกที่ต้องส่งข่าวสาร:</b> " . number_format($subscribers);
+        echo "<br><b>จำนวนสมาชิกที่ต้องส่ง:</b> " . number_format($subscribers);
         echo "&nbsp;&nbsp;<b>จำนวนค้างส่ง:</b> " . number_format($pending);
         mysqli_close($link);
     }
