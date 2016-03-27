@@ -47,8 +47,8 @@
             <ul id ="nav">
 
             <li><a href="adminf.html">Dashboard</a></li> 
-            <li><a  href="admine.html">Manage Events</a></li> 
-            <li><a class="selected" href="#">Manage Exhibition</a></li> 
+            <li><a href="admine.html">Manage Events</a></li> 
+            <li><a class="selected" href="#">Manage Exhibitions</a></li> 
             <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a href="adminsub.html">Manage Subscriptions</a></li> 
@@ -61,9 +61,63 @@
 
             </ul>
         </div>
+        
+        
+        <?php
+for($i=1;$i<=50;$i++)
+{
+ if($_GET["Line"] == $i)
+ {
+  $sel = "selected";
+ }
+ else
+ {
+  $sel = "";
+ }
+?>
+ <option value="<?php echo $_SERVER["PHP_SELF"];?>?Line=<?php echo $i;?>" <?php echo $sel;?>><?php echo $i;?></option>
+<?php
+}
+?>
+</select>
+<table width="600" border="1">
+  <tr>
+    <th width="91"> <div align="center">Professor ID </div></th>
+    <th width="160"> <div align="center">Professor Name </div></th>
+    <th width="198"> <div align="center">Salary </div></th>
+    
+  </tr>
+  <?php
+  $line = $_GET["Line"];
+  if($line == 0){$line=1;}
+  for($i=1;$i<=$line;$i++)
+  {
+  ?>
+  <tr>
+    <td><div align="center"><input type="text" name="txtProfID<?php echo $i;?>" size="5"></div></td>
+    <td><input type="text" name="txtProfName<?php echo $i;?>" size="20"></td>
+    <td><input type="number" name="txtSalary<?php echo $i;?>" size="20"></td>
+ 
+ </td>
+  </tr>
+  <?php
+  }
+  ?>
+
+
         <div class="content">
-    <h1> Manage Exhibition </h1>
+    <h1> Manage Events </h1>
      <p>For admin only eieieiei (Edit content after this br)</p>
+
+                    <div id="box">
+                    <div class="box-top">Current Events</div>
+                    <div class="box-panel"><a href="#">Manage Current Events</a></div>
+
+                    <div id="box">
+                    <div class="box-top">Add New Events</div>
+
+                   
+                    
 
             <div class="container">
                     <div class="row">
@@ -134,10 +188,15 @@
                                         <div class="clearfix"></div>
                                     </div>
                                 </form>
+
                             </div><!-- POST -->
 
 
+             </div>
+
+
         </div>
+
     </div>
     
 

@@ -47,8 +47,8 @@
             <ul id ="nav">
 
             <li><a href="adminf.html">Dashboard</a></li> 
-            <li><a class="selected" href="#">Manage Events</a></li> 
-            <li><a href="adminex.php">Manage Exhibition</a></li> 
+            <li><a href="admine.php">Manage Events</a></li> 
+            <li><a class="selected" href="#">Manage Exhibitions</a></li> 
             <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a href="adminsub.html">Manage Subscriptions</a></li> 
@@ -74,15 +74,15 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);} 
     
-$sql="INSERT INTO events (event_id, ename, start_date, end_date, organizer, type, description, staff_id)
+$sql="INSERT INTO exhibitions (exhibition_id, ename, start_date, end_date, organizer, description, location, staff_id)
 VALUES
-('$_POST[event_id]',
+('$_POST[exhibition_id]',
 '$_POST[ename]',
 '$_POST[start_date]',
 '$_POST[end_date]',
 '$_POST[organizer]',
-'$_POST[type]',
 '$_POST[description]',
+'$_POST[location]',
 '$_POST[staff_id]')";
  
 if ($conn->connect_error) {

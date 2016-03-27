@@ -47,8 +47,8 @@
             <ul id ="nav">
 
             <li><a href="adminf.html">Dashboard</a></li> 
-            <li><a class="selected" href="#">Manage Events</a></li> 
-            <li><a href="adminex.php">Manage Exhibition</a></li> 
+            <li><a href="admine.php">Manage Events</a></li> 
+            <li><a class="selected" href="#">Manage Exhibition</a></li> 
             <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a href="adminsub.html">Manage Subscriptions</a></li> 
@@ -94,15 +94,15 @@ $conn->close();
 
 
         <div class="content">
-    <h1> Manage Events </h1>
+    <h1> Manage Exhibitions </h1>
      <p>For admin only eieieiei (Edit content after this br)</p>
 
                     <div id="box">
-                    <div class="box-top">Current Events</div>
-                    <div class="box-panel"><a href="#">Manage Current Events</a></div>
+                    <div class="box-top">Current Exhibitions</div>
+                    <div class="box-panel"><a href="#">Manage Current Exhibitions</a></div>
 
                     <div id="box">
-                    <div class="box-top">Add New Events</div>
+                    <div class="box-top">Add New Exhibitions</div>
 
                    
                     
@@ -117,7 +117,7 @@ $conn->close();
                             <!-- POST -->
                             <div class="post" id="content">
                                 //แก้นี่ด้วจ้า
-                                <form action="admineposted.php" class="form newtopic" method="post">
+                                <form action="adminexposted.php" class="form newtopic" method="post">
                                     //แก้นี่ดั้วจ้า
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
@@ -127,42 +127,38 @@ $conn->close();
                                             </div>
 
                                             <div class="icons">
-                                                Event
+                                                Exhibitions
                                             </div>
                                         </div>
                                         <div class="posttext pull-left">
 
                                             <div>
-                                                <input type="text" name="event_id" placeholder="Enter Event ID" class="form-control" />
+                                                <input type="text" name="exhibiton_id" placeholder="Enter Exhibition ID" class="form-control" />
                                             </div>
  <div>
                                                 <input type="text"
                                                        name="ename"
-                                                       placeholder="Enter Event Title" class="form-control" />
+                                                       placeholder="Enter Exhibition Title" class="form-control" />
                                             </div>
                                              <div>
                                                 <input type="text"
                                                        name="start_date"
-                                                       placeholder="Enter Event Start Date" class="form-control" />
+                                                       placeholder="Enter Exhibition Start Date" class="form-control" />
                                             </div>
 
                                              <div>
                                                 <input type="text"
                                                        name="end_date"
-                                                       placeholder="Enter Event End Date" class="form-control" />
+                                                       placeholder="Enter Exhibition End Date" class="form-control" />
                                             </div>
 
                                              <div>
                                                 <input type="text"
                                                        name="organizer"
-                                                       placeholder="Enter Event Organizer" class="form-control" />
+                                                       placeholder="Enter Exhibition Organizer" class="form-control" />
                                             </div>
 
-                                             <div>
-                                                <input type="text"
-                                                       name="type"
-                                                       placeholder="Enter Event Type" class="form-control" />
-                                            </div>
+                         
 
 
                                           
@@ -174,6 +170,11 @@ $conn->close();
                                             </div>
                                             
                                              <div>
+                                                <input type="text"
+                                                       name="location"
+                                                       placeholder="Enter Location (top may change to selectable)" class="form-control" />
+                                            </div>
+                                            <div>
                                                 <input type="text"
                                                        name="staff_id"
                                                        placeholder="Enter Staff ID" class="form-control" />
