@@ -1,4 +1,24 @@
-
+<?php 
+include "connection.php";
+    if (isset($_REQUEST['id'])) {
+        $id = $_REQUEST['id'];
+        $sql = "SELECT * FROM quizzes WHERE quiz_id=$id";
+        $query = mysqli_query($link,$sql) or die("Error Query [".$sql."]");
+        while($rs = mysqli_fetch_array($query)){
+            $qname = $rs['qname'];
+            $description = $rs['description'];
+            $start_date = $rs['start_date'];
+            $end_date = $rs['end_date'];
+        }
+    }else{
+        $id='';
+        $qname = '';
+        $description = '';
+        $start_date = '';
+        $end_date = '';
+    }
+//echo "id=$id";
+?>
 
 <html>
     <head>
@@ -8,34 +28,34 @@
         <meta name="description" content="">
         <meta name="author" content="">
         
-        <title>Add Quiz</title>
+        <title>Edit Quiz</title>
         
         <!-- Bootstrap Core CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
         
         <!--Custom CSS-->
-        <link rel="stylesheet" href="css/managequiz.css" type="text/css">
-        <link rel="stylesheet" href="css/datepicker.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+        <link rel="stylesheet" href="../css/managequiz.css" type="text/css">
+        <link rel="stylesheet" href="../css/datepicker.css">
+        
     </head>
     
     <body>
        <div class="col-sm-8">
            <h3>Add Quiz</h3>
            
-           <form method="post" action="addquestion.php">
+           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="form-group">
                   <label for="qname">Quiz Name:</label>
-                  <input type="text" class="form-control" id="qname" name="qname" required>
+                  <input type="text" class="form-control" id="qname" name="qname" value="<?php echo $qname; ?>" required>
 
                   <label for="description">Description:</label>
-                  <input type="text" class="form-control" id="description" name="description" required>
+                  <input type="text" class="form-control" id="description" name="description" value="<?php echo $description; ?>" required>
 
                   <div class="control-group">
                     <label for="date-picker-2" class="control-label">Start Date</label>
                     <div class="controls">
                         <div class="input-group">
-                            <input id="date-picker-2" type="text" class="date-picker form-control" name="start_date" id="start_date" placeholder="YYYY-MM-DD" required/>
+                            <input id="date-picker-2" type="text" class="date-picker form-control" name="start_date" id="start_date" placeholder="YYYY-MM-DD" value="<?php echo $start_date; ?>" required/>
                             <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
 
                             </label>
@@ -47,7 +67,7 @@
                     <label for="date-picker-2" class="control-label">End Date</label>
                     <div class="controls">
                         <div class="input-group">
-                            <input id="date-picker-2" type="text" class="date-picker form-control" name="end_date" id="end_date" placeholder="YYYY-MM-DD" required/>
+                            <input id="date-picker-2" type="text" class="date-picker form-control" name="end_date" id="end_date" placeholder="YYYY-MM-DD" value="<?php echo $end_date; ?>" required/>
                             <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
 
                             </label>
@@ -58,7 +78,7 @@
 
                 </div>
                 
-                <input type="submit" name="submit" value="Submit" />
+                <input type="submit" name="submit" value="Submit" onclick="update" />
                
            </form>
             

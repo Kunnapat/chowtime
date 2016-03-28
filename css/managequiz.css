@@ -6,3 +6,24 @@ q{
     width: 100%;
     display: inline;
 }
+
+
+
+body{
+    margin-top: 5%;
+}
+
+.tab-content{
+    margin-left: 5%;
+}
+
+#content{
+    float: left;
+    display: inline;
+}
+
+#addnew{
+    float: right;
+    margin-top: 2px;
+}
+
