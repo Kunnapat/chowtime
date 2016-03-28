@@ -64,12 +64,12 @@
         
 
         //SIMPLE POST METHOD JARK WEB
-<!--
+
         <?php
 $servername = "localhost";
 $username = "root";
-$password = "00000000";
-$dbname = "chowtime";
+$password = "root";
+$objDB = mysql_select_db("chowtime"); 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -89,8 +89,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 ?>
--->
-        //
+
 
 
         <div class="content">
