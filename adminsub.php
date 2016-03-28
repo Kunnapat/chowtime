@@ -61,22 +61,31 @@
             </ul>
         </div>
         <div class="content">
-    <h1> Welcome </h1>
-     <p>This is Chowtime admin dashboard for managing the contents of the museum.</p>
+    <h1> Manage Subscriptions </h1>
+     <p>This is Chowtime subsciption management page. Manage subscriptions and create Newsletter here.</p>
 
-            <div id="box">
-                    <div class="box-top">Note:</div>
-                    <div class="box-panel">
-        This page is for managing newsletter subscriptions.                 </div>
-
-             </div>
+     
 
                <div id="box">
 
-                    <div class="box-top">Manage Subscribers</div>
+                    <div class="box-top">Manage Subscriptions</div>
                     <div class="box-panel">
-                        You can subscribe/unsubscribe a user here.
-                             <section>
+                   
+                    <section>
+        <form method="post">
+                <div>
+                        <input type="radio" name="subscribe" value="subscribe" class=".radio-inline" checked>Subscribe
+                    <input type="radio" name="subscribe" value="unsubscribe" class=".radio-inline" style="margin-left:5px;">Unsubscribe
+                <hr>
+                
+                    Email: <input type="email" name="email" class="form-control">
+                <br>
+                    <button class="btn btn-primary">Subscribe/Unsubscribe</button>
+                </div>
+            </div>
+                        
+        </form>
+      </section>
                                  </div>
             <?php
             if($_POST) {
@@ -113,38 +122,17 @@
             ?>
         </section>
         
-     
-      <section>
-        <form method="post">
-            <h4>Subscribe:</h4>
-            <div class="col-xs-4">
-               <input type="radio" name="subscribe" value="subscribe" class=".radio-inline" checked>Subscribe
-                <input type="radio" name="subscribe" value="unsubscribe" class=".radio-inline" style="margin-left:5px;">Unsubscribe
-                <hr>
-                
-                Email: <input type="email" name="email" class="form-control">
-                <br>
-                <button class="btn btn-primary">Subscribe</button>
-            </div>
-        </form>
-      </section>
-       
-                    </div>
-                    
-             </div>
-
-
-<div id="box">
+        <div id="box">
  <div class="box-top">Create Newsletter</div>
     
     <div class="box-panel">
-        You can create Newsletter to send to subscribers here.
             <form method="post">
-           <div class="col-xs-10">
+           <div>
                <input type="text" class="form-control .col-sm-8" name="subject" placeholder="Subject" value="<?php echo stripslashes($_POST['subject']); ?>" required><br>
             <textarea class="form-control .input-lg" row="15" name="body" placeholder="Content"><?php echo stripslashes($_POST['body']); ?></textarea>
-            <hr>
+
             <span>
+                <br>
                 <label>
                     Send
                     <select name="limit">
@@ -241,10 +229,21 @@
         mysqli_close($link);
     }
 ?>
+     
+  
+       
+                    </div>
+                    
+             </div>
+
+
+
             </div>
      </div>
+        
 
         </div>
+    </body>
     </div>
     
 
