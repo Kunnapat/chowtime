@@ -45,14 +45,14 @@
         <div class="sidebar">
             <ul id ="nav">
 
-            <li><a  href="#">Dashboard</a></li> 
-            <li><a href="admine.html">Manage Events</a></li> 
-            <li><a href="adminex.html">Manage Exhibition</a></li> 
+            <li><a  href="adminf.html">Dashboard</a></li> 
+            <li><a href="admine.php">Manage Events</a></li> 
+            <li><a href="adminex.php">Manage Exhibitions</a></li> 
             <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a class="selected" href="#">Manage Subscriptions</a></li> 
 
-            <li><a href="#">Go to Database</a></li>
+            <li><a href="#">Manage Quizzes</a></li>
             <li><a href="#">Go to Website Statistics</a></li> 
 
             <li><a href="#">Settings</a></li> 
@@ -62,7 +62,7 @@
         </div>
         <div class="content">
     <h1> Manage Subscriptions </h1>
-     <p>This is Chowtime subsciption management page. Manage subscriptions and create Newsletter here.</p>
+     <p>This is Chowtime Subsciption Management Page to Manage Subscriptions and Create Newsletter.</p>
 
      
 
@@ -74,12 +74,13 @@
                     <section>
         <form method="post">
                 <div>
+                    
+              
+                    Visitor's Email: <input type="email" name="email" class="form-control">
+                <br>
                         <input type="radio" name="subscribe" value="subscribe" class=".radio-inline" checked>Subscribe
                     <input type="radio" name="subscribe" value="unsubscribe" class=".radio-inline" style="margin-left:5px;">Unsubscribe
-                <hr>
-                
-                    Email: <input type="email" name="email" class="form-control">
-                <br>
+                    <hr>
                     <button class="btn btn-primary">Subscribe/Unsubscribe</button>
                 </div>
             </div>
@@ -139,7 +140,7 @@
                         <option value="10"<?php if($_POST['limit']==10) echo " selected"; ?>>10</option>
                         <option value="15"<?php if($_POST['limit']==15) echo " selected"; ?>>15</option>
                         <option value="20"<?php if($_POST['limit']==20) echo " selected"; ?>>20</option>
-                    </select> Emails (Email will not be sent to the same person)
+                    </select> Emails (They will not be sent to the same person)
                 </label>
                 <hr>
                 <button class="btn btn-primary">Send</button><br class="clear">
