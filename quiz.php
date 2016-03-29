@@ -1,5 +1,16 @@
+<? php
+session_start();
+if(!isset($_SESSION['user'])) {
+	header("Location: museumhome.html");
+	exit;
+}
+?>
 <!DOCTYPE HTML>
 <html ng-app="myQuiz">
+<?php 
+    include "connection.php";
+?>
+
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">

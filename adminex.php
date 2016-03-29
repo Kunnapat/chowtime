@@ -47,8 +47,8 @@
             <ul id ="nav">
 
             <li><a href="adminf.html">Dashboard</a></li> 
-            <li><a class="selected" href="#">Manage Events</a></li> 
-            <li><a href="adminex.html">Manage Exhibition</a></li> 
+            <li><a href="admine.php">Manage Events</a></li> 
+            <li><a class="selected" href="#">Manage Exhibition</a></li> 
             <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a href="adminsub.html">Manage Subscriptions</a></li> 
@@ -62,59 +62,47 @@
             </ul>
         </div>
         
-        
+
+        //SIMPLE POST METHOD JARK WEB
+<!--
         <?php
-for($i=1;$i<=50;$i++)
-{
- if($_GET["Line"] == $i)
- {
-  $sel = "selected";
- }
- else
- {
-  $sel = "";
- }
-?>
- <option value="<?php echo $_SERVER["PHP_SELF"];?>?Line=<?php echo $i;?>" <?php echo $sel;?>><?php echo $i;?></option>
-<?php
+$servername = "localhost";
+$username = "root";
+$password = "00000000";
+$dbname = "chowtime";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "INSERT INTO events (event_id, ename, start_date, end_date, organizer, type, description, staff_id)
+VALUES ('222', 'Doe', '2015-10-01', '2015-11-01', 'aummy', 'best', 'eieigumgum', '1')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+$conn->close();
 ?>
-</select>
-<table width="600" border="1">
-  <tr>
-    <th width="91"> <div align="center">Professor ID </div></th>
-    <th width="160"> <div align="center">Professor Name </div></th>
-    <th width="198"> <div align="center">Salary </div></th>
-    
-  </tr>
-  <?php
-  $line = $_GET["Line"];
-  if($line == 0){$line=1;}
-  for($i=1;$i<=$line;$i++)
-  {
-  ?>
-  <tr>
-    <td><div align="center"><input type="text" name="txtProfID<?php echo $i;?>" size="5"></div></td>
-    <td><input type="text" name="txtProfName<?php echo $i;?>" size="20"></td>
-    <td><input type="number" name="txtSalary<?php echo $i;?>" size="20"></td>
- 
- </td>
-  </tr>
-  <?php
-  }
-  ?>
+-->
+        //
 
 
         <div class="content">
-    <h1> Manage Events </h1>
+    <h1> Manage Exhibitions </h1>
      <p>For admin only eieieiei (Edit content after this br)</p>
 
                     <div id="box">
-                    <div class="box-top">Current Events</div>
-                    <div class="box-panel"><a href="#">Manage Current Events</a></div>
+                    <div class="box-top">Current Exhibitions</div>
+                    <div class="box-panel"><a href="#">Manage Current Exhibitions</a></div>
 
                     <div id="box">
-                    <div class="box-top">Add New Events</div>
+                    <div class="box-top">Add New Exhibitions</div>
 
                    
                     
@@ -128,7 +116,9 @@ for($i=1;$i<=50;$i++)
 
                             <!-- POST -->
                             <div class="post" id="content">
-                                <form action="#" class="form newtopic" method="post">
+                                //แก้นี่ด้วจ้า
+                                <form action="adminexposted.php" class="form newtopic" method="post">
+                                    //แก้นี่ดั้วจ้า
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
@@ -137,34 +127,57 @@ for($i=1;$i<=50;$i++)
                                             </div>
 
                                             <div class="icons">
-                                                Event
+                                                Exhibitions
                                             </div>
                                         </div>
                                         <div class="posttext pull-left">
 
                                             <div>
-                                                <input type="text" placeholder="Enter Event Title" class="form-control" />
+                                                <input type="text" name="exhibiton_id" placeholder="Enter Exhibition ID" class="form-control" />
+                                            </div>
+ <div>
+                                                <input type="text"
+                                                       name="ename"
+                                                       placeholder="Enter Exhibition Title" class="form-control" />
+                                            </div>
+                                             <div>
+                                                <input type="text"
+                                                       name="start_date"
+                                                       placeholder="Enter Exhibition Start Date" class="form-control" />
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-lg6 col-md-6">
-                                                    <select name="category" id="category"  class="form-control" >
-                                                        <option value="" disabled selected>Select Date</option>
-                                                        <option value="op1">Option1</option>
-                                                        <option value="op2">Option2</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <select name="subcategory" id="subcategory"  class="form-control" >
-                                                        <option value="" disabled selected>Select Time</option>
-                                                        <option value="op1">Option1</option>
-                                                        <option value="op2">Option2</option>
-                                                    </select>
-                                                </div>
+                                             <div>
+                                                <input type="text"
+                                                       name="end_date"
+                                                       placeholder="Enter Exhibition End Date" class="form-control" />
                                             </div>
+
+                                             <div>
+                                                <input type="text"
+                                                       name="organizer"
+                                                       placeholder="Enter Exhibition Organizer" class="form-control" />
+                                            </div>
+
+                         
+
+
+                                          
 
                                             <div>
-                                                <textarea name="desc" id="desc" placeholder="Description"  class="form-control" ></textarea>
+                                                <textarea name="desc" id="desc"
+                                                          name="description"
+                                                          placeholder="Description"  class="form-control" ></textarea>
+                                            </div>
+                                            
+                                             <div>
+                                                <input type="text"
+                                                       name="location"
+                                                       placeholder="Enter Location (top may change to selectable)" class="form-control" />
+                                            </div>
+                                            <div>
+                                                <input type="text"
+                                                       name="staff_id"
+                                                       placeholder="Enter Staff ID" class="form-control" />
                                             </div>
                                             
 

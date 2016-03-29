@@ -1,53 +1,3 @@
-<?php
-//session_start();
-//
-//if($_POST)  {
-//  $username = $_POST['username'];
-//  $password = $_POST['password'];
-//    
-//    include("connection.php");
-////    my_connect();
-//    $sql = "SELECT username FROM members";
-////    $sql2 = "SELECT password FROM members";
-//    echo "addddd";
-////    $result = $conn->query($sql);
-////    $result2 = $conn->query($sql2);
-////    
-////    echo "$result";
-////    echo "$result2";
-//    echo "add";
-//    if ($sql!=NULL) {
-//         output data of each row
-//        if($result==$sql){
-//            echo "username is match";
-//        }
-//        if($result2==$sql2){
-//            echo "password is match";
-//        }
-//        echo "1";
-//        while($row = $sql->fetch_assoc()) {
-//            echo "username: " . $row["username"]. " - password: " . $row["password"]. "<br>";
-//        }
-//    } else {
-//        echo "0 results";
-//    }
-//    
-//    if(empty($username)) {
-//        $errmsg = "please fill in username";
-//      }
-//      else if($password) {
-//        $errmsg = "password and confirm password is not match";
-//      }
-//
-//    @mysql_query($link,$sql) or die(mysql_error());
-//  
-////    $Uid = mysql_insert_id();
-//    echo "Register Complete!<br>";   
-//  
-//  exit;
-//}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +23,7 @@
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/museumhome.css" type="text/css">
+    <link rel="stylesheet" href="css/homepage.css" type="text/css">
     <link rel="stylesheet" href="css/popup.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -130,20 +80,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="homepage.html">CHOWTIME</a>
-                <a class="navbar-brand page-scroll" href="#page-top"><div class="currentpage">Museum</div></a>
+                <a class="navbar-brand page-scroll" href="#page-top"><div class="currentpage">CHOWTIME</div></a>
+                <a class="navbar-brand page-scroll" href="museumhome.html">Museum</a>
                 <a class="navbar-brand page-scroll" href="musichallhome.html">Music Hall</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li>
-                        <a class="page-scroll"><div id="menubutton">MUSEUM MENU</div></a>
-                    </li>
-                </ul>
-            </div>
+            
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
@@ -154,25 +97,39 @@
         <div class="header-content">
                
             <div class="header-content-inner">
-                <div class = "maintext">CHULA MUSEUM</div>
+                <div class = "maintext">CHOWTIME</div>
                 <hr>
-                <p id="1234">Discover a new look of Chula and watch a great performance. Slow your pace down and visit us at Chula Museum!</p>
+                <div class ="subtitle">CHULALONGKORN UNIVERSITY MUSEUM AND MUSIC HALL</div>
                 <!-- <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
             </div>
         </div>
     </header>
+    
 
-    <section class="bg-primary" id="about">
-        <div class="container">
+
+
+    <section class="bg-secondary" id="about">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Open on Weekdays 09.00 - 16.00</h2>
-                    <hr class="light">
-                    <p class="text-faded">Chulalongkorn University</p>
-                    <a href="#" class="btn btn-default btn-xl">Plan your visit</a>
+                <div class="col-md-6">
+                    <div class="secbox1">
+                        Go to Museum Home
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="secbox2">
+                        Go to Music Hall Home
+                    </div>
                 </div>
             </div>
-        </div>
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="secbox3">
+                        Chowtime Webboard
+                    </div>
+                </div>
+                
+            </div>
+      
     </section>
 
 
@@ -231,25 +188,23 @@
     </script>
 
     
-  
-<form action="checklogin.php" name="frmAdd" method="post">   
+    
 <div id="popup1" class="overlay">
   <div class="popup">
     <h2>Chowtime</h2>
     <a class="close" href="#">&times;</a>
     <div class="content">
+         
         Username: <input type="text" name="username"><br>
-        Password:&nbsp; <input type="password" name="password"><br>
+        Password:&nbsp; <input type="text" name="lname"><br>
         <lable><a href="#popup2" style="margin-top=10%;">forget password?</a></lable><br><br>
-       
-        <input type="submit" class='button' value="Login">
-        <a href="./registration.php" class="button">Register</a>
+        <a href="./login.html" class="button">Login</a>
+        <a href="./registration.html" class="button">Register</a>
+        
     </div>
   </div>
-</div>
-</form>    
+</div>    
     
-<form action="forgetpass.php" name="frmAdd2" method="post"> 
 <div id="popup2" class="overlay">
     <div class="popup">
         <h2>Chowtime</h2>
@@ -258,15 +213,13 @@
     <div class="content">
          
         Email: <input type="text" name="email"><br><br>
-        <input type="submit" class='button' value="Submit">
-        <a href="./museumhome.php" class="button">cancel</a>
+        <a href="#popup3" class="button">submit</a>
+        <a href="./museumhome.html" class="button">cancel</a>
         
     </div>
     </div>
 </div>
-</form>
-   
-<form action="answer.php" name="frmAdd3" method="post">     
+    
 <div id="popup3" class="overlay">
     <div class="popup">
         <h2>Chowtime</h2>
@@ -274,25 +227,14 @@
     <a class="close" href="#">&times;</a>
     <div class="content">
          
-        Question: 
-        <?php
-            $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
-            $objDB = mysql_select_db("chowtime");
-            $strSQL = "SELECT question FROM members WHERE email='$email'";
-            // Execute the query (the recordset $rs contains the result)
-            $rs = mysql_query($strSQL);
-            echo "$rs";
-        ?>
-        <br><br>
+        Question: คำถามจากDatabase<br><br>
         Answer: <input type="text" name="answer"><br><br>
-        <input type="submit" class='button' value="Send">
-        <a href="./museumhome.php" class="button">cancel</a>
+        <a href="#popup4" class="button">send</a>
+        <a href="./museumhome.html" class="button">cancel</a>
         
     </div>
     </div>
 </div>
-</form>    
-    
 <div id="popup4" class="overlay">
     <div class="popup">
         <h2>Chowtime</h2>
@@ -305,7 +247,7 @@
         Question: <input type="text" name="question"><br><br>
         Answer: <input type="text" name="answer"><br><br>
         <a href="./profile.html" class="button">confirm</a>
-        <a href="./museumhome.php" class="button">cancel</a>
+        <a href="./museumhome.html" class="button">cancel</a>
         
     </div>
     </div>

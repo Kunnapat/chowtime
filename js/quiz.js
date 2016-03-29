@@ -56,9 +56,9 @@
 
 			var twitterLink = '<a target="blank" class="btn twitter" href="http://twitter.com/share?text=I scored a '+percentage+'%25 on this quiz. Try to beat my score at&amp;hashtags=ChowTimeQuizQuiz&amp;url='+url+'">Tweet your score</a>';
             
-            var emailLink = '<a target="blank" class="btn fb" href="https://www.facebook.com/sharer/sharer.php?u=www.chowtime.com">Share on Facebook</a>';
+            var fbLink = '<a target="blank" class="btn fb" href="https://www.facebook.com/sharer/sharer.php?u=www.chowtime.com">Share on Facebook</a>';
 			
-			var newMarkup = emailLink + twitterLink;
+			var newMarkup = fbLink + twitterLink;
 
 			return $sce.trustAsHtml(newMarkup);			
 

@@ -12,7 +12,7 @@
         $strSQL .=",'12345','','NULL') ";
         $objQuery = mysql_query($strSQL);
     if($objQuery){
-        echo "<a href='./museumhome.php'>Register Complete Go BACK TO Homepage</a></font>";
+        echo "<a href='./museumhome.php'>Register Complete Go BACK TO Homepage</a>";
     }else{
         echo "Error: " . $strSQL . "<br>" . $conn->error;
 //       echo "<font size=5 color=red>$errmsg<p />

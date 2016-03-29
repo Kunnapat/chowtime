@@ -23,6 +23,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/adminf.css" type="text/css">
+    <link rel="stylesheet" href="css/admine.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,10 +46,10 @@
         <div class="sidebar">
             <ul id ="nav">
 
-            <li><a  href="adminf.html">Dashboard</a></li> 
-            <li><a href="admine.html">Manage Events</a></li> 
-            <li><a href="adminex.html">Manage Exhibition</a></li> 
-            <li><a class="selected" href="#">Manage Members</a></li> 
+            <li><a href="adminf.html">Dashboard</a></li> 
+            <li><a class="selected" href="#">Manage Events</a></li> 
+            <li><a href="adminex.php">Manage Exhibition</a></li> 
+            <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a href="adminsub.html">Manage Subscriptions</a></li> 
 
@@ -60,27 +61,49 @@
 
             </ul>
         </div>
-        <div class="content">
-    <h1> Members </h1>
-     <p>Members management</p>
+ 
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "00000000";
+$dbname = "chowtime";
 
-            <div id="box">
-                    <div class="box-top">Online Members</div>
-                    <div class="box-panel">
-                            There are currently 312 members online in the website eiei.
-                    </div>
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);} 
+    
+$sql="INSERT INTO events (event_id, ename, start_date, end_date, organizer, type, description, staff_id)
+VALUES
+('$_POST[event_id]',
+'$_POST[ename]',
+'$_POST[start_date]',
+'$_POST[end_date]',
+'$_POST[organizer]',
+'$_POST[type]',
+'$_POST[description]',
+'$_POST[staff_id]')";
+ 
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
+    
 
              </div>
 
-               <div id="box">
-                    <div class="box-top">Total Users</div>
-                    <div class="box-panel">
-                            There are 1239124 registered users.
-                    </div>
-                    
-             </div>
 
         </div>
+
     </div>
     
 
