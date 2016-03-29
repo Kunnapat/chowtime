@@ -80,7 +80,7 @@
                 
                 Email: <input type="email" name="email" class="form-control">
                 <br>
-                <button class="btn btn-primary">Subscribe</button>
+                <button class="btn btn-primary">Submit</button>
             </div>
         </form>
       </section>

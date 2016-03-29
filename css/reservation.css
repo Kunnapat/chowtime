@@ -336,13 +336,37 @@ body {
     font-size: 15px;
 }
 
+#icon {
+   font-size:19px;
+    vertical-align: inherit;
+}
 
 
 .datebox {
     font-family: 'dinpro','Open Sans','Helvetica Neue',Arial,sans-serif;
     font-size: 30px;
     text-align: center;
-    background-color: white;
+    background-color: rgba(99,99,99,.30);
+    padding-top: 20px;
+    padding-left: -10px;
+    padding-right: -10px;
+    padding-bottom: 20px;
+    margin-bottom: -30px;
+    border-radius: 20px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+.datebox-selected {
+    font-family: 'dinpro','Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-size: 38px;
+    text-align: center;
+    background-color: #fff;
     padding-top: 20px;
     padding-left: -10px;
     padding-right: -10px;
@@ -411,3 +435,18 @@ body {
             font-size: 33px;
 		}
 		}
+
+
+.glyphicon {
+    font-size: 10px;
+}
+
+.timebutton {
+    padding-top: 20px;
+}
+
+
+.amountinput {
+    padding-top: 50px;
+}
+
