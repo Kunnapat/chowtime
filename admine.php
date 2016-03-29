@@ -48,12 +48,12 @@
 
             <li><a href="adminf.html">Dashboard</a></li> 
             <li><a class="selected" href="#">Manage Events</a></li> 
-            <li><a href="adminex.php">Manage Exhibition</a></li> 
+            <li><a href="adminex.php">Manage Exhibitions</a></li> 
             <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a href="adminsub.html">Manage Subscriptions</a></li> 
 
-            <li><a href="#">Go to Database</a></li>
+            <li><a href="#">Manage Quizzes</a></li>
             <li><a href="#">Go to Website Statistics</a></li> 
 
             <li><a href="#">Settings</a></li> 
@@ -64,12 +64,12 @@
         
 
         //SIMPLE POST METHOD JARK WEB
-
+<!--
         <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
-$objDB = mysql_select_db("chowtime"); 
+$password = "00000000";
+$dbname = "chowtime";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -89,7 +89,8 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 ?>
-
+-->
+        //
 
 
         <div class="content">
