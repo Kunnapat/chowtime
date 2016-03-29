@@ -1,5 +1,5 @@
 <?php 
-include "connection.php";
+include "../connection.php";
     if (isset($_REQUEST['id'])) {
         $id = $_REQUEST['id'];
         $sql = "SELECT * FROM quizzes WHERE quiz_id=$id";
@@ -40,10 +40,11 @@ include "connection.php";
     </head>
     
     <body>
+        <div class="col-sm-2"></div>
        <div class="col-sm-8">
            <h3>Add Quiz</h3>
            
-           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<!--           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">-->
                 <div class="form-group">
                   <label for="qname">Quiz Name:</label>
                   <input type="text" class="form-control" id="qname" name="qname" value="<?php echo $qname; ?>" required>
@@ -78,9 +79,9 @@ include "connection.php";
 
                 </div>
                 
-                <input type="submit" name="submit" value="Submit" onclick="update" />
+                <input type="submit" name="submit" value="Submit" onclick="update()" />
                
-           </form>
+<!--           </form>-->
             
               
             </div>
@@ -89,6 +90,29 @@ include "connection.php";
        </div>
         
         <script>
+            function update(){
+        
+                var quiz_id = <?php echo $id; ?>;
+                var qname = $('#qname').val();
+                var description = $('#description').val();
+                var start_date = $('#start_date').val();
+                var end_date = $('#end_date').val();
+                
+//                STILL CANNOT UPDATE START_DATE AND END_DATE
+                
+                $.ajax({
+                    type: "POST",
+                  url: "updatequiz.php",
+                  data: { qname: qname, description: description, quiz_id: quiz_id }
+                }).done(function( msg ) {
+    //                  alert( "Update: " + msg );
+                    alert("Quiz Edited " + msg);
+                    var url = "managequiz.php"
+                    location.href = url;
+                });
+            }
+            
+            
             $(function () {
               $(".date-picker").datepicker({ 
                     autoclose: true, 
@@ -98,12 +122,12 @@ include "connection.php";
             
     </script>
         
-        <script src="js/jquery.js"></script>
+        <script src="../js/jquery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
     </body>
     
 </html>

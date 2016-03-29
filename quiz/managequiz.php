@@ -1,3 +1,15 @@
+<!--
+ManageQuiz.php: Link from Admin Main Page
+This file will contain the management system of the quiz page
+1. Activate Quiz
+2. Create and Edit Quiz
+3. Create and Edit Question
+4. Create and Edit Choice
+
+Author: Chanikarn Thavornwong
+Note: This file is 80% Complete
+-->
+
 <?php include "../connection.php" ?>
 
 <html>
@@ -117,7 +129,40 @@
             <div id="question" class="tab-pane fade">
               <h3>Question</h3>
               <p>Manage Question</p>
+              
+              <h4>Select Quiz</h4>
+              <select name="questionname" onchange="">
+                  <?php 
+                $sql2 = "SELECT quiz_id,qname FROM quizzes";
+                $query2 = mysqli_query($link,$sql2);
+                while($rs2 = mysqli_fetch_array($query2)){
+                ?>
+                
+                <option><?php echo $rs2['quiz_id']; ?>: <?php echo $rs2['qname']; ?></option>
+                <?php 
+                }
+                ?>
+              </select>
+              <input type="submit" name="submit" class="btn btn-default" onclick="showQuestion()" value="Go">
+              <hr>
+              <h4>Questions:</h4>
+              <table class="table table-striped">
+                 <thead>
+                     <tr>
+                         <th>ID</th>
+                         <th>Content</th>
+                     </tr>
+                 </thead>
+                 <tbody id="showques">
+                   
+                     
+                 </tbody>
+                  
+              </table>
+              
             </div>
+            
+            
             
 <!--            MANGAE CHOICE DIV-->
             <div id="choice" class="tab-pane fade">
@@ -128,15 +173,22 @@
         </div>
 
         
+        <script>
+//            This function will query all of the questions of a specific quiz_id in the database by using the AJAX and JS. The query will be done in PHP at the file that AJAX is linked to in a POST method.
+            function showQuestion(){
+                alert("yay");
+                
+            }
+            
+        </script>
         
         
-        
-        <script src="js/jquery.js"></script>
+        <script src="../js/jquery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
     </body>
     
 </html>
