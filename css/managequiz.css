@@ -17,7 +17,7 @@ body{
     margin-left: 5%;
 }
 
-#content{
+.content{
     float: left;
     display: inline;
 }
@@ -25,5 +25,10 @@ body{
 #addnew{
     float: right;
     margin-top: 2px;
+}
+
+h4, select{
+    display: inline;
+    margin-right: 2%;
 }
 
