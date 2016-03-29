@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family:  'Open Sans';
 }
@@ -39,19 +40,21 @@ div#header {
 div#container {
     width:100%;
     margin: 0 auto;
+    
 }
 
 .sidebar {
     width: 250px;
-    height: 100%;
     background-color: #171717;
     float: left;
+    height:160%;
+    
+   
 }
 
 .content {
     width: auto;
     margin-left:250px; /* tum hai equal sidebar gorn */
-    height: 100%;
     background-color: #F2F2F2;
     padding: 20px;
 
@@ -63,11 +66,11 @@ div#container {
 }
 
 ul#nav {
-
 }
 
 ul#nav li {
     list-style:none;
+    
 }
 
 ul#nav li a {

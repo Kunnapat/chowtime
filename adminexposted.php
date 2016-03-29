@@ -97,6 +97,14 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 ?>
+                    <div class="content">
+
+        <div class="box-top">Go Back to Previous Page</div>
+                    <div class="box-panel">
+           <a href="adminex.php">Click here to go back to previous page.</a>
+                    </div>
+             </div>
+
     
 
              </div>

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CHOWTIME</title>
+    <title>ChowtimeAdmin</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/adminf.css" type="text/css">
+    <link rel="stylesheet" href="css/cssadmin.css" type="text/css">
     <link rel="stylesheet" href="css/admine.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,7 +38,7 @@
     
 
     <div id="header">
-        <div class="logo"><a href="#">Chowtime<span>Admin</span></a></div>
+        <div class="logo"><a href="adminf.html">Chowtime<span>Admin</span></a></div>
 
      </div>
 
@@ -48,12 +48,12 @@
 
             <li><a href="adminf.html">Dashboard</a></li> 
             <li><a href="admine.php">Manage Events</a></li> 
-            <li><a class="selected" href="#">Manage Exhibition</a></li> 
+            <li><a class="selected" href="#">Manage Exhibitions</a></li> 
             <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a href="adminsub.html">Manage Subscriptions</a></li> 
 
-            <li><a href="#">Go to Database</a></li>
+            <li><a href="#">Manage Quizzes</a></li>
             <li><a href="#">Go to Website Statistics</a></li> 
 
             <li><a href="#">Settings</a></li> 
@@ -63,7 +63,6 @@
         </div>
         
 
-        //SIMPLE POST METHOD JARK WEB
 <!--
         <?php
 $servername = "localhost";
@@ -90,12 +89,11 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 ?>
 -->
-        //
 
 
         <div class="content">
     <h1> Manage Exhibitions </h1>
-     <p>For admin only eieieiei (Edit content after this br)</p>
+         <p>This Panel is for Administrators to Add or Edit Exhibitions.</p>
 
                     <div id="box">
                     <div class="box-top">Current Exhibitions</div>
@@ -116,9 +114,7 @@ $conn->close();
 
                             <!-- POST -->
                             <div class="post" id="content">
-                                //แก้นี่ด้วจ้า
                                 <form action="adminexposted.php" class="form newtopic" method="post">
-                                    //แก้นี่ดั้วจ้า
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
@@ -127,13 +123,13 @@ $conn->close();
                                             </div>
 
                                             <div class="icons">
-                                                Exhibitions
+                                                Upload Image
                                             </div>
                                         </div>
                                         <div class="posttext pull-left">
 
-                                            <div>
-                                                <input type="text" name="exhibiton_id" placeholder="Enter Exhibition ID" class="form-control" />
+                                           <div>
+                                                <input type="text" name="exhibition_id" placeholder="Enter Event ID" class="form-control" />
                                             </div>
  <div>
                                                 <input type="text"
@@ -172,13 +168,14 @@ $conn->close();
                                              <div>
                                                 <input type="text"
                                                        name="location"
-                                                       placeholder="Enter Location (top may change to selectable)" class="form-control" />
+                                                       placeholder="Enter Exhibition Location" class="form-control" />
                                             </div>
-                                            <div>
+                                              <div>
                                                 <input type="text"
                                                        name="staff_id"
-                                                       placeholder="Enter Staff ID" class="form-control" />
+                                                       placeholder="Enter Staff ID '1'" class="form-control" />
                                             </div>
+                                      
                                             
 
 

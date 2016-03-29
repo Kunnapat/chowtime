@@ -48,12 +48,12 @@
 
             <li><a href="adminf.html">Dashboard</a></li> 
             <li><a class="selected" href="#">Manage Events</a></li> 
-            <li><a href="adminex.php">Manage Exhibition</a></li> 
+            <li><a href="adminex.php">Manage Exhibitions</a></li> 
             <li><a href="adminm.html">Manage Members</a></li> 
             <li><a href="#">Manage Reservations</a></li> 
             <li><a href="adminsub.html">Manage Subscriptions</a></li> 
 
-            <li><a href="#">Go to Database</a></li>
+            <li><a href="#">Manage Quizzes</a></li>
             <li><a href="#">Go to Website Statistics</a></li> 
 
             <li><a href="#">Settings</a></li> 
@@ -90,7 +90,7 @@ if ($conn->connect_error) {
 } 
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    echo "New record created successfully.";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -98,9 +98,15 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 ?>
     
-
+        <div class="box">
+    
+ <div class="box-top">Go Back to Previous Page</div>
+                    <div class="box-panel">
+           <a href="adminephp">Click here to go back to Previous Page</a>
+                    </div>
              </div>
 
+             </div>
 
         </div>
 

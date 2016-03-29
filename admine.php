@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CHOWTIME</title>
+    <title>ChowtimeAdmin</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/adminf.css" type="text/css">
+    <link rel="stylesheet" href="css/cssadmin.css" type="text/css">
     <link rel="stylesheet" href="css/admine.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,7 +38,7 @@
     
 
     <div id="header">
-        <div class="logo"><a href="#">Chowtime<span>Admin</span></a></div>
+        <div class="logo"><a href="adminf.html">Chowtime<span>Admin</span></a></div>
 
      </div>
 
@@ -62,8 +62,6 @@
             </ul>
         </div>
         
-
-        //SIMPLE POST METHOD JARK WEB
 <!--
         <?php
 $servername = "localhost";
@@ -90,12 +88,12 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 ?>
 -->
-        //
+
 
 
         <div class="content">
     <h1> Manage Events </h1>
-     <p>For admin only eieieiei (Edit content after this br)</p>
+         <p>This Panel is for Administrators to Add or Edit Exhibitions.</p>
 
                     <div id="box">
                     <div class="box-top">Current Events</div>
@@ -116,9 +114,9 @@ $conn->close();
 
                             <!-- POST -->
                             <div class="post" id="content">
-                                //แก้นี่ด้วจ้า
+                 
                                 <form action="admineposted.php" class="form newtopic" method="post">
-                                    //แก้นี่ดั้วจ้า
+            
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
@@ -127,7 +125,7 @@ $conn->close();
                                             </div>
 
                                             <div class="icons">
-                                                Event
+                                            Upload Image
                                             </div>
                                         </div>
                                         <div class="posttext pull-left">
@@ -146,7 +144,7 @@ $conn->close();
                                                        placeholder="Enter Event Start Date" class="form-control" />
                                             </div>
 
-                                             <div>
+                                             <div >
                                                 <input type="text"
                                                        name="end_date"
                                                        placeholder="Enter Event End Date" class="form-control" />
@@ -173,11 +171,12 @@ $conn->close();
                                                           placeholder="Description"  class="form-control" ></textarea>
                                             </div>
                                             
-                                             <div>
+                                            <div>
                                                 <input type="text"
                                                        name="staff_id"
-                                                       placeholder="Enter Staff ID" class="form-control" />
+                                                       placeholder="Enter Staff ID '1'" class="form-control" />
                                             </div>
+                                        
                                             
 
 
