@@ -65,8 +65,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "00000000";
-$dbname = "chowtime";
+$password = "root";
+$dbname = mysql_select_db("chowtime");
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
