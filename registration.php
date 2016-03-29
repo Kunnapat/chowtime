@@ -1,3 +1,124 @@
+<?php
+session_start();
+
+if($_POST)  {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $repassword = $_POST['repassword'];
+  $question = $_POST['question'];
+  $answer = $_POST['answer'];
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $email = $_POST['email'];
+  $tel = $_POST['tel'];
+  $gender = $_POST['gender']; 
+  $birthdate = $_POST['birthdate']; 
+
+
+  if(empty($username)) {
+    $errmsg = "please fill in username";
+  }
+  else   if(empty($question)) {
+    $errmsg = "please fill in secure question";
+  }
+  else   if(empty($answer)) {
+    $errmsg = "please fill in answer";
+  }
+   else  if(empty($fname)) {
+    $errmsg = "please fill in first name";
+  }
+  else   if(empty($lname)) {
+    $errmsg = "please fill in last name";
+  }
+  else   if(empty($tel)) {
+    $errmsg = "please fill in phone number";
+  }
+  else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errmsg = "your email is incorrect format";
+  }
+  else if(empty($password)) {
+    $errmsg = "please fill in password";
+  }
+    else if(empty($repassword)) {
+    $errmsg = "please fill in confirm password";
+  }
+  else if($password != $repassword) {
+    $errmsg = "password and confirm password is not match";
+  }
+ 
+
+  if($errmsg != "") {
+    echo "<font size=5 color=red>$errmsg<p />
+         <a href=\"javascript: history.back()\">come back to edit</a></font>";
+  }
+  else{
+//    $Uid = mysql_insert_id();
+    echo "Register Complete!<br>";   
+  }
+    //$strTo = $login;
+    //$strSubject = "ยืนยันการเป็นสมาชิกเว็บbetterme-th.com";
+    //$strHeader = "Content-type: text/html; charset=UTF-8\n"; // or UTF-8 //
+    //$strHeader .= "From: webmaster@betterme-th.com\nReply-To: webmaster@betterme-th.com";
+    //$strMessage = "";
+    //$strMessage .= "ยินดีต้อนรับ : ".$_POST['flname']."<br>";
+    //$strMessage .= "=================================<br>";
+    //$strMessage .= "กรุญากดยืนยันการเป็นสมาชิก.<br>";
+    //$strMessage .= "http://www.betterme-th.com/activate.php?SID=".$SID."&uid=".$Uid."<br>";
+    //$strMessage .= "=================================<br>";
+    //$strMessage .= "Betterme-TH.Com<br>";
+
+    //$flgSend = mail($strTo,$strSubject,$strMessage,$strHeader);
+    //echo "Register Complete!";
+    //if ($flgSend) {
+    //  echo "Please check your email to activate the account";
+    //}
+//
+//    require("PHPMailer_v5.0.2/class.phpmailer.php");
+//    $mail = new PHPMailer(true);
+//
+//    try{
+//      $body = "";
+//      $body .= "ยินดีต้อนรับ : ".$_POST['flname']."<br>";
+//      $body .= "=================================<br>";
+//      $body .= "กรุญากดยืนยันการเป็นสมาชิก.<br>";
+//      $body .= "http://www.betterme-th.com/activation.php?SID=".$SID."&uid=".$Uid."<br>";
+//      $body .= "=================================<br>";
+//      $body .= "Betterme-TH.Com<br>";
+//
+//      $mail->IsHTML(true);
+//      $mail->CharSet = "utf-8";
+//      $mail->IsSMTP();
+//      $mail->SMTPDebug = 0;
+//      $mail->SMTPAuth = true;
+//      $mail->Host = "mx1.hostinger.in.th"; // SMTP server
+//      $mail->Port = 2525; // พอร์ท
+//      $mail->Username = "webmaster@betterme-th.com"; // account SMTP
+//      $mail->Password = "k4dbmIOIv6"; // รหัสผ่าน SMTP
+//
+//      $mail->SetFrom("webmaster@betterme-th.com", "webmaster@betterme-th.com");
+//      $mail->AddReplyTo("webmaster@betterme-th.com", "webmaster@betterme-th.com");
+//      $mail->Subject = "ยืนยันการเป็นสมาชิกเว็บbetterme-th.com";
+//
+//      $mail->MsgHTML($body);
+//
+//      $mail->AddAddress("".$_POST['login'], "".$_POST['flname']); // ผู้รับคนที่หนึ่ง
+//
+//      if(!$mail->Send()) {
+//          echo "Mailer Error: " . $mail->ErrorInfo;
+//      } else {
+//          echo "Email sent!";
+//      } 
+//    } catch (phpmailerException $e) {
+//      echo $e->errorMessage(); //Pretty error messages from PHPMailer
+//    } catch (Exception $e) {
+//      echo $e->getMessage(); //Boring error messages from anything else!
+//    }
+
+//  header("Refresh: 3; url=login.php");
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +167,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top"><div class="currentpage">CHOWTIME</div></a>
-                <a class="navbar-brand page-scroll" href="museumhome.html">Museum</a>
+                <a class="navbar-brand page-scroll" href="museumhome.php">Museum</a>
                 <a class="navbar-brand page-scroll" href="event.html">Music Hall</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -70,6 +191,7 @@
             <div class="col-sm-1 col-md-2"></div>
             <div class="registcontent col-sm-10 col-md-8">
                 <center>
+                <form action="registersave.php" name="frmAdd" method="post">
                     <br>
                     <h1 style="margin-top:10%; margin-bottom:5%"><font color="#EF788C">Registration</font></h1>
             
@@ -109,7 +231,7 @@
                   </tr>
                 <tr>
                     <td>Phone Number<font color="red">*</font>:</td>
-                    <td><input type="number" name="phonenum" required/></td>
+                    <td><input type="number" name="tel" required/></td>
                   </tr>
                 <tr>
                     <td>Gender:</td>
@@ -123,20 +245,13 @@
                 <tr>
 
                  </table>
+                    <br><br>
+<!--                    <a href='./profile.html' class='button'>Confirm</a>-->
+                    <input type="submit" class='button' value="Confirm">
+                    <a href='./museumhome.php' class='button'>Cancel</a>
+                </form>
                 </center>
             </div>
-            <div class="col-sm-1 col-md-2"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1 col-md-4"></div>
-            <div class="col-sm-10 col-md-4">
-                <center style="margin-top:10%;margin-bottom:10%;">
-                    <a href='./profile.html' class='button'>Confirm</a>
-                    <a href='./museumhome.html' class='button'>Cancel</a>
-                </center>
-                </div>
-            </div>
-            <div class="col-sm-1 col-md-4"></div>
         </div>
         
     </body>

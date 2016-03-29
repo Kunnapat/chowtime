@@ -1,3 +1,53 @@
+<?php
+session_start();
+
+if($_POST)  {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+    
+    include("connection.php");
+//    my_connect();
+    $sql = "SELECT username FROM members";
+//    $sql2 = "SELECT password FROM members";
+    echo "addddd";
+//    $result = $conn->query($sql);
+//    $result2 = $conn->query($sql2);
+//    
+//    echo "$result";
+//    echo "$result2";
+    echo "add";
+    if ($sql!=NULL) {
+//         output data of each row
+//        if($result==$sql){
+//            echo "username is match";
+//        }
+//        if($result2==$sql2){
+//            echo "password is match";
+//        }
+        echo "1";
+        while($row = $sql->fetch_assoc()) {
+            echo "username: " . $row["username"]. " - password: " . $row["password"]. "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
+    
+    if(empty($username)) {
+        $errmsg = "please fill in username";
+      }
+      else if($password) {
+        $errmsg = "password and confirm password is not match";
+      }
+
+    @mysql_query($link,$sql) or die(mysql_error());
+  
+//    $Uid = mysql_insert_id();
+    echo "Register Complete!<br>";   
+  
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -181,22 +231,23 @@
     </script>
 
     
-    
+  
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">   
 <div id="popup1" class="overlay">
   <div class="popup">
     <h2>Chowtime</h2>
     <a class="close" href="#">&times;</a>
     <div class="content">
-         
         Username: <input type="text" name="username"><br>
-        Password:&nbsp; <input type="text" name="lname"><br>
+        Password:&nbsp; <input type="password" name="lname"><br>
         <lable><a href="#popup2" style="margin-top=10%;">forget password?</a></lable><br><br>
-        <a href="./login.html" class="button">Login</a>
-        <a href="./registration.html" class="button">Register</a>
-        
+       
+        <input type="submit" class='button' value="Login">
+        <a href="./registration.php" class="button">Register</a>
     </div>
   </div>
-</div>    
+</div>
+</form>    
     
 <div id="popup2" class="overlay">
     <div class="popup">
@@ -207,7 +258,7 @@
          
         Email: <input type="text" name="email"><br><br>
         <a href="#popup3" class="button">submit</a>
-        <a href="./museumhome.html" class="button">cancel</a>
+        <a href="./museumhome.php" class="button">cancel</a>
         
     </div>
     </div>
@@ -223,7 +274,7 @@
         Question: คำถามจากDatabase<br><br>
         Answer: <input type="text" name="answer"><br><br>
         <a href="#popup4" class="button">send</a>
-        <a href="./museumhome.html" class="button">cancel</a>
+        <a href="./museumhome.php" class="button">cancel</a>
         
     </div>
     </div>
@@ -240,7 +291,7 @@
         Question: <input type="text" name="question"><br><br>
         Answer: <input type="text" name="answer"><br><br>
         <a href="./profile.html" class="button">confirm</a>
-        <a href="./museumhome.html" class="button">cancel</a>
+        <a href="./museumhome.php" class="button">cancel</a>
         
     </div>
     </div>
