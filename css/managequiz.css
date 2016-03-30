@@ -32,3 +32,13 @@ h4, select{
     margin-right: 2%;
 }
 
+#newques{
+    float: right;
+}
+.inline-btn{
+    display: inline;
+}
+
+.not-inline{
+    display: block;
+}

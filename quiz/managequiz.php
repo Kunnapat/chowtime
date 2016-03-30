@@ -38,7 +38,7 @@ Note: This file is 80% Complete
             <li class="active"><a data-toggle="pill" href="#active">Active</a></li>
             <li><a data-toggle="pill" href="#quiz">Quiz</a></li>
             <li><a data-toggle="pill" href="#question">Question</a></li>
-            <li><a data-toggle="pill" href="#choice">Choice</a></li>
+            <li><a data-toggle="pill" href="#winner">Winner</a></li>
           </ul>
 
           <div class="tab-content">
@@ -131,31 +131,58 @@ Note: This file is 80% Complete
               <p>Manage Question</p>
               
               <h4>Select Quiz</h4>
-              <select name="questionname" onchange="">
+              <form method="post">
+              <select name="questionname">
                   <?php 
                 $sql2 = "SELECT quiz_id,qname FROM quizzes";
                 $query2 = mysqli_query($link,$sql2);
                 while($rs2 = mysqli_fetch_array($query2)){
                 ?>
                 
-                <option><?php echo $rs2['quiz_id']; ?>: <?php echo $rs2['qname']; ?></option>
+                <option value="<?php echo $rs2['quiz_id']; ?>"><?php echo $rs2['quiz_id']; ?>: <?php echo $rs2['qname']; ?></option>
                 <?php 
                 }
                 ?>
               </select>
-              <input type="submit" name="submit" class="btn btn-default" onclick="showQuestion()" value="Go">
+              <input type="submit" name="submitq" class="btn btn-default inline-btn" value="Go">
+              </form>
+              <?php 
+                if(isset($_POST['submitq'])){
+                    $quiz_id = $_POST['questionname'];
+//                    echo "You have selected :" .$quiz_id;
+                    
+                }
+                ?>
+              
               <hr>
-              <h4>Questions:</h4>
+              <h4 class="inline-btn">Questions:</h4>
+              <a href="addquestion.php?id=<?php echo $quiz_id ?>"><input type="submit" class="btn btn-primary" name="newquestion" value="Create New Question" id="newques"></a>
               <table class="table table-striped">
                  <thead>
                      <tr>
+                        <th>Edit/View</th>
                          <th>ID</th>
                          <th>Content</th>
                      </tr>
                  </thead>
                  <tbody id="showques">
-                   
-                     
+                   <?php 
+//                     echo $quiz_id;
+                     $sql3 = "SELECT question_id,content FROM questions WHERE quiz_id=$quiz_id";
+                    $query3 = mysqli_query($link,$sql3);
+                    while($rs3 = mysqli_fetch_array($query3)){
+                        echo "<tr>";
+                        ?>
+                        <td><a href="editquestion.php?id=<?php echo $rs3['question_id']; ?>">Edit</a></td>
+                        <?php
+                        echo "<td>";
+                        echo $rs3['question_id'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $rs3['content'];
+                        echo "</td><tr>";
+                    }
+                    ?>
                  </tbody>
                   
               </table>
@@ -164,10 +191,47 @@ Note: This file is 80% Complete
             
             
             
-<!--            MANGAE CHOICE DIV-->
-            <div id="choice" class="tab-pane fade">
-              <h3>Choice</h3>
-              <p>Manage Choice</p>
+<!--            MANGAE WINNER DIV-->
+            <div id="winner" class="tab-pane fade">
+              <h3>Winner</h3>
+              <p class="inline-btn">Find Winner for:</p>
+              <select name="questionname">
+                  <?php 
+                $sql2 = "SELECT quiz_id,qname FROM quizzes";
+                $query2 = mysqli_query($link,$sql2);
+                while($rs2 = mysqli_fetch_array($query2)){
+                ?>
+                
+                <option value="<?php echo $rs2['quiz_id']; ?>"><?php echo $rs2['quiz_id']; ?>: <?php echo $rs2['qname']; ?></option>
+                <?php 
+                }
+                ?>
+              </select>
+              <input type="submit" name="submitq" class="btn btn-default inline-btn" value="Go">
+              </form>
+              <?php 
+                if(isset($_POST['submitq'])){
+                    $quiz_id = $_POST['questionname'];
+//                    echo "You have selected :" .$quiz_id;
+                }
+                ?>
+                
+                <hr>
+                <h4>Past Winner:</h4>
+                <table class="table table-striped">
+                 <thead>
+                     <tr>
+                        <th>Quiz ID</th>
+                         <th>Quiz Name</th>
+                         <th>Winner</th>
+                         <th>Email</th>
+                         <th>Tel</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     
+                 </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -175,8 +239,14 @@ Note: This file is 80% Complete
         
         <script>
 //            This function will query all of the questions of a specific quiz_id in the database by using the AJAX and JS. The query will be done in PHP at the file that AJAX is linked to in a POST method.
-            function showQuestion(){
-                alert("yay");
+            function showQuestion(quiz_id){
+                $.ajax({
+                    type: "POST",
+                    url: "showquestion.php",
+                    data: {quiz_id: quiz_id}
+                }.done(function(msg)){
+                    alert(yay);  
+                       });
                 
             }
             
