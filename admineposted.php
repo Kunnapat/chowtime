@@ -65,7 +65,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "00000000";
+$password = "root";
 $dbname = "chowtime";
 
 // Create connection
