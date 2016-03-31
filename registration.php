@@ -109,7 +109,7 @@
                   </tr>
                 <tr>
                     <td>Phone Number<font color="red">*</font>:</td>
-                    <td><input type="number" name="tel" required/></td>
+                    <td><input type="text" name="tel" required/></td>
                   </tr>
                 <tr>
                     <td>Gender:</td>
