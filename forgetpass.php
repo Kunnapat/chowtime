@@ -11,9 +11,10 @@
 	$rs = mysql_query($strSQL);
     $row = mysql_fetch_array($rs);
     if($row!=NULL){
-        echo "<a href='./museumhome.php#popup3'>Answer Secure Question</a>";
+        echo "<a href='./museumhome.php#popup3'>Answer Secure Question</a> <br>";
+        echo $_POST['email'];
     }else {
-        echo "<a href='./museumhome.php#popup2'>email not found</a> <br>";
+        echo "email not found <a href='./museumhome.php#popup2'>Go back</a> <br>";
         echo "<a href='./registration.php'>Register</a>";
     }
     
