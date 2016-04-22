@@ -37,6 +37,20 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <?php
+      // connect to database
+     
+      $con = mysql_connect("localhost", "root", "");
+      $db = mysql_select_db("chowtime");
+      
+      
+      
+        $mid = $_GET['mid'];
+        $query = mysql_query("SELECT * FROM users WHERE user_id =".$mid);
+        while ($row = mysql_fetch_array($query)) {    
+
+    ?>
     
     
     </head>
@@ -82,7 +96,7 @@
         <div class="col-md-5">
             <div> 
                 <div class="profilepicTab">               
-                  <img class="profilepic" src="img/ploid.jpg" width="200" height="200" alt="adog" >
+                  <img class="profilepic" src= "<?php echo $row['profile_pics']; ?>" width="200" height="200"  >
                 </div>
               
             </div>
@@ -93,11 +107,11 @@
         <div class="col-md-7"> 
             <div class="textTab">
                 <div> 
-                    <h2>ploid_za007
-                        <button class="editProfile">Edit profile</button>              
+                    <h2><?php echo $row['username']; ?>
+                        <button class="editProfile" onclick="window.location='editProfile.html'">Edit profile</button>              
                     </h2>  
                     
-                    <p><strong>Ploid Thawornwong</strong> An engineering student who loves to watch classical music show. <br> SJC boyellow:3, CU Engineering!</p>
+                    <p><strong><?php echo $row['fname']; ?></strong> An engineering student who loves to watch classical music show. <br> SJC boyellow:3, CU Engineering!</p>
                 </div>
             
                 <hr>
@@ -180,6 +194,7 @@
         <div class="panel-body">Your reservation code: ABC123</div>
       </div>
     </div>
+         
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
@@ -190,6 +205,7 @@
         <div class="panel-body">Your reservation code: GTH123</div>
       </div>
     </div>
+         
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
@@ -248,7 +264,12 @@
       </div>
     </div>
   </div> 
-</div>              
+</div>
+
+<?php
+
+}
+?>              
         
 </div>
   

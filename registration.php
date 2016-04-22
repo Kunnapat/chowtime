@@ -68,69 +68,58 @@
         <div  class="row">
             <div class="col-sm-1 col-md-2"></div>
             <div class="registcontent col-sm-10 col-md-8">
-                <center>
-                <form action="registersave.php" name="frmAdd" method="post">
+                
+                <form action="registersave.php" name="frmAdd" method="post" enctype="multipart/form-data">
                     <br>
                     <h1 style="margin-top:10%; margin-bottom:5%"><font color="#EF788C">Registration</font></h1>
             
                 <h4><font color="red">* required field</font></h4>
-                <table style="width:50%;">
-                  <tr>
-                    <td>Username<font color="red">*</font>:</td>
-                    <td><input type="text" name="username" required/></td> 
-                  </tr>
-                  <tr>
-                    <td>Password<font color="red">*</font>:</td>
-                    <td><input type="password" name="password" required/></td>
-                  </tr>
-                  <tr>
-                    <td>Confirm Password<font color="red">*</font>:</td>
-                    <td><input type="password" name="repassword" required/></td>
-                  </tr>
-                  <tr>
-                    <td>Security Question<font color="red">*</font>:</td>
-                    <td><input type="text" name="question" required/></td>
-                  </tr>
-                  <tr>
-                    <td>Answer<font color="red">*</font>:</td>
-                    <td><input type="text" name="answer" required/></td>
-                  </tr>
-                  <tr>
-                    <td>Firstname<font color="red">*</font>:</td>
-                    <td><input type="text" name="fname" required/></td>
-                  </tr>
-                <tr>
-                    <td>Lastname<font color="red">*</font>:</td>
-                    <td><input type="text" name="lname" required/></td>
-                  </tr>
-                  <tr>
-                    <td>Email<font color="red">*</font>:</td>
-                    <td><input type="text" name="email" required/></td>
-                  </tr>
-                <tr>
-                    <td>Phone Number<font color="red">*</font>:</td>
-                    <td><input type="text" name="tel" required/></td>
-                  </tr>
-                <tr>
-                    <td>Gender:</td>
-                    <td><input type="radio" name="gender" value="male" checked> Male
-                  <input type="radio" name="gender" value="female"> Female</td>
-                  </tr>
-                <tr>
-                    <td>Birthdate:</td>
-                    <td><input type="date" name="birthdate" required/></td>
-                  </tr>
-                <tr>
 
-                 </table>
-                    <br><br>
-<!--                    <a href='./profile.html' class='button'>Confirm</a>-->
-                    <input type="submit" class='button' value="Confirm">
-                    <a href='./museumhome.php' class='button'>Cancel</a>
+
+                <div class="row">
+                  <div class="col-md-6" name = "left-content">
+                        Username<font color="red">*</font>:</br>
+                        <input type="text" class="form-control" name="username" placeholder="username"required/></br>
+                        Password<font color="red">*</font>:</br>
+                        <input type="password" class="form-control" name="password" placeholder="password"required/></br>
+                        Confirm Password<font color="red">*</font>:</br>
+                        <input type="password" class="form-control" name="repassword" placeholder="confirm your password" required/></br>
+                        Security Question<font color="red">*</font>:</br>
+                        <input type="text" class="form-control" name="question" placeholder="your question" required/></br>
+                        Answer<font color="red">*</font>:</br>
+                        <input type="text" class="form-control" name="answer" placeholder="your answer" required/></br>
+                        Gender:</br>
+                        <input type="radio" name="gender" value="male" checked> Male
+                        <input type="radio" name="gender" value="female"> Female</br>
+                       
+
+                  </div>
+                  <div class="col-md-6" name = "right-content" >
+
+                        Firstname<font color="red">*</font>:</br>    
+                        <input type="text" class="form-control" name="fname" placeholder="firstname" required/></br>  
+                        Lastname<font color="red">*</font>:</br> 
+                        <input type="text" class="form-control" name="lname" placeholder="lastname" required/></br>
+                        Birthdate:
+                        <input type="date" class="form-control" name="birthdate"  required/></br>
+                        Your profile picture<font color="red">*</font>:
+                        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"></br>
+                        <input name="user_picture_file" type="file" id="user_picture_file"></br>
+                        Email<font color="red">*</font>:</br>
+                        <input type="text" name="email" class="form-control" placeholder="email" required/></br>
+                        <td>Phone Number<font color="red">*</font>:</br>
+                        <input type="text" name="tel" class="form-control" placeholder="phone number" required/></br>
+                        <input type="submit" class='button' value="Confirm">      
+                        <input type ="button" class='button' onclick="window.location.href='./museumhome.php'" 
+                        value="Go back to main page">
+                  </div>
+                </div>        
+                    
                 </form>
-                </center>
+               
             </div>
         </div>
+    </div>
         
     </body>
         
