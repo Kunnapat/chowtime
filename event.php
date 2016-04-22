@@ -20,7 +20,7 @@
 
     
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-    <link rel="stylesheet" href="css/eventcurrent.css" type="text/css">
+    <link rel="stylesheet" href="css/event.css" type="text/css">
 
     <script src="js/jquery.js"></script>
     <script src="js/touchTouch.jquery.js"></script>
@@ -42,6 +42,13 @@
 </head>
 
 <body>
+    <?php
+    $eid = $_GET['id'];
+    $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+    $objDB = mysql_select_db("chowtime");
+    $strSQL = "SELECT * FROM events WHERE event_id=".$eid;
+    $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+    ?>
    <div class="menuarea fullscreen" id="menuarea">
 
     <div class="closebutton" id="closemenu">X</div>
@@ -87,7 +94,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="musichallhome.html">Music Hall Home</a>
+            <a class="navbar-brand page-scroll" href="eventcurrent.html">Back to current events</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -108,84 +115,112 @@
 
 
 <section id="content">
+    
+    <?php
+    while($objResult = mysql_fetch_array($objQuery))
+    {
+    ?>
     <div class="full-width-container block-1">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
                     <div class="texttile">
-                        Current Events
+                        <?php echo $objResult["ename"];?>
                     </div>
                 </div>
-
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    <div class="container">
-        <div class="row">
-            <div id="touch_gallery">
-                <div class="col-md-4">
-                    <div class="img_block">
-                        <img class="img-pic" src="img/event/orchestra.jpg" alt="Event">
-                    </div>
-                    <article class="eventbox">
-                        <h4 class="maintext">Awake</h4>
-                        <ul>
-                            <li class="content">Date: Sun, March 26  - Mon, March 14</li>
-                            <li class="content">Time: 10:00am - 4:00pm</li>
-                            <li class="content">Organizer: Art Exibition</li>
-                            <li class="content">Event Type: Art/Music/Cultural Event</li>
-                            <li class="content">Conducted in: Thai</li>
-                            <li><a href="event.html"><div class="reservebu">MORE DETAIL</div></a></li>
-                        </ul>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <div class="img_block">
-                        <img class="img-pic" src="img/event/20century.jpg" alt="Event">
-                    </div>
-                    <article class="eventbox">
-                        <h4 class="maintext">
-                            Twenty Century Print
-                        </h4>
-                        <ul>
-                            <li class="content">Date: Wed, February 24  - Thu, April 21</li>
-                            <li class="content">Time: 10:00am - 7:00pm</li>
-                            <li class="content">Organizer: Art Exibition</li>
-                            <li class="content">Event Type: Art/Music/Cultural Event</li>
-                            <li class="content">Conducted in: Thai</li>
-                            <li><a href="event.html"><div class="reservebu">MORE DETAIL</div></a></li>
-                        </ul>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <div class="img_block">
-                        <img class="img-pic" src="img/event/ddld.jpg" alt="Event">
-                    </div>
-                    <article class="eventbox">
-                        <h4 class="maintext">Dusadee + Dusit + Lovers </h4>
-                        <ul>
-                            <li class="content">Date: Tue, February 16  - Sat, April 9</li>
-                            <li class="content">Time: 10:00am - 6:00pm</li>
-                            <li class="content">Organizer: Art Exibition</li>
-                            <li class="content">Event Type: Art/Music/Cultural Event</li>
-                            <li class="content">Conducted in: Thai</li>
-                            <li><a href="event.html"><div class="reservebu">MORE DETAIL</div></a></li>
-                        </ul>
-                    </article>
+                <div class="col-md-1">
                 </div>
             </div>
         </div>
+        
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <?php 
+                    $imgsql = "SELECT event_pics FROM events WHERE event_id=".$objResult["event_id"];
+                    $resultimg = mysql_query("$imgsql");
+                    $imgrow = mysql_fetch_assoc($resultimg);
+                        echo '<img width="100%" height="100%" src="data:image/jpeg;base64,'.base64_encode( $imgrow['event_pics'] ).'"/>';    
+                    ?>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="page-item clearfix">
+                        <div class="item-content">
+                            <h1><b>EVENT INFO</b></h1>
+                            <ul>
+                                <li>
+                                    NAME - <?php echo $objResult["ename"];?>
+                                </li>
+                                <li>
+                                    ORGANISED BY - <?php echo $objResult["organiser"];?>
+                                </li>
+                                <li>
+                                    Conducted in  - <?php echo $objResult["language"];?>
+                                </li>
+                                <li>
+                                    TYPE - <?php echo $objResult["type"];?>
+                                </li>
+                                <li>
+                                    ROUNDS - <?php echo $objResult["start_date"];?>  - <?php echo $objResult["end_date"];?>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                        <div class="item-content2">
+                            <?php echo $objResult["description"];?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+         <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <a href="reservation.php?id=<?php echo $eid;?>">
+                        <div class="texttile2">
+                            reserve
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    
+        
     </div>
+    <?php
+    }
+    ?>
 </section>
-
+<?php
+mysql_close($objConnect);
+?>
 
 
 
 </body>
-    
+
+
+</html>
+
 <script>
 $(function(){
   $('#touch_gallery a').touchTouch();
@@ -227,7 +262,3 @@ $("#exminuspic").click(function(){
  $("#expluspic").show();
 });
 </script>
-
-
-</html>
-

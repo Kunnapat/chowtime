@@ -30,18 +30,16 @@
     <!--[if (gt IE 9)|!(IE)]><!-->
     <script src="js/jquery.mobile.customized.min.js"></script>
     <script src="js/wow.js"></script>
-<!--
-	<script>
-		$(document).ready(function () {
-			if ($('html').hasClass('desktop')) {
-				new WOW().init();
-			}
-		});
-	</script>
--->
+
 </head>
 
 <body>
+    <?php
+    $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+    $objDB = mysql_select_db("chowtime");
+    $strSQL = "SELECT * FROM events";
+    $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+    ?>
    <div class="menuarea fullscreen" id="menuarea">
 
     <div class="closebutton" id="closemenu">X</div>
@@ -120,69 +118,53 @@
             </div>
         </div>
     </div>
-    
-    
-    
     <div class="container">
-        <div class="row">
-            <div id="touch_gallery">
-                <div class="col-md-4">
-                    <div class="img_block">
-                        <img class="img-pic" src="img/event/orchestra.jpg" alt="Event">
-                    </div>
-                    <article class="eventbox">
-                        <h4 class="maintext">Awake</h4>
-                        <ul>
-                            <li class="content">Date: Sun, March 26  - Mon, March 14</li>
-                            <li class="content">Time: 10:00am - 4:00pm</li>
-                            <li class="content">Organizer: Art Exibition</li>
-                            <li class="content">Event Type: Art/Music/Cultural Event</li>
-                            <li class="content">Conducted in: Thai</li>
-                            <li><a href="event.html"><div class="reservebu">MORE DETAIL</div></a></li>
-                        </ul>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <div class="img_block">
-                        <img class="img-pic" src="img/event/20century.jpg" alt="Event">
-                    </div>
-                    <article class="eventbox">
-                        <h4 class="maintext">
-                            Twenty Century Print
-                        </h4>
-                        <ul>
-                            <li class="content">Date: Wed, February 24  - Thu, April 21</li>
-                            <li class="content">Time: 10:00am - 7:00pm</li>
-                            <li class="content">Organizer: Art Exibition</li>
-                            <li class="content">Event Type: Art/Music/Cultural Event</li>
-                            <li class="content">Conducted in: Thai</li>
-                            <li><a href="event.html"><div class="reservebu">MORE DETAIL</div></a></li>
-                        </ul>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <div class="img_block">
-                        <img class="img-pic" src="img/event/ddld.jpg" alt="Event">
-                    </div>
-                    <article class="eventbox">
-                        <h4 class="maintext">Dusadee + Dusit + Lovers </h4>
-                        <ul>
-                            <li class="content">Date: Tue, February 16  - Sat, April 9</li>
-                            <li class="content">Time: 10:00am - 6:00pm</li>
-                            <li class="content">Organizer: Art Exibition</li>
-                            <li class="content">Event Type: Art/Music/Cultural Event</li>
-                            <li class="content">Conducted in: Thai</li>
-                            <li><a href="event.html"><div class="reservebu">MORE DETAIL</div></a></li>
-                        </ul>
-                    </article>
-                </div>
+
+     
+
+        
+     <div class="row">
+         
+        <div id="touch_gallery">
+            <?php
+            while($objResult = mysql_fetch_array($objQuery))
+            {
+            ?>
+            <div class="col-md-4">
+              
+                <?php 
+                    $imgsql = "SELECT event_pics FROM events WHERE event_id=".$objResult["event_id"];
+                    $resultimg = mysql_query("$imgsql");
+                    $imgrow = mysql_fetch_assoc($resultimg);
+                        echo '<img width="100%" height="100%" src="data:image/jpeg;base64,'.base64_encode( $imgrow['event_pics'] ).'"/>';    
+                ?>
+                
+              <article class="eventbox">
+                 <h4 class="maintext"><?php echo $objResult["ename"];?></h4>
+                 <ul>
+                     <li class="content">Date: <?php echo $objResult["start_date"];?>  - <?php echo $objResult["end_date"];?> </li>
+                     <li class="content">Organizer: <td><?php echo $objResult["organizer"];?></td></li>
+                     <li class="content">Event Type: <td><?php echo $objResult["type"];?></td></li>
+                     <li class="content">Conducted in: <td><?php echo $objResult["language"];?></td></li>
+                     <li><a href="event.php?id=<?php echo $objResult["event_id"];?>"><div class="reservebu">MORE DETAIL</div></a></li>
+                 </ul>
+             </article>
             </div>
-        </div>
-    </div>
+            <?php
+            }
+            ?>
+         
+
+</div>
+</div>
+
+</div>
 </section>
 
 
-
+<?php
+mysql_close($objConnect);
+?>
 
 </body>
     
