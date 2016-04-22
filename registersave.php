@@ -6,7 +6,7 @@
         $errmsg = "";
         $errmsg1 = "";
 
-
+        
     
         if("" == trim($_POST['username'])){
             $errmsg = "please fill in username";
@@ -195,14 +195,12 @@
         $strSQL .="('".'0'."','".'1'."','".$_POST["fname"]."','".$_POST["lname"]."','".$_POST["username"]."','".$_POST["password"]."','".$_POST["email"]."','".$_POST["tel"]."','".$_POST["gender"]."','".$_POST["birthdate"]."','1','".$_POST["question"]."','".$_POST["answer"]."'";
         $strSQL .=",'".$filepath."')";
         $objQuery = mysql_query($strSQL,$objConnect);
-
+        $lastID = mysql_insert_id();
         if($objQuery){
 
-           $mid = $user_id;
-           $mname=$_POST['username'];
-
-            echo $mname;
-            header('Location: profile.html?mid='.$mid."&mname=".$mname);                 
+           $mname=$_POST['username'];              
+            
+            header('Location: profile.php?mid='.$lastID."&"."mname=".$mname);                 
         }else{
             echo "ERROR: Could not able to execute $objQuery. ";
             print_r($strSQL);

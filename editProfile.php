@@ -44,6 +44,25 @@
     
     </head>
 
+    <?php
+      // connect to database
+     
+      $con = mysql_connect("localhost", "root", "");
+      $db = mysql_select_db("chowtime");
+        
+        // session_save_path("./session/");
+        // session_start();
+
+       
+        $mid = $_GET['mid'];
+
+        // $mid = $_SESSION["mid"];
+
+        $query = mysql_query("SELECT * FROM users WHERE user_id =".$mid);
+        while ($row = mysql_fetch_array($query)) {    
+
+    ?>
+
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -87,6 +106,10 @@
                     <div style="border-bottom: 2px solid #000; padding-bottom:15px; padding-top:15px; border-color: gainsboro">&nbsp;&nbsp;YOUR ACCOUNT </div>
                     
                     <ul class="leftList">
+                                             
+                         <?php $pic_path = $row['profile_pics'];
+                            echo "<img src =".$pic_path." width="."'200'"."'height='200'"." >";
+                        ?>
                         <li class="withBorder"><a href="editProfile.html">&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li> 
                         <li class="withBorder"><a href="editProfilePW.html">&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li> 
                         <li class="withBorder"><a href="editProfileEmail.html">&nbsp;&nbsp;&nbsp;&nbsp;Email Preference</a></li> 
@@ -97,32 +120,40 @@
                 
             </div>
             
+
             <div class="col-sm-9"> 
+                <form action="registersave.php" name="frmAdd" method="post" enctype="multipart/form-data">
                 <div class="rightpanel">
                     <h2 style="margin-left:20px">Edit Profile</h2><hr>
                     
                     <div class="inputField">
-                        First Name <input type="text" name="firstname" value="xxx" style="margin-left:66px" ><br>
+                        First Name <input type="text" name="firstname" 
+                        value=" <?php echo $row['fname']; ?>" style="margin-left:66px" ><br>
                     </div>
                     
                      <div class="inputField">
-                        Last Name <input type="text" name="lastname" value="xxx" style="margin-left:66px" ><br>
+                        Last Name <input type="text" name="lastname" 
+                        value=" <?php echo $row['lname']; ?>" style="margin-left:66px" ><br>
                     </div>
                     
                     <div class="inputField">
-                        Email <input type="text" name="email" value="xxx" style="margin-left:104px"><br>
+                        Email <input type="text" name="email" 
+                        value=" <?php echo $row['email']; ?>" style="margin-left:104px"><br>
                     </div>
                     
                     <div class="inputField">
-                        Username <input type="text" name="username" value="xxx" style="margin-left:70px"><br>
+                        Username <input type="text" name="username" 
+                        value=" <?php echo $row['username']; ?>" style="margin-left:70px"><br>
                     </div>
                     
                     <div class="inputField">
-                        Phone Number <input type="text" name="phonenumber" value="xxx" style="margin-left:36px"><br>
+                        Phone Number <input type="text" name="phonenumber" 
+                        value=" <?php echo $row['tel']; ?>" style="margin-left:36px"><br>
                     </div>
                     
                     <div class="inputField">
-                        Birthdate <input type="text" name="birthdate" value="xxx" style="margin-left:78px"><br>
+                        Birthdate <input type="text" name="birthdate" 
+                        value=" <?php echo $row['birthdate']; ?>" style="margin-left:78px"><br>
                     </div>
                     
                      <div class="inputField" >
@@ -138,28 +169,27 @@
                         <textarea style="margin-left:120px" rows="4" cols="50">
                             xxx
                          
-                         </textarea> 
+                         </textarea><br> 
                     </div>
                     
                     <div class="inputField">
-                        Profile picture:
-                            <input type="hidden" name="MAX_FILE_SIZE" value="2000000"></br>
-                            <input name="user_picture_file" type="file" id="user_picture_file"></br>
+                        Profile pic <input type="file" name="user_picture_file" style="margin-left:150px" ><br>                  
                     </div>
                     
                     <div class="submitButton">
                         <button>Submit</button>
-                    </div>
-                    
+                    </div>      
                     
                 
                 </div>
-               
+               </form>
                  
             </div>
  
         </div>
-        
+   <?php
+    }
+   ?>     
         
         
     </body>
