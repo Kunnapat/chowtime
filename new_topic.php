@@ -1,3 +1,9 @@
+<? php 
+session_start();
+include "check-user.php"; 
+$user_id = $_SESSION['user_id']; 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -154,9 +160,9 @@ $objDB = mysql_select_db("chowtime");
                                                         <option value="" disabled selected>Select Category</option>
                                                         <option value="op1">CU Museum</option>
                                                         <option value="op2">CU Music Hall</option>
-                                                        <option value="op3">Exhibitions</option>
                                                         <option value="op3">Events</option>
-                                                        <option value="op3">FAQ</option>
+                                                        <option value="op4">Exhibitions</option>
+                                                        <option value="op5">FAQ</option>
                                                     </select>
                                                 </div>
                                                 <!-- <div class="col-lg-6 col-md-6">
@@ -187,7 +193,8 @@ $objDB = mysql_select_db("chowtime");
 
                                         <div class="pull-right postreply">
                                             
-                                            <div class="pull-left camera"><a href="#"><i class="fa fa-camera"></i></a></div>
+                                            <div class="pull-left"><input name="topicimg" type="file" id="topicimg" style="width:200px"/>
+    </div>
                                             
                                             <div class="pull-right"><input type="submit" class="btn btn-primary" value="Post"></input></div>
                                             <div class="clearfix"></div>
@@ -285,6 +292,22 @@ $objDB = mysql_select_db("chowtime");
                         });
 
             });	//ready
+            
+            
+            function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
         </script>
 

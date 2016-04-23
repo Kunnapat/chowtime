@@ -113,10 +113,16 @@ if($_GET["Action"] == "Save")
     $content = $_POST["reply"];
     
 	//*** Insert Reply ***//
+    if($content!=''){   
 	$newcommentSQL = "INSERT INTO comments (topic_id,user_id,datetime,content)
 VALUES
 ($topicid,2,NOW(),'$content')";
-	$objcommentQuery = mysql_query($newcommentSQL);
+        $objcommentQuery = mysql_query($newcommentSQL);
+    
+        echo "<script>location.href='topic.php?topicid=$topicid'</script>";
+//    header("Location:0; url=topic.php?topicid=$topicid");
+    }
+	
 		
 }
         
@@ -246,9 +252,9 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                             <?php 
                                             if ($imgrow['profile_pics'] == NULL) {
                                             echo '<img width="50" height="50" src="img/avatar.jpg"/>';
-                                            } else {
-                                            echo '<img width="50" height="50" src="data:image/jpeg;base64,'.base64_encode(      $imgrow['profile_pics'] ).'"/>';
-                                            } ?>
+                                            } else { ?>
+                                            <img width="50" height="50" src= <?php echo $imgrow['profile_pics']; ?> />
+                                            <?php } ?>
                                             
                                         </div>
 

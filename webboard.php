@@ -298,11 +298,12 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                             <div class="userinfo pull-left">
                                 <div class="avatar">
                                     <?php 
+    
     if ($imgrow['profile_pics'] == NULL) {
         echo '<img width="50" height="50" src="img/avatar.jpg"/>';
-    } else {
-    echo '<img width="50" height="50" src="data:image/jpeg;base64,'.base64_encode( $imgrow['profile_pics'] ).'"/>';
-    }?>
+    } else { ?>
+    <img width="50" height="50" src= <?php echo $imgrow['profile_pics']; ?> />
+   <?php }?>
                                         <div class="icons name"><em><?php foreach($users as $row): ?>
       <?php echo $row['username']; ?><?php endforeach; ?></em>
                                         </div>
@@ -355,11 +356,11 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
 
                 <!-- count no of topic in each category -->
                 <?php
-$cat1SQL = "SELECT category FROM topics WHERE category='CU Museum'";
-$cat2SQL = "SELECT category FROM topics WHERE category='CU Music Hall'";  
-$cat3SQL = "SELECT category FROM topics WHERE category='Events'"; 
-$cat4SQL = "SELECT category FROM topics WHERE category='Exhibitions'";
-$cat5SQL = "SELECT category FROM topics WHERE category='FAQ'"; 
+$cat1SQL = "SELECT * FROM topics WHERE category='CU Museum'";
+$cat2SQL = "SELECT * FROM topics WHERE category='CU Music Hall'";  
+$cat3SQL = "SELECT * FROM topics WHERE category='Events'"; 
+$cat4SQL = "SELECT * FROM topics WHERE category='Exhibitions'";
+$cat5SQL = "SELECT * FROM topics WHERE category='FAQ'";            
 $objQuery  = mysql_query($cat1SQL); 
 $objQuery2  = mysql_query($cat2SQL);  
 $objQuery3  = mysql_query($cat3SQL);                              
@@ -375,7 +376,7 @@ $objQuery5  = mysql_query($cat5SQL);
                         <div class="blocktxt">
                             <ul class="cats">
                                 
-                                <li><a href="webboard.php?category=1&page=1">CU Museum <span class="badge pull-right" ><?php echo mysql_num_rows($objQuery); ?></span></a></li>
+                                <li><a href="webboard.php?category=1&page=1">CU Museum <span class="badge pull-right" ><?php echo mysql_num_rows($objQuery); echo $cat1_num; ?></span></a></li>
                                 <li><a href="webboard.php?category=2&page=1">CU Music Hall <span class="badge pull-right"><?php echo mysql_num_rows($objQuery2); ?></span></a></li>
                                 <li><a href="webboard.php?category=3&page=1">Events <span class="badge pull-right"><?php echo mysql_num_rows($objQuery3); ?></span></a></li>
                                 <li><a href="webboard.php?category=4&page=1">Exhibitions <span class="badge pull-right"><?php echo mysql_num_rows($objQuery4); ?></span></a></li>
