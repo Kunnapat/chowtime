@@ -1,3 +1,24 @@
+<?php  
+    session_start();
+
+//    include "check-user.php";
+    include "connection.php";
+    if (isset($_REQUEST['quiz_id'])) {
+        $quiz_id = $_REQUEST['quiz_id'];
+    }else{
+        $quiz_id = 1;
+    }
+
+    $sql = "SELECT COUNT(*) FROM questions WHERE quiz_id=$quiz_id";
+    $result = mysqli_query($link, $sql);
+    if(mysqli_num_rows($result) == 0) {
+        mysqli_close($link);
+        
+        exit;
+    }else{
+        $amount = 3;
+    }
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -15,81 +36,95 @@
         <link rel="stylesheet" href="css/quiz2.css" type="text/css">
 
     </head>
-    <?php
-//        $i=1;
-        if (isset($_REQUEST['id'])) {
-            $i=base64_decode($_REQUEST['id']);
-        }else{
-            $i=1;
-        }
-        if (isset($_REQUEST['score'])) {
-            $currentScore=base64_decode($_REQUEST['score']);
-        }else{
-            $currentScore=0;
-        }
-        include "connection.php"
-//        $sql = "SELECT q.content,c.content FROM questions q, choices c WHERE c.question_id=1 AND q.question_id=1";
     
-    ?>
     <body>
         <div class="container-fluid">
-           <?php 
-            $qSQL = "SELECT content FROM questions WHERE question_id='$i'";
-            $rs = mysqli_query($link, $qSQL);
-            $question = mysqli_fetch_array($rs);
-            
-            
-            ?>
-            <div class="row top">
-                <div class="col-xs-1 col-md-2 header">Q<?php echo"$i"; ?>/15</div>
-                <div class="col-xs-10 col-md-8" id="question"><?php echo $question[0]; ?></div>
-                <div class="col-xs-1 col-md-2 header"><?php echo"$currentScore"; ?></div>
-            </div>
-            <hr>
-           
-            <div class="bottom">
-                <?php 
-                    $ansSQL = "SELECT content FROM choices WHERE is_correct=1 AND question_id='$i'";
-                    $rs3 = mysqli_query($link,$ansSQL);
-                    $correctAns = mysqli_fetch_array($rs3);
-                
-                    $cSQL = "SELECT content FROM choices WHERE question_id='$i'";
-                    $rs2 = mysqli_query($link, $cSQL);
-                    while($rows[] = mysqli_fetch_assoc($rs2));
-                    array_pop($rows); 
-                foreach($rows as $c){
-                    foreach($c as $choices){
-//                        echo "<div class='row choice'  >$choices</div>";
-                        echo "<button class='row choice' onclick='calculate($choices)'>$choices</button>";
-                       
-                    }
-                }
-               
-                ?>
-<!--                <button id="choice" onclick="calculate()">1916</button>-->
+         <div class="row top">
+             <?php
+        $begin = 1;   //แถวเริ่มต้นในการอ่านข้อมูล
+        if($_GET['begin']) {
+            $begin = $_GET['begin'];
+        }
+        $length = 1;	//จำนวนคำถามในการอ่านข้อมูลแต่ละช่วง
+        if($_GET['length']) {
+            $length = $_GET['length'];
+        }
+        if($begin==1){
+            $_SESSION[score] = 0;
+//            echo $_SESSION['score'];
+        }
 
-            </div>
-        </div>
+        $begin--;   //ลำดับแถวใน MySQL เริ่มจาก 0
+        $sql = "SELECT * FROM questions WHERE quiz_id = $quiz_id LIMIT $begin, $length";
+        $result = mysqli_query($link, $sql);
+        $num = $begin + 1;
+        
+        
+             
+        while($data = mysqli_fetch_array($result)) {
+            $question_text = $data['content'];
+            $question_id = $data['question_id'];
+            $sql = "SELECT * FROM choices WHERE question_id = $question_id ORDER BY choice_id ASC";
+            $r = mysqli_query($link, $sql);
+            echo "<div class='col-xs-1 col-md-2 header'>Q".$num."/".$amount."</div>";
+            echo "<div class='col-xs-10 col-md-8' id='question'>".$question_text."</div>";
+            echo "<div class='col-xs-1 col-md-2 header'>".$_SESSION['score']."</div>";	
+            echo '</div>';
+            
+            while($ch = mysqli_fetch_array($r)) {
+                if(isset($_SESSION['user_id'])) {
+                    $user_id = $_SESSION['user_id'];
+                    $sql = "SELECT choice_id FROM choices WHERE question_id = $question_id";  //AND subject_id = $subject_id 
+                    $choose = mysqli_query($link, $sql);
+                    $row = mysqli_fetch_array($choose);
+                    $id = $row[0];
+                    
+                }
+//                echo "<div class=\"choice\">{$ch['content']}</div><br>";
+                echo "<div class='bottom'><button class='row choice' onclick='nextques({$ch['content']})'>{$ch['content']}</button></div>";
+            }
+            $num++;
+        }
+         
+        $ansSQL = "SELECT content FROM choices WHERE is_correct=1 AND question_id=$question_id";
+        $rs3 = mysqli_query($link,$ansSQL);
+        $correctAns = mysqli_fetch_array($rs3);
+             
+//        if($begin==$amount){
+//            echo "<script>location.href = 'quizresult.php';</script>";
+//        }
+    ?>
+            
+        
         
         <script>
-          function calculate(selectedChoice){
-              var ans = <?php echo $correctAns[0]; ?>;
-              var i = <?php echo $i; ?>;
-              var currentScore = <?php echo"$currentScore"; ?>; 
-              
-//              if(selectedChoice === ans){
-//                  alert('true');
-//              }
-              $.ajax({
-                  type: "POST",
-                  url: "checkans.php",
-                  data: { ans: selectedChoice, correct: ans, i: i, currentScore: currentScore }
-                }).done(function( msg ) {
-//                  alert( "Update: " + msg );
-                    var url = "quiz2.php?"+msg;
-                    location.href = url;
-                });
-          }
+            function nextques(selected){
+//                alert("yay");
+                var url = "quiz2.php?quiz_id=" + <?php echo $quiz_id; ?>;
+                var begin = <?php echo $begin; ?>;
+                begin += 2;
+                url = url + "&begin=" + begin + "&length=1";
+                var correct = <?php echo $correctAns[0]; ?>;
+                var amount = <?php echo $amount; ?>;
+                var endgame = <?php echo $begin; ?>;
+                
+                if(selected==correct){
+                    $.ajax({
+                    type: "POST",
+                    url: "updatescore.php",
+                    data: {}
+                    }).done(function( msg ) {
+    //                  alert( "Update: " + msg );
+//                        alert(msg);
+                   
+                    });
+                }
+                if((endgame+1)==amount){
+                    url = "quizresult.php";
+                }
+
+                location.href = url;
+            }
 
 
 

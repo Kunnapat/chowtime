@@ -419,29 +419,12 @@ session_start();
         ?>
                  " class="loginButton">
         <?php
-            $username = $_POST['username']; 
-         
-            $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
-            $objDB = mysql_select_db("chowtime");
-            $strSQL = "SELECT * FROM members ";
-        // Execute the query (the recordset $rs contains the result)
-        $rs = mysql_query($strSQL);
-        $try = "false";
-        if($rs){
-            while($row = mysql_fetch_array($rs)) {
-                if($row['username']==$username){
-                    echo $username;
-                    $try = "false";
-                    break;
-                }else{
-                    $try = "true";
-                }
-            }
-            if($try=="true"){
-                echo "Login";
-            }
-        }
-                     
+            $username = $_POST['username'];  
+               if($username!=null){
+                   echo $username;
+               }else{
+                   echo "Login";
+               }
         ?>
            </a>
         </div>   

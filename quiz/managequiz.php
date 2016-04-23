@@ -180,7 +180,7 @@ Note: This file is 80% Complete
                         echo "</td>";
                         echo "<td>";
                         echo $rs3['content'];
-                        echo "</td><tr>";
+                        echo "</td></tr>";
                     }
                     ?>
                  </tbody>
@@ -195,6 +195,7 @@ Note: This file is 80% Complete
             <div id="winner" class="tab-pane fade">
               <h3>Winner</h3>
               <p class="inline-btn">Find Winner for:</p>
+              <form method="post">
               <select name="questionname">
                   <?php 
                 $sql2 = "SELECT quiz_id,qname FROM quizzes";
@@ -217,8 +218,9 @@ Note: This file is 80% Complete
                 ?>
                 
                 <hr>
-                <h4>Past Winner:</h4>
-                <table class="table table-striped">
+                <h4>Candidate:</h4>
+                <input class="btn btn-primary" value="Find a Winner" onclick="winner()" style="float:right;padding:5px 5px">
+                <table class="table table-striped" id="myTable">
                  <thead>
                      <tr>
                         <th>Quiz ID</th>
@@ -229,7 +231,30 @@ Note: This file is 80% Complete
                      </tr>
                  </thead>
                  <tbody>
-                     
+                     <?php
+                        $sql4 = "SELECT DISTINCT quizzes.quiz_id,qname, members.fname, members.lname, members.tel, members.email FROM members INNER JOIN play INNER JOIN quizzes WHERE play.score=5 AND quizzes.quiz_id=$quiz_id";
+                        $result4 = mysqli_query($link,$sql4);
+                        $amount = mysqli_num_rows($result4);
+                        $random = rand(0,$amount-1);
+                        while($rs4 = mysqli_fetch_array($result4)){
+                            echo "<tr><td>";
+                            echo $rs4['quiz_id'];
+                            echo "</td>";
+                            echo "<td>";
+                            echo $rs4['qname'];
+                            echo "</td>";
+                            echo "<td>";
+                            echo $rs4['fname']." ".$rs4['lname'];
+                            echo "</td>";
+                            echo "<td>";
+                            echo $rs4['email'];
+                            echo "</td>";
+                            echo "<td>";
+                            echo $rs4['tel'];
+                            echo "</td></tr>";
+                        }
+                   
+                     ?>
                  </tbody>
               </table>
             </div>
@@ -238,16 +263,10 @@ Note: This file is 80% Complete
 
         
         <script>
-//            This function will query all of the questions of a specific quiz_id in the database by using the AJAX and JS. The query will be done in PHP at the file that AJAX is linked to in a POST method.
-            function showQuestion(quiz_id){
-                $.ajax({
-                    type: "POST",
-                    url: "showquestion.php",
-                    data: {quiz_id: quiz_id}
-                }.done(function(msg)){
-                    alert(yay);  
-                       });
-                
+            function winner(){
+                var random = <?php echo $random; ?>;
+                var winner = document.getElementById("myTable").rows[<?php echo $random; ?>].cells[2].innerHTML;
+                alert("Winner: " + "hello hello");
             }
             
         </script>
