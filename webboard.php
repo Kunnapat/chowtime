@@ -1,11 +1,3 @@
-<?php 
-session_start();
-
-include "check-user.php"; 
-$user_id = $_SESSION['user_id']; 
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -255,17 +247,11 @@ if ($Page == $Num_Pages) {
                     <!--                            <div class="env pull-left"><i class="fa fa-envelope"></i></div>-->
 
                     <div class="avatar pull-right dropdown profilepic">
-                        <a data-toggle="dropdown" href="#"> <?php 
-    
-    if ($userimgrow['profile_pics'] == NULL) {
-        echo '<img width="40" height="40" src="img/avatar.jpg"/>';
-    } else { ?>
-    <img width="40" height="40" src= <?php echo $userimgrow['profile_pics']; ?> />
-   <?php }?> </a> <b class="caret"></b>
+                        <a data-toggle="dropdown" href="#"><img src="img/avatar.jpg" alt="" /></a> <b class="caret"></b>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Profile</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Log Out</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-4" href="registration.php">Create account</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-4" href="04_new_account.html">Create account</a></li>
                         </ul>
                     </div>
 
@@ -294,12 +280,7 @@ $users = array();
 $imgsql = "SELECT profile_pics FROM users WHERE user_id=$posterid";
 $resultimg = mysql_query("$imgsql");
 $imgrow = mysql_fetch_assoc($resultimg); 
-    
-    
-//profilepics    
-$userimgsql = "SELECT profile_pics FROM users WHERE user_id=$user_id";
-$resultuserimg = mysql_query("$userimgsql");
-$userimgrow = mysql_fetch_assoc($resultuserimg); 
+//
     
 //comments
 $commsql = "SELECT * FROM comments WHERE topic_id=$topicid";
@@ -317,12 +298,11 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                             <div class="userinfo pull-left">
                                 <div class="avatar">
                                     <?php 
-    
     if ($imgrow['profile_pics'] == NULL) {
         echo '<img width="50" height="50" src="img/avatar.jpg"/>';
-    } else { ?>
-    <img width="50" height="50" src= <?php echo $imgrow['profile_pics']; ?> />
-   <?php }?>
+    } else {
+    echo '<img width="50" height="50" src="data:image/jpeg;base64,'.base64_encode( $imgrow['profile_pics'] ).'"/>';
+    }?>
                                         <div class="icons name"><em><?php foreach($users as $row): ?>
       <?php echo $row['username']; ?><?php endforeach; ?></em>
                                         </div>
@@ -353,7 +333,7 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                 </div>
 
                             </div>
-                            
+                            <div class="views"><i class="fa fa-eye"></i> 1,568</div>
                             <div class="time"><i class="fa fa-clock-o"></i>
                                 <?php echo $objResult['datetime']; ?>
                             </div>
@@ -375,11 +355,11 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
 
                 <!-- count no of topic in each category -->
                 <?php
-$cat1SQL = "SELECT * FROM topics WHERE category='CU Museum'";
-$cat2SQL = "SELECT * FROM topics WHERE category='CU Music Hall'";  
-$cat3SQL = "SELECT * FROM topics WHERE category='Events'"; 
-$cat4SQL = "SELECT * FROM topics WHERE category='Exhibitions'";
-$cat5SQL = "SELECT * FROM topics WHERE category='FAQ'";            
+$cat1SQL = "SELECT category FROM topics WHERE category='CU Museum'";
+$cat2SQL = "SELECT category FROM topics WHERE category='CU Music Hall'";  
+$cat3SQL = "SELECT category FROM topics WHERE category='Events'"; 
+$cat4SQL = "SELECT category FROM topics WHERE category='Exhibitions'";
+$cat5SQL = "SELECT category FROM topics WHERE category='FAQ'"; 
 $objQuery  = mysql_query($cat1SQL); 
 $objQuery2  = mysql_query($cat2SQL);  
 $objQuery3  = mysql_query($cat3SQL);                              
@@ -395,7 +375,7 @@ $objQuery5  = mysql_query($cat5SQL);
                         <div class="blocktxt">
                             <ul class="cats">
                                 
-                                <li><a href="webboard.php?category=1&page=1">CU Museum <span class="badge pull-right" ><?php echo mysql_num_rows($objQuery); echo $cat1_num; ?></span></a></li>
+                                <li><a href="webboard.php?category=1&page=1">CU Museum <span class="badge pull-right" ><?php echo mysql_num_rows($objQuery); ?></span></a></li>
                                 <li><a href="webboard.php?category=2&page=1">CU Music Hall <span class="badge pull-right"><?php echo mysql_num_rows($objQuery2); ?></span></a></li>
                                 <li><a href="webboard.php?category=3&page=1">Events <span class="badge pull-right"><?php echo mysql_num_rows($objQuery3); ?></span></a></li>
                                 <li><a href="webboard.php?category=4&page=1">Exhibitions <span class="badge pull-right"><?php echo mysql_num_rows($objQuery4); ?></span></a></li>
@@ -408,26 +388,30 @@ $objQuery5  = mysql_query($cat5SQL);
 
 
                     <!-- -->
-                
                     <div class="sidebarblock">
-                        <h3>Topics that you have created.</h3>
-                        <?php 
-                //topics posted   
-$postsql="SELECT * FROM topics WHERE user_id=$user_id ORDER BY topic_id DESC LIMIT 0,5";
-$postquery=mysql_query($postsql);
-
-while($postResult = mysql_fetch_array($postquery))
-{
-                
-                ?>
+                        <h3>My Active Threads</h3>
                         <div class="divline"></div>
                         <div class="blocktxt">
-                            <?php echo $postResult['title']; ?>
+                            <a href="#">Hello!</a>
                         </div>
-                        
-                    
-<?php } ?>
+                        <div class="divline"></div>
+                        <div class="blocktxt">
+                            <a href="#">Test</a>
                         </div>
+                        <div class="divline"></div>
+                        <div class="blocktxt">
+                            <a href="#">1</a>
+                        </div>
+                        <div class="divline"></div>
+                        <div class="blocktxt">
+                            <a href="#">2</a>
+                        </div>
+                        <div class="divline"></div>
+                        <div class="blocktxt">
+                            <a href="#">3</a>
+                        </div>
+                    </div>
+
 
             </div>
         </div>
@@ -440,7 +424,7 @@ while($postResult = mysql_fetch_array($postquery))
         <div class="row">
             <div class="col-lg-8 col-xs-12">
                 <!--<div class="pull-left"><a href="#" class="prevnext"><i class="fa fa-angle-left"></i></a></div>-->
-                <div align="center">
+                <div class="pull-left">
                     <ul class="pager">
                         <li><a href="webboard.php?category=<?php echo $category ?>&page=<?php echo $Prev_Page ?>">&larr; Previous</a></li>
 
@@ -448,10 +432,10 @@ while($postResult = mysql_fetch_array($postquery))
 
                             <!-- PAGING -->
                             <?php include("Pagination.php"); ?>
-                            
+
 
                         </ul>
-                        <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                        <br>
                         <li><a href="webboard.php?category=<?php echo $category ?>&page=<?php echo $Next_Page ?>">Next &rarr;</a></li>
                     </ul>
                 </div>

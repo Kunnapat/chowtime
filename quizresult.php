@@ -1,14 +1,13 @@
 <?php
     session_start();
     include "connection.php";
-    include "check-user.php";
+//    include "check-user.php";
     $score = $_SESSION['score'];
     $member_id = $_SESSION['user_id'];
     $percentage = ($score/3)*100;
-    $quiz_id = $_REQUEST['quiz_id'];
     
     if(isset($_SESSION['score'])){
-        $sql = "INSERT INTO `chowtime`.`play` (`quiz_id`, `user_id`, `score`, `datetime`) VALUES ('$quiz_id', '$member_id', '$score', NOW())";
+        $sql = "INSERT INTO play VALUES ($score,now(),$member_id,4)";
         mysqli_query($link,$sql);
     }
     

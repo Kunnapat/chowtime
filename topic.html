@@ -25,7 +25,6 @@
         <link rel="stylesheet" href="css/webboard.css" type="text/css">
         <link rel="stylesheet" href="css/nav.css" type="text/css">
         <link rel="stylesheet" href="css/custom.css" type="text/css">
-        <script src="..//ckeditor/ckeditor.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,97 +32,6 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
-        <?php
-$objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
-$objDB = mysql_select_db("chowtime");
-        
-      
-$topicid = $_GET['topicid'];         
-
-$Per_Page = 10;   // Per Page
-
-        
-$Page = $_GET['page'];
-if (isset($_GET['page'])) {
- $Page = $_GET['page'];
- } else {
- $Page = 1;
- }
-
-echo $Page;
-        
-$Page_Start = (($Per_Page*$Page)-$Per_Page);
-
-//echo $Page_Start;
-
-//retrieve comment        
-$commsql = "SELECT * FROM comments WHERE topic_id='".$topicid."' ORDER by comment_id DESC LIMIT {$Page_Start}, {$Per_Page}";
-$resultcomm = mysql_query("$commsql");
-        
-        
-//comment page        
-$commsqlPage = "SELECT * FROM comments WHERE topic_id='".$topicid."'";
-$resultcommPage = mysql_query("$commsqlPage");
-$comm_num = mysql_num_rows($resultcommPage);
-
-        
-if($comm_num<=$Per_Page)
-{
-	$Num_Pages =1;
-}
-else if(($comm_num % $Per_Page)==0)
-{
-	$Num_Pages =($comm_num/$Per_Page) ;
-}
-else
-{
-	$Num_Pages =($comm_num/$Per_Page)+1;
-	$Num_Pages = (int)$Num_Pages;
-}  
-
-if ($Page == 1) {
-    $Prev_Page = 1;
-} else {
-    $Prev_Page = $Page-1;
-}
-if ($Page == $Num_Pages) {
-    $Next_Page = $Num_Pages;
-} else {        
-    $Next_Page = $Page+1;
-}
-
-
-$Before_Last = $Num_Pages - 1;
-$Pagination = ""; //display the page number
-
-          
-        
-// retrieve topic
-$strSQL = "SELECT * FROM topics WHERE topic_id='".$topicid."' ";
-$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");   
-$objResult = mysql_fetch_array($objQuery);
-        
-
-
-
-if($_GET["Action"] == "Save")
-{
-    $topicid = $_GET["topicid"];
-    $content = $_POST["reply"];
-    
-	//*** Insert Reply ***//
-	$newcommentSQL = "INSERT INTO comments (topic_id,user_id,datetime,content)
-VALUES
-($topicid,2,NOW(),'$content')";
-	$objcommentQuery = mysql_query($newcommentSQL);
-		
-}
-        
-
-        
-?>
-        
 
     </head>
     
@@ -165,10 +73,8 @@ VALUES
                             <div class="dropdown pull-left">
                                 <a data-toggle="dropdown" href="#" >Webboard</a> <b class="caret"></b>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CU Museum</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">CU Music Hall</a></li>        
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Events</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Exhibitions</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Museum</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Music Hall</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-3" href="#">FAQ</a></li>
 
                                 </ul>
@@ -186,7 +92,7 @@ VALUES
                         <div class="col-lg-4 col-xs-12 col-sm-5 col-md-4 avt">
                             <div class="stnt pull-left">                            
                                 <form action="#" method="post" class="form"> 
-                                    <a href="new_topic.php" role="button" class="btn btn-primary pinkbtn" >Start New Topic</a>
+                                    <a href="new_topic.html" role="button" class="btn btn-primary pinkbtn"  href="03_new_topic.html">Start New Topic</a>
                                 </form> 
                             </div>
 <!--                            <div class="env pull-left"><i class="fa fa-envelope"></i></div>-->
@@ -211,7 +117,7 @@ VALUES
                     <div class="row">
                        <div class="col-lg-2 col-md-2"></div>
                         <div class="col-lg-8 breadcrumbf">
-                            <a href="webboard.php">Webboard</a> 
+                            <a href="webboard.html">CU Museum</a> <span class="diviver">&gt;</span> <a href="#">General Discussion</a> <span class="diviver">&gt;</span> <a href="#">Topic Details</a>
                         </div>
                     </div>
                 </div>
@@ -221,69 +127,35 @@ VALUES
                     <div class="row">
                        <div class="col-lg-2 col-md-2"></div>
                         <div class="col-lg-8 col-md-8">
-                            
+
                             <!-- POST -->
                             <div class="post beforepagination">
-                                <?php 
-                                $topicid = $objResult['topic_id'];    
-                                $posterid = $objResult['user_id'];
-    
-//username    
-$sql="SELECT * FROM users WHERE user_id=$posterid";
-$result=mysql_query($sql);
-$users = array();
-
-//image    
-$imgsql = "SELECT profile_pics FROM users WHERE user_id=$posterid";
-$resultimg = mysql_query("$imgsql");
-$imgrow = mysql_fetch_assoc($resultimg); 
-
-while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
-                                
                                 <div class="topwrap">
                                     <div class="userinfo pull-left">
                                         <div class="avatar">
-                                            <?php 
-                                            if ($imgrow['profile_pics'] == NULL) {
-                                            echo '<img width="50" height="50" src="img/avatar.jpg"/>';
-                                            } else {
-                                            echo '<img width="50" height="50" src="data:image/jpeg;base64,'.base64_encode(      $imgrow['profile_pics'] ).'"/>';
-                                            } ?>
+                                            <img src="img/avatar.jpg" alt="" />
                                             
                                         </div>
 
-                                        <div class="icons name"><em><?php foreach($users as $row): ?>
-      <?php echo $row['username']; ?><?php endforeach; ?></em></div>
+                                        <div class="icons name"><em>Admin</em></div>
                                     </div>
                                     <div class="posttext pull-left">
-                                        <?php
-
-    
-
-                                        
-   
-/* <?php echo mysql_num_rows($resultcomm); ?> เอาไว้ไปแปะใน html comment ทีหลัง count no of comment dai laew */ 
-?>
-
-                                        
-                                        <h2><?php echo $objResult['title']; ?></h2>
-                                        <p><?php echo $objResult['content']; ?></p>
-                                        
+                                        <h2>How to use CU Museum Webboard?</h2>
+                                        <p>Important! Please read this topic before post or comment. Important! Please read this topic before post or comment. Important! Please read this topic before post or comment. Important! Please read this topic before post or comment. Important! Please read this topic before post or comment.</p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>                              
                                 <div class="postinfobot">
 
-                                    <div class="posted pull-left"><i class="fa fa-clock-o"></i>Posted on : <?php echo $objResult['datetime']; ?></div>
+                                    <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : 20 Feb @ 9:30am</div>
 
                                     
                                     <div class="clearfix"></div>
-                                    
                                 </div>
                             </div><!-- POST -->
 
                            
-                        
+
                             <!-- POST -->
                             
 
@@ -291,42 +163,22 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
 
                             <!-- POST -->
                             <div class="post comment">
-                                <?php while($objCom = mysql_fetch_array($resultcomm)) { 
-                                $commenterid = $objCom['user_id'];
-                                
-                                //username    
-$sql="SELECT * FROM users WHERE user_id=$commenterid";
-$result=mysql_query($sql);
-$users = array();
-
-//image    
-$imgsql = "SELECT profile_pics FROM users WHERE user_id=$commenterid";
-$resultimg = mysql_query("$imgsql");
-$imgrow = mysql_fetch_assoc($resultimg); 
-
-while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>    
-                                
-                                
-        
-
                                 <div class="topwrap">
                                     <div class="userinfo pull-left">
                                         <div class="avatar">
-                                            <?php 
-                                            if ($imgrow['profile_pics'] == NULL) {
-                                            echo '<img width="50" height="50" src="img/avatar.jpg"/>';
-                                            } else {
-                                            echo '<img width="50" height="50" src="data:image/jpeg;base64,'.base64_encode(      $imgrow['profile_pics'] ).'"/>';
-                                            } ?>
+                                            <img src="img/avatar.jpg" alt="" />
                                             
                                         </div>
 
-                                        <div class="icons name"><em><?php foreach($users as $row): ?>
-      <?php echo $row['username']; ?><?php endforeach; ?></em></div>
+                                        <div class="icons name"><em>Toto</em></div>
                                     </div>
                                     <div class="posttext pull-left">
-                                        
-                                        <p><?php echo $objCom['content']; ?></p>
+
+                                        <blockquote>
+                                            <span class="original">Original Posted by - theguy_21:</span>
+                                            Important! Please read this topic before post or comment.
+                                        </blockquote>
+                                        <p>OK ...</p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>                              
@@ -334,18 +186,19 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
 
                                     
 
-                                    <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : <?php echo $objCom['datetime']; ?></div>
+                                    <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : 21 Feb @ 9:50am</div>
+
                                     
 
                                     <div class="clearfix"></div>
                                 </div>
-                                <?php } ?>
                             </div><!-- POST -->
+
 
 
                             <!-- POST -->
                             <div class="post comment">
-                                <form action="topic.php?topicid=<?php echo $_GET["topicid"];?>&Action=Save" class="form" method="post">
+                                <form action="#" class="form" method="post">
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
@@ -360,20 +213,17 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                         <div class="posttext pull-left">
                                             <div class="textwraper">
                                                 <div class="postreply">Post a Reply</div>
-                                                <div>
                                                 <textarea name="reply" id="reply" placeholder="Type your message here"></textarea>
-                                                <script>CKEDITOR.replace( 'reply' );</script>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
-                                        
-                                    </div>    
-                                    
+                                    </div>                              
                                     <div class="postinfobot">
 
+                                        
+
                                         <div class="pull-right postreply">
-                                            <div class="pull-left smile"><a href="#"><i class="fa fa-camera"></i></a></div>
+                                            <div class="pull-left smile"><a href="#"><i class="fa fa-smile-o"></i></a></div>
                                             <div class="pull-left"><button type="submit" class="btn btn-primary pinkbtn">Post Reply</button></div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -400,87 +250,31 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                     <div class="row">
                        <div class="col-lg-2 col-md-2"></div>
                         <div class="col-lg-8">
-                            <!--<div class="pull-left"><a href="#" class="prevnext"><i class="fa fa-angle-left"></i></a></div>-->
+                            <div class="pull-left"><a href="#" class="prevnext"><i class="fa fa-angle-left"></i></a></div>
                             <div class="pull-left">
                                 <ul class="pager">
-                                    <li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Prev_Page ?>">&larr; Previous</a></li>
+                                    <li><a href="#">&larr; Previous</a></li>
                                 <ul class="paginationforum">
-            <?php 
-                            
-                            //pages	
-		if ($Num_Pages < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
-		{	
-			for ($i = 1; $i <= $Num_Pages; $i++)
-			{
-				if ($i == $Page) { ?>
-					<li><a class="active" href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>
-				<?php } else { ?>
-					<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>					
-			<?php } 
-		
-            } 
-        } elseif($Num_Pages > 5 + ($adjacents * 2))	//enough pages to hide some
-		{
-			//close to beginning; only hide later pages
-			if($Page < 1 + ($adjacents * 2))		
-			{
-				for ($i = 1; $i < 4 + ($adjacents * 2); $i++)
-				{
-					if ($i == $Page) { ?>
-						<li><a class="active" href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>
-					<?php } else { ?>
-						<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>		
-				    <?php } ?>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Next_Page ?>">...</a></li>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Before_Last ?>"><?php echo $Before_Last ?></a></li>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Num_Pages ?>"><?php echo $Num_Pages ?></a></li>	
-			 <?php } 
-			//in middle; hide some front and some back
-            } elseif($Num_Pages - ($adjacents * 2) > $Page && $Page > ($adjacents * 2))
-			{ ?>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=1">1</a></li>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=2">2</a></li>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Next_Page ?>">...</a></li>
-				<?php 
-                for ($i = $Page - $adjacents; $i <= $Page + $adjacents; $i++)
-				{
-					if ($i == $page) { ?>
-						<li><a class="active" href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>
-					<?php } else { ?>
-						<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>				
-				<?php } ?>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Next_Page ?>">...</a></li>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Before_Last ?>"><?php echo $Before_Last ?></a></li>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Num_Pages ?>"><?php echo $Num_Pages ?></a></li>		
-			 <?php } 
-			//close to end; only hide early pages
-            } else
-			{ ?>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=1">1</a></li>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=2">2</a></li>
-				<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Next_Page ?>">...</a></li>
-				<?php 
-                                    for ($i = $Num_Pages - (2 + ($adjacents * 2)); $i <= $Num_Pages; $i++)
-				{
-                        if ($i == $Page) { ?>
-						<li><a class="active" href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>
-					<?php } else { ?>
-						<li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>				
-				<?php }
-			     }
-		      }
-		
-
-	       }
-        
-        ?>
-
-                        </ul>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li class="hidden-xs"><a href="#">3</a></li>
+                                    <li class="hidden-xs"><a href="#">4</a></li>
+                                    <li class="hidden-xs"><a href="#">5</a></li>
+                                    <li><a href="#">6</a></li>
+                                    <li><a href="#" class="active">7</a></li>
+                                    <li><a href="#">8</a></li>
+                                    <li class="hidden-xs"><a href="#">9</a></li>
+                                    <li class="hidden-xs"><a href="#">10</a></li>
+                                    <li class="hidden-xs hidden-md"><a href="#">11</a></li>
+                                    <li class="hidden-xs"><a href="#">12</a></li>
+                                    <li><a href="#">13</a></li>
+                                    <li><a href="#">14</a></li>
+                                </ul>
                                     <br>
-                                <li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Next_Page ?>">Next &rarr;</a></li>
+                                <li><a href="#">Next &rarr;</a></li>
                                 </ul>
                             </div>
-                            <!--<div class="pull-left"><a href="#" class="prevnext last"><i class="fa fa-angle-right"></i></a></div>-->
+                            <div class="pull-left"><a href="#" class="prevnext last"><i class="fa fa-angle-right"></i></a></div>
                             <div class="clearfix"></div>                        
                         </div>
                     </div>

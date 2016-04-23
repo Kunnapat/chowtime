@@ -1,7 +1,7 @@
 <?php
     session_start();
     include "connection.php";
-    include "check-user.php";
+//    include "check-user.php";
     
 ?>
 <html>

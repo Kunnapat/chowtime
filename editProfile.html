@@ -44,25 +44,6 @@
     
     </head>
 
-    <?php
-      // connect to database
-     
-      $con = mysql_connect("localhost", "root", "root");
-      $db = mysql_select_db("chowtime");
-        
-        // session_save_path("./session/");
-        // session_start();
-
-       
-        $mid = $_GET['mid'];
-
-        // $mid = $_SESSION["mid"];
-
-        $query = mysql_query("SELECT * FROM users WHERE user_id =".$mid);
-        while ($row = mysql_fetch_array($query)) {    
-
-    ?>
-
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -99,7 +80,6 @@
     
     <body style="font-family:sans-serif; background-color:lavenderblush;">
         
-        <form action= <?php echo "update_profile.php?"."mid=".$mid ?> name="frmAdd" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-3">
                 
@@ -107,76 +87,70 @@
                     <div style="border-bottom: 2px solid #000; padding-bottom:15px; padding-top:15px; border-color: gainsboro">&nbsp;&nbsp;YOUR ACCOUNT </div>
                     
                     <ul class="leftList">
-                                             
-                         <?php $pic_path = $row['profile_pics'];
-                            echo "<img src =".$pic_path." width="."'200'"."'height='200'"." >";
-                        ?>
-                        <li class="withBorder"><a href=<?php echo "editProfile.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li>
-                        <li class="withBorder"><a href=<?php echo "editProfilePW.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li>
-                        <li class="withBorder"><a href=<?php echo "editProfileEmail.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Email Preference</a></li>
-                        <li class="withBorder"><a href=<?php echo "profile.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;&laquo; Back to profile</a></li>
+                        <li class="withBorder"><a href="editProfile.html">&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li> 
+                        <li class="withBorder"><a href="editProfilePW.html">&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li> 
+                        <li class="withBorder"><a href="editProfileEmail.html">&nbsp;&nbsp;&nbsp;&nbsp;Email Preference</a></li> 
+                        <li class="withBorder"><a href="profile.html">&nbsp;&nbsp;&nbsp;&nbsp;&laquo; Back to profile</a></li>
                     </ul>
                     
                 </div>
                 
             </div>
             
-
             <div class="col-sm-9"> 
-               
                 <div class="rightpanel">
                     <h2 style="margin-left:20px">Edit Profile</h2><hr>
                     
                     <div class="inputField">
-                        First Name <input type="text" name="fname" 
-                        value="<?php echo $row['fname']; ?>" style="margin-left:66px" ><br>
+                        First Name <input type="text" name="firstname" value="xxx" style="margin-left:66px" ><br>
                     </div>
                     
                      <div class="inputField">
-                        Last Name <input type="text" name="lname" 
-                        value="<?php echo $row['lname']; ?>" style="margin-left:66px" ><br>
+                        Last Name <input type="text" name="lastname" value="xxx" style="margin-left:66px" ><br>
                     </div>
                     
                     <div class="inputField">
-                        Email <input type="text" name="email" 
-                        value="<?php echo $row['email']; ?>" style="margin-left:104px"><br>
-                    </div>
-                                        
-                    <div class="inputField">
-                        Phone Number <input type="text" name="tel" 
-                        value="<?php echo $row['tel']; ?>" style="margin-left:36px"><br>
+                        Email <input type="text" name="email" value="xxx" style="margin-left:104px"><br>
                     </div>
                     
                     <div class="inputField">
-                        Birthdate <input type="text" name="birthdate" 
-                        value="<?php echo $row['birthdate']; ?>" style="margin-left:78px"><br>
+                        Username <input type="text" name="username" value="xxx" style="margin-left:70px"><br>
+                    </div>
+                    
+                    <div class="inputField">
+                        Phone Number <input type="text" name="phonenumber" value="xxx" style="margin-left:36px"><br>
+                    </div>
+                    
+                    <div class="inputField">
+                        Birthdate <input type="text" name="birthdate" value="xxx" style="margin-left:78px"><br>
                     </div>
                     
                      <div class="inputField" >
                         Sex 
-                     <select name "gender" style="margin-left:117px">
-                         <option value="male" <?php if ($row['gender'] === 'm') echo ' selected="selected"'?>>
-                         Male</option>
-                         <option value="female" <?php if ($row['gender'] === 'f') echo ' selected="selected"'?>>Female</option>
-                     </select>
-
-
+                     <select style="margin-left:117px">
+                         <option value="non">------</option>
+                         <option value="male">Male</option>
+                         <option value="female">Female</option>                        </select>
+                    </div>
+                    
+                     <div class="inputField">
+                         Bio 
+                        <textarea style="margin-left:120px" rows="4" cols="50">
+                            xxx
+                         
+                         </textarea> 
                     </div>
                     
                     <div class="inputField">
-                         Bio
-                        <textarea name="user_des" width:"100px" rows="5" id="bio" value=" <?php if(!empty($row['fname'])){echo $row['fname'];}
-                        else echo "none" ?>" style="margin-left:120px" rows="4" cols="50"></textarea>
-
-                    </div>                     
-                    
-                    <div class="inputField">
-                        Profile pic <input type="file" name="user_picture_file" style="margin-left:150px" ><br>                  
+                        Profile picture:
+                            <input type="hidden" name="MAX_FILE_SIZE" value="2000000"></br>
+                            <input name="user_picture_file" type="file" id="user_picture_file"></br>
                     </div>
                     
                     <div class="submitButton">
-                        <input type="submit" class='button' value="Confirm">
-                    </div>      
+                        <input type="submit" class='button' value="Confirm">  
+                    </div>
+                    
                     
                 
                 </div>
@@ -185,11 +159,9 @@
             </div>
  
         </div>
-   <?php
-    }
-   ?>     
         
-       </form> 
+        
+        
     </body>
     
 </html>

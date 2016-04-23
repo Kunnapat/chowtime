@@ -102,7 +102,7 @@
                         <input type="text" class="form-control" name="lname" placeholder="lastname" required/></br>
                         Birthdate:
                         <input type="date" class="form-control" name="birthdate"  required/></br>
-                        Your pic profile<font color="red">*</font>:
+                        Your profile picture:
                         <input type="hidden" name="MAX_FILE_SIZE" value="2000000"></br>
                         <input name="user_picture_file" type="file" id="user_picture_file"></br>
                         Email<font color="red">*</font>:</br>

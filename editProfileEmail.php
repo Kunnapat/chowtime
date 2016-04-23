@@ -43,6 +43,25 @@
     
     
     </head>
+    
+    <?php
+      // connect to database
+     
+      $con = mysql_connect("localhost", "root", "root");
+      $db = mysql_select_db("chowtime");
+        
+        // session_save_path("./session/");
+        // session_start();
+
+       //take member id
+        $mid = $_GET['mid'];
+
+        // $mid = $_SESSION["mid"];
+
+        $query = mysql_query("SELECT * FROM users WHERE user_id =".$mid);
+        while ($row = mysql_fetch_array($query)) {    
+
+    ?>
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -87,10 +106,13 @@
                  <div style="border-bottom: 2px solid #000; padding-bottom:15px; padding-top:15px; border-color: gainsboro">&nbsp;&nbsp;YOUR ACCOUNT </div>
                     
                     <ul class="leftList">
-                        <li class="withBorder"><a href="editProfile.html">&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li> 
-                        <li class="withBorder"><a href="editProfilePW.html">&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li> 
-                        <li class="withBorder"><a href="editProfileEmail.html">&nbsp;&nbsp;&nbsp;&nbsp;Email Preference</a></li> 
-                        <li class="withBorder"><a href="profile.html">&nbsp;&nbsp;&nbsp;&nbsp;&laquo; Back to profile</a></li>
+                        <?php $pic_path = $row['profile_pics'];
+                            echo "<img src =".$pic_path." width="."'247'"."'height='200'"." >";
+                        ?>
+                       <li class="withBorder"><a href=<?php echo "editProfile.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li>
+                        <li class="withBorder"><a href=<?php echo "editProfilePW.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li>
+                        <li class="withBorder"><a href=<?php echo "editProfileEmail.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Email Preference</a></li>
+                        <li class="withBorder"><a href=<?php echo "profile.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;&laquo; Back to profile</a></li>
                     </ul>
                     
                 </div>
@@ -121,7 +143,9 @@
  
         </div>
         
-        
+          <?php
+    }
+   ?>   
         
     </body>
     
