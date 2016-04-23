@@ -1,5 +1,6 @@
-<? php 
+<?php 
 session_start();
+
 include "check-user.php"; 
 $user_id = $_SESSION['user_id']; 
 
