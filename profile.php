@@ -1,8 +1,3 @@
-<?php
-    session_start();
-    include "check-user.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,6 +37,25 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <?php
+      // connect to database
+     
+      $con = mysql_connect("localhost", "root", "root");
+      $db = mysql_select_db("chowtime");
+        
+        // session_save_path("./session/");
+        // session_start();
+
+        $mname = $_GET['mname'];
+        $mid = $_GET['mid'];
+
+        // $mid = $_SESSION["mid"];
+
+        $query = mysql_query("SELECT * FROM users WHERE user_id =".$mid);
+        while ($row = mysql_fetch_array($query)) {    
+
+    ?>
     
     
     </head>
@@ -57,7 +71,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">CHOWTIME</a>
-                <a class="navbar-brand page-scroll" href="museumhome.html"><div class="currentpage">Museum</div></a>
+                <a class="navbar-brand page-scroll" href="museumhome.php"><div class="currentpage">Museum</div></a>
                 <a class="navbar-brand page-scroll" href="event.html">Music Hall</a>
             </div>
 
@@ -75,39 +89,19 @@
         <!-- /.container-fluid -->
     </nav>
     
-    
+    <div class="login">
+        <a href="profile.html" class="loginButton">Logout</a> 
+    </div>
      
     
     <body>
-        <?php
-        $userid = $_SESSION['user_id'];
-        
-         $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
-        $objDB = mysql_select_db("chowtime");
-        $strSQL = "SELECT * FROM users ";
-        // Execute the query (the recordset $rs contains the result)
-        $rs = mysql_query($strSQL);
-        
-        if($rs!=null){
-            while($row = mysql_fetch_array($rs)) {
-                if($row['user_id']==$userid){
-                    $profile_pics = $row['profile_pics'];
-                    $username = $row['username'];
-                }
-            }
-        }
-        ?>
-        
-        <div class= "login" id="login">
-            <a href="./museumhome.php" class="loginButton">Login</a> 
-        </div>
-        
+    
     <div class="container-fluid" style="font-family:sans-serif; background-color:lavenderblush;">
     <div class="row">     
         <div class="col-md-5">
             <div> 
                 <div class="profilepicTab">               
-                  <img class="profilepic" src= "<?php echo $profile_pics; ?>" width="200" height="200"  >
+                  <img class="profilepic" src= "<?php echo $row['profile_pics']; ?>" width="200" height="200"  >
                 </div>
               
             </div>
@@ -119,7 +113,7 @@
             <div class="textTab">
                 <div> 
                     <h2 name = "mid"value="">
-                        <?php echo $username; ?>
+                        <?php echo $row['username']; ?>
                         <button class="editProfile" id = "editbutton" >Edit profile</button>              
                     </h2>  
                     
@@ -153,7 +147,7 @@
         <div class="row">
             <div class="col-md-6" >
                 <div class="webboardTab">
-                    <h2>Web board</h2>
+                    <h2>Webboard</h2>
                 </div>
                 
                 <div class="tabtab">
@@ -239,54 +233,56 @@
         
                     </h2>
 
-<   div class="rightTab">
+<div class="rightTab">
         
-          <div class="panel-group" id="accordion">
-              <br>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">ICEQuiz</a>
-            </h4>
-          </div>
-          <div id="collapse4" class="panel-collapse collapse in">
-            <div class="panel-body">Your score: 10</div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">What When Where</a>
-            </h4>
-          </div>
-          <div id="collapse5" class="panel-collapse collapse">
-            <div class="panel-body">Your score: 8</div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse6   ">Chula2000</a>
-            </h4>
-          </div>
-          <div id="collapse6" class="panel-collapse collapse">
-            <div class="panel-body">Your score: 4</div>
-          </div>
-        </div>
-      </div> 
+      <div class="panel-group" id="accordion">
+          <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">ICEQuiz</a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse in">
+        <div class="panel-body">Your score: 10</div>
+      </div>
     </div>
-                </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">What When Where</a>
+        </h4>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body">Your score: 8</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse6   ">Chula2000</a>
+        </h4>
+      </div>
+      <div id="collapse6" class="panel-collapse collapse">
+        <div class="panel-body">Your score: 4</div>
+      </div>
+    </div>
+  </div> 
+</div>
 
-        <script type="text/javascript">
-            document.getElementById("editbutton").onclick = function () {
-              console.log("hahaha");
-              var mid = <?php echo json_encode($mid); ?>;
-                location.href = "editProfile.php"+"?mid="+mid;
+<script type="text/javascript">
+    document.getElementById("editbutton").onclick = function () {
+      console.log("hahaha");
+      var mid = <?php echo json_encode($mid); ?>;
+        location.href = "editProfile.php"+"?mid="+mid;
 
-            };
-        </script>
+    };
+</script>
 
+<?php
 
+}
+?>              
         
 </div>
   
@@ -297,13 +293,9 @@
         
     </div>
         
-   
+        
         
     
     </body>
-    
-        <div class= "login" id="login">
-            <a href="./logout.php" class="loginButton">Logout</a> 
-        </div>
     
 </html>
