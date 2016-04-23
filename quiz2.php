@@ -1,12 +1,12 @@
 <?php  
     session_start();
 
-//    include "check-user.php";
+    include "check-user.php";
     include "connection.php";
     if (isset($_REQUEST['quiz_id'])) {
         $quiz_id = $_REQUEST['quiz_id'];
     }else{
-        $quiz_id = 1;
+        $quiz_id = 2;
     }
 
     $sql = "SELECT COUNT(*) FROM questions WHERE quiz_id=$quiz_id";
@@ -119,7 +119,7 @@
                     alert("CORRECT answer is " + correct);
                 }
                 if((endgame+1)==amount){
-                    url = "quizresult.php";
+                    url = "quizresult.php?quiz_id="+ <?php echo $quiz_id; ?>;
                 }
 
                 location.href = url;

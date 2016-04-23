@@ -183,6 +183,7 @@ session_start();
         });
 
     </script>
+    
       <div class= "login" id="login">
         <a href="
         <?php
@@ -208,6 +209,7 @@ session_start();
                 if($row['username']==$username){
                     echo $username;
                     $try = "false";
+                    $_SESSION['user_id'] = $row['user_id'];
                     break;
                 }else{
                     $try = "true";
