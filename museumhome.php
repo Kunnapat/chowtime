@@ -465,11 +465,27 @@ session_start();
         <a href="
         <?php
             $username = $_POST['username'];  
-               if($username!=null){
-                   echo "/profile.php";
-               }else{
-                   echo "#popup1";
-               }
+               
+            $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+            $objDB = mysql_select_db("chowtime");
+            $strSQL = "SELECT * FROM users ";
+        // Execute the query (the recordset $rs contains the result)
+        $rs = mysql_query($strSQL);
+        $try1 = "false";
+        if($rs){
+            while($row = mysql_fetch_array($rs)) {
+                if($row['username']==$username){
+                    echo "/profile.php";
+                    $try1 = "false";
+                    break;
+                }else{
+                    $try1 = "true";
+                }
+            }
+            if($try1=="true"){
+                echo "#popup1";
+            }
+        }
         ?>
                  " class="loginButton">
         <?php
