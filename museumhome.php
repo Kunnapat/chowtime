@@ -1,5 +1,7 @@
 <?php
-session_start();
+     session_start();
+//    include "check-user.php";
+               
 ?>
 
 <!DOCTYPE html>
@@ -184,41 +186,6 @@ session_start();
 
     </script>
 
-        <?php
-            $username = $_POST['username']; 
-         
-            $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
-            $objDB = mysql_select_db("chowtime");
-
-            $strSQL = "SELECT * FROM users ";
-
-            $strSQL = "SELECT * FROM users";
-
-        // Execute the query (the recordset $rs contains the result)
-        $rs = mysql_query($strSQL);
-        $try = "false";
-        if($rs){
-            while($row = mysql_fetch_array($rs)) {
-                if($row['username']==$username){
-                    echo $username;
-                    $try = "false";
-
-                    $_SESSION['user_id'] = $row['user_id'];
-
-                    break;
-                }else{
-                    $try = "true";
-                }
-            }
-            if($try=="true"){
-                echo "Login";
-            }
-        }
-                     
-
-        ?>
-           </a>
-        </div> 
 
 <form action="#checklogin" name="frmAdd" method="post">   
 <div id="popup1" class="overlay">
@@ -262,6 +229,10 @@ session_start();
         while($row = mysql_fetch_array($rs)) {
             if($row['username']==$username && $row['password']==$password){
                 echo "<a href='./profile.php'>Login Complete GO TO Profile page</a>";
+                echo " <input type=\"hidden\" value=\"<?php echo \$username?>\" name=\"username\" />
+        <input type=\"hidden\" value=\"<?php echo \$password?>\" name=\"password\" />";
+                
+                
                 $non = "false";
                 break;
             }
@@ -285,6 +256,7 @@ session_start();
 //	 Close the database connection
 	mysql_close();
     ?>
+       
     </div>
     </div>
 </div>
@@ -387,7 +359,6 @@ session_start();
         ?>
         <input type="hidden" value="<?php echo $email?>" name="email" />
         <input type="hidden" value="<?php echo $username?>" name="username" />
-        <input type="hidden" value="<?php echo $email?>" name="email" />
     </div>
     </div>
 </div>
@@ -447,7 +418,8 @@ session_start();
     <div class= "login" id="login">
         <a href="
         <?php
-            $username = $_POST['username'];  
+            $username = $_POST['username'];
+            $password = $_POST['password'];
                
             $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
             $objDB = mysql_select_db("chowtime");
@@ -457,7 +429,7 @@ session_start();
         $try1 = "false";
         if($rs){
             while($row = mysql_fetch_array($rs)) {
-                if($row['username']==$username){
+                if($row['username']==$username && $row['password']==$password){
                     echo "/profile.php";
                     $try1 = "false";
                     break;
@@ -473,6 +445,7 @@ session_start();
                  " class="loginButton">
         <?php
             $username = $_POST['username']; 
+            $password = $_POST['password'];
          
             $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
             $objDB = mysql_select_db("chowtime");
@@ -482,10 +455,12 @@ session_start();
         $try = "false";
         if($rs){
             while($row = mysql_fetch_array($rs)) {
-                if($row['username']==$username){
-                    echo $username;
-                    $try = "false";
-                    break;
+                if($row['username']==$username && $row['password']==$password){
+                        echo $username;
+                    $_SESSION['user_id']= $row['user_id'];
+                        $try = "false";
+                        break;
+                    
                 }else{
                     $try = "true";
                 }
@@ -498,5 +473,5 @@ session_start();
         ?>
            </a>
           
-
+</div>
 </html>
