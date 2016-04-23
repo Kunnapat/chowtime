@@ -1,14 +1,3 @@
-<!--
-ManageQuiz.php: Link from Admin Main Page
-This file will contain the management system of the quiz page
-1. Activate Quiz
-2. Create and Edit Quiz
-3. Create and Edit Question
-4. Create and Edit Choice
-
-Author: Chanikarn Thavornwong
-Note: This file is 80% Complete
--->
 
 <?php include "../connection.php" ?>
 
@@ -99,7 +88,7 @@ Note: This file is 80% Complete
                           <th>Description</th>
                           <th>Start Date</th>
                           <th>End Date</th>
-                          <th>Staff ID</th>
+                          <th>Winner</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -116,7 +105,7 @@ Note: This file is 80% Complete
                         <td><?php echo $rs['description']; ?></td>
                         <td><?php echo $rs['start_date']; ?></td>
                         <td><?php echo $rs['end_date']; ?></td>
-                        <td><?php echo $rs['staff_id']; ?></td>
+                        <td><?php echo $rs['winner']; ?></td>
                     </tr>
                     
                     <?php } ?>
@@ -219,29 +208,36 @@ Note: This file is 80% Complete
                 
                 <hr>
                 <h4>Candidate:</h4>
-                <input class="btn btn-primary" value="Find a Winner" onclick="winner()" style="float:right;padding:5px 5px">
+                <input class="btn btn-primary" value="Find a Winner" onclick="winner()" style="float:right;padding:5px 5px" id="findwin">
                 <table class="table table-striped" id="myTable">
                  <thead>
                      <tr>
                         <th>Quiz ID</th>
                          <th>Quiz Name</th>
-                         <th>Winner</th>
+                         <th>Score</th>
+                         <th>Candidate ID</th>
+                         <th>Candidate</th>
                          <th>Email</th>
                          <th>Tel</th>
                      </tr>
                  </thead>
                  <tbody>
                      <?php
-                        $sql4 = "SELECT DISTINCT quizzes.quiz_id,qname, members.fname, members.lname, members.tel, members.email FROM members INNER JOIN play INNER JOIN quizzes WHERE play.score=5 AND quizzes.quiz_id=$quiz_id";
+                        $sql4 = "SELECT DISTINCT quizzes.quiz_id,qname, users.fname, users.lname, users.tel, users.email,score,users.user_id FROM users INNER JOIN play INNER JOIN quizzes WHERE quizzes.quiz_id=$quiz_id AND score=( SELECT max(score) from play)";
                         $result4 = mysqli_query($link,$sql4);
                         $amount = mysqli_num_rows($result4);
-                        $random = rand(0,$amount-1);
                         while($rs4 = mysqli_fetch_array($result4)){
                             echo "<tr><td>";
                             echo $rs4['quiz_id'];
                             echo "</td>";
                             echo "<td>";
                             echo $rs4['qname'];
+                            echo "</td>";
+                            echo "<td>";
+                            echo $rs4['score'];
+                            echo "</td>";
+                            echo "<td>";
+                            echo $rs4['user_id'];
                             echo "</td>";
                             echo "<td>";
                             echo $rs4['fname']." ".$rs4['lname'];
@@ -264,9 +260,22 @@ Note: This file is 80% Complete
         
         <script>
             function winner(){
-                var random = <?php echo $random; ?>;
-                var winner = document.getElementById("myTable").rows[<?php echo $random; ?>].cells[2].innerHTML;
-                alert("Winner: " + "hello hello");
+                var amount = <?php echo $amount; ?>;
+                var random = Math.floor(Math.random() * amount) + 1;
+                var winner = document.getElementById("myTable").rows[random].cells[3].innerHTML;
+                var quiz_id = <?php echo $quiz_id; ?>;
+//                alert(winner);
+                $.ajax({
+                    type: "POST",
+                  url: "findwinner.php",
+                  data: { id:winner, quiz_id:quiz_id }
+                }).done(function( msg ) {
+    //                  alert( "Update: " + msg );
+                    alert("Winner: " + winner);
+                    document.getElementById("findwin").disabled = true;
+                    
+                });
+            
             }
             
         </script>
