@@ -214,7 +214,7 @@ session_start();
      
         $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
         $objDB = mysql_select_db("chowtime");
-        $strSQL = "SELECT * FROM members ";
+        $strSQL = "SELECT * FROM users ";
 	// Execute the query (the recordset $rs contains the result)
 	$rs = mysql_query($strSQL);
     $non = "false";
@@ -284,7 +284,7 @@ session_start();
         
             $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
             $objDB = mysql_select_db("chowtime");
-            $strSQL = "SELECT * FROM members WHERE email='$email' ";
+            $strSQL = "SELECT * FROM users WHERE email='$email' ";
         // Execute the query (the recordset $rs contains the result)
 
         $rs = mysql_query($strSQL);
@@ -382,7 +382,7 @@ session_start();
                 die("Connection failed: " . mysqli_connect_error());
             }
             if($newpass==$newrepass){
-                $sql = "UPDATE members SET password='$newpass' WHERE email='$email' ";
+                $sql = "UPDATE users SET password='$newpass' WHERE email='$email' ";
                 
                 if (mysqli_query($conn, $sql)) {
                     
@@ -419,12 +419,44 @@ session_start();
         ?>
                  " class="loginButton">
         <?php
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+            $username = $_POST['username']; 
+         
+            $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+            $objDB = mysql_select_db("chowtime");
+            $strSQL = "SELECT * FROM users ";
+        // Execute the query (the recordset $rs contains the result)
+        $rs = mysql_query($strSQL);
+        $try = "false";
+        if($rs){
+            while($row = mysql_fetch_array($rs)) {
+                if($row['username']==$username){
+                    echo $username;
+                    $try = "false";
+                    break;
+                }else{
+                    $try = "true";
+                }
+            }
+            if($try=="true"){
+                echo "Login";
+            }
+        }
+                     
+=======
+>>>>>>> Stashed changes
             $username = $_POST['username'];  
                if($username!=null){
                    echo $username;
                }else{
                    echo "Login";
                }
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         ?>
            </a>
         </div>   
