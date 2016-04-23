@@ -24,12 +24,12 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/cssadmin.css" type="text/css">
     <link rel="stylesheet" href="css/admine.css" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<script src="//cdn.ckeditor.com/4.5.8/full/ckeditor.js"></script> <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 
 </head>
@@ -66,7 +66,7 @@
         <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "00000000";
 $dbname = "chowtime";
 
 // Create connection
@@ -102,7 +102,7 @@ $conn->close();
                     <div id="box">
                     <div class="box-top">Add New Events</div>
 
-                   
+                                       
                     
 
             <div class="container">
@@ -110,12 +110,17 @@ $conn->close();
                        <div class="col-lg-2 col-md-2"></div>
                         <div class="col-lg-8 col-md-8">
 
-
+                   
 
                             <!-- POST -->
                             <div class="post" id="content">
                  
                                 <form action="admineposted.php" class="form newtopic" method="post">
+                                    
+                                            <div>
+                                                <textarea name="description" id="desc" rows=15 placeholder="Description"  class="form-control" ></textarea>
+                                                 <script>CKEDITOR.replace( 'desc' );</script>
+                                            </div>
             
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
@@ -131,7 +136,7 @@ $conn->close();
                                         <div class="posttext pull-left">
 
                                             <div>
-                                                <input type="text" name="event_id" placeholder="Enter Event ID" class="form-control" />
+                                                <input type="text" name="event_id"  placeholder="Enter Event ID" class="form-control" />
                                             </div>
  <div>
                                                 <input type="text"
@@ -163,20 +168,10 @@ $conn->close();
                                             </div>
 
 
-                                          
+                                         
 
-                                            <div>
-                                                <textarea name="desc" id="desc"
-                                                          name="description"
-                                                          placeholder="Description"  class="form-control" ></textarea>
-                                            </div>
                                             
-                                            <div>
-                                                <input type="text"
-                                                       name="staff_id"
-                                                       placeholder="Enter Staff ID '1'" class="form-control" />
-                                            </div>
-                                        
+                                         
                                             
 
 

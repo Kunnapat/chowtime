@@ -43,7 +43,30 @@
     
     
     </head>
+    
+     <?php
+      // connect to database
+     
+      $con = mysql_connect("localhost", "root", "root");
+      $db = mysql_select_db("chowtime");
+        
+        // session_save_path("./session/");
+        // session_start();
 
+       //take member id
+        $mid = $_GET['mid'];
+    
+       // $mname = mysql_query("SELECT secure_ans FROM users WHERE user_id='$mid'");
+        //$mname = "SELECT username FROM users WHERE user_id='$mid' ";
+
+
+        // $mid = $_SESSION["mid"];
+
+        $query = mysql_query("SELECT * FROM users WHERE user_id =".$mid);
+        while ($row = mysql_fetch_array($query)) {    
+
+    ?>
+    
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -80,6 +103,7 @@
     
     <body style="font-family:sans-serif; background-color:lavenderblush;">
         
+         <form action= <?php echo "update_password.php?"."mid=".$mid ?> name="frmAdd" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-3">
                 
@@ -87,10 +111,13 @@
                 <div style="border-bottom: 2px solid #000; padding-bottom:15px; padding-top:15px; border-color: gainsboro">&nbsp;&nbsp;YOUR ACCOUNT </div>
                     
                     <ul class="leftList">
-                        <li class="withBorder"><a href="editProfile.html">&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li> 
-                        <li class="withBorder"><a href="editProfilePW.html">&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li> 
-                        <li class="withBorder"><a href="editProfileEmail.html">&nbsp;&nbsp;&nbsp;&nbsp;Email Preference</a></li> 
-                        <li class="withBorder"><a href="profile.html">&nbsp;&nbsp;&nbsp;&nbsp;&laquo; Back to profile</a></li>
+                        <?php $pic_path = $row['profile_pics'];
+                            echo "<img src =".$pic_path." width="."'247'"."'height='200'"." >";
+                        ?>
+                     <li class="withBorder"><a href=<?php echo "editProfile.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li>
+                        <li class="withBorder"><a href=<?php echo "editProfilePW.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li>
+                        <li class="withBorder"><a href=<?php echo "editProfileEmail.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Email Preference</a></li>
+                        <li class="withBorder"><a href=<?php echo "profile.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;&laquo; Back to profile</a></li>
                     </ul>
                     
                 </div>
@@ -102,26 +129,28 @@
                     <h2 style="margin-left:20px">Change Password</h2><hr>
                     
                     <div class="inputField">
-                        Old Password:<font color="red">*</font> <br> <input type="text" name="oldPw" value="xxx" style="margin-top:2%" ><br>
+                        Old Password:<font color="red">*</font> <br> <input type="text" name="oldPw" value="<?php echo $row['password']; ?>" style="margin-top:2%" ><br>
                     </div>
                     
                     <div class="inputField">
-                        New Password:<font color="red">*</font> <br> <input type="text" name="newPw" value="xxx" style="margin-top:2%">
+                        New Password:<font color="red">*</font> <br> <input type="text" name="newPw" style="margin-top:2%">
                     </div>
                     
                     <div class="inputField">
-                        New Password Confirmation:<font color="red">*</font> <br> <input type="text" name="newPwCon" value="xxx" style="margin-top:2%">
+                        New Password Confirmation:<font color="red">*</font> <br> <input type="text" name="newPwCon" style="margin-top:2%">
                     </div>
                     
                     <div class="inputField">
-                        Security Question:<font color="red">*</font> <br> <input type="text" name="secureQ" value="xxx" style="margin-top:2%">
+                        Please answer your security question: <?php echo $row['secure_quest']; ?><font color="red">*</font> <br> <input type="text" name="secureAns" value="xxx" style="margin-top:2%">
                     </div>
                     
                     <hr>
                     
                     <div class="pwButton">
-                        <button>Change Password</button>
+                        <input type="submit" class='button' value="Change Password">
                     </div>
+                    
+                    </form>
                     
                     
                 
@@ -132,7 +161,9 @@
  
         </div>
         
-        
+        <?php
+        }
+        ?>
         
     </body>
     

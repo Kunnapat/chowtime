@@ -65,8 +65,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
-$dbname = mysql_select_db("chowtime");
+$password = "00000000";
+$dbname = "chowtime";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -74,7 +74,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);} 
     
-$sql="INSERT INTO exhibitions (exhibition_id, ename, start_date, end_date, organizer, description, location, staff_id)
+$sql="INSERT INTO exhibitions (exhibition_id, ename, start_date, end_date, organizer, description, location)
 VALUES
 ('$_POST[exhibition_id]',
 '$_POST[ename]',
@@ -82,8 +82,7 @@ VALUES
 '$_POST[end_date]',
 '$_POST[organizer]',
 '$_POST[description]',
-'$_POST[location]',
-'$_POST[staff_id]')";
+'$_POST[location]')";
  
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

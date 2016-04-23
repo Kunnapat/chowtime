@@ -65,7 +65,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "00000000";
 $dbname = "chowtime";
 
 // Create connection
@@ -74,7 +74,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);} 
     
-$sql="INSERT INTO events (event_id, ename, start_date, end_date, organizer, type, description, staff_id)
+$sql="INSERT INTO events (event_id, ename, start_date, end_date, organizer, type, description)
 VALUES
 ('$_POST[event_id]',
 '$_POST[ename]',
@@ -82,8 +82,7 @@ VALUES
 '$_POST[end_date]',
 '$_POST[organizer]',
 '$_POST[type]',
-'$_POST[description]',
-'$_POST[staff_id]')";
+'$_POST[description]')";
  
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -102,7 +101,7 @@ $conn->close();
     
  <div class="box-top">Go Back to Previous Page</div>
                     <div class="box-panel">
-           <a href="adminephp">Click here to go back to Previous Page</a>
+           <a href="admine.php">Click here to go back to Previous Page</a>
                     </div>
              </div>
 

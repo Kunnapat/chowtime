@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2016 at 07:10 PM
+-- Generation Time: Apr 23, 2016 at 08:56 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -264,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `secure_quest` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `secure_ans` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `profile_pics` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=104241 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=104242 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -273,7 +273,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`user_id`, `is_member`, `fname`, `lname`, `username`, `password`, `email`, `tel`, `gender`, `birthdate`, `user_des`, `active`, `secure_quest`, `secure_ans`, `profile_pics`) VALUES
 (104238, 1, 'nina', 'eiei', 'nina_skoii', 'ss', 'nina_so_koi@gmail.com', '083-333-77', 'm', '2016-04-06', '', 1, 'Am I beautiful?', 'Yes', 'no picture'),
 (104239, 1, 'oo', 'ooo', 'oo', 'oo', 'oo@gmail.com', '099-333-22', 'm', '2016-04-20', '', 1, 'oo', 'oo', 'no picture'),
-(104240, 1, 'v', 'v', 'v', 'v', 'v@gmail.com', '099-222-11', 'm', '2016-04-16', '', 1, 'v', 'v', 'images/member_profile_img/IMG_1422.JPG');
+(104240, 1, 'v', 'v', 'v', 'v', 'v@gmail.com', '099-222-11', 'm', '2016-04-16', '', 1, 'v', 'v', 'images/member_profile_img/IMG_1422.JPG'),
+(104241, 1, 'mama', 'momo', 'mama', 'mama', 'mama@gmail.com', '099-333-22', 'm', '2016-04-14', '', 1, 'am i hungry', 'yes', 'no picture');
 
 --
 -- Indexes for dumped tables
@@ -448,7 +449,7 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=104241;
+  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=104242;
 --
 -- Constraints for dumped tables
 --
