@@ -1,51 +1,5 @@
 <?php
-//session_start();
-//
-//if($_POST)  {
-//  $username = $_POST['username'];
-//  $password = $_POST['password'];
-//    
-//    include("connection.php");
-////    my_connect();
-//    $sql = "SELECT username FROM members";
-////    $sql2 = "SELECT password FROM members";
-//    echo "addddd";
-////    $result = $conn->query($sql);
-////    $result2 = $conn->query($sql2);
-////    
-////    echo "$result";
-////    echo "$result2";
-//    echo "add";
-//    if ($sql!=NULL) {
-//         output data of each row
-//        if($result==$sql){
-//            echo "username is match";
-//        }
-//        if($result2==$sql2){
-//            echo "password is match";
-//        }
-//        echo "1";
-//        while($row = $sql->fetch_assoc()) {
-//            echo "username: " . $row["username"]. " - password: " . $row["password"]. "<br>";
-//        }
-//    } else {
-//        echo "0 results";
-//    }
-//    
-//    if(empty($username)) {
-//        $errmsg = "please fill in username";
-//      }
-//      else if($password) {
-//        $errmsg = "password and confirm password is not match";
-//      }
-//
-//    @mysql_query($link,$sql) or die(mysql_error());
-//  
-////    $Uid = mysql_insert_id();
-//    echo "Register Complete!<br>";   
-//  
-//  exit;
-//}
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -230,9 +184,7 @@
 
     </script>
 
-    
-  
-<form action="checklogin.php" name="frmAdd" method="post">   
+<form action="#checklogin" name="frmAdd" method="post">   
 <div id="popup1" class="overlay">
   <div class="popup">
     <h2>Chowtime</h2>
@@ -247,16 +199,67 @@
     </div>
   </div>
 </div>
-</form>    
+</form>       
     
-<form action="forgetpass.php" name="frmAdd2" method="post"> 
+<form action="#popup3" name="frmAdd2" method="post"> 
+<div id="checklogin" class="overlay">
+    <div class="popup">
+        <h2>Chowtime</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+        <?php
+        $username = $_POST['username'];
+        $password = $_POST ['password'];  
+
+     
+        $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+        $objDB = mysql_select_db("chowtime");
+        $strSQL = "SELECT * FROM members ";
+	// Execute the query (the recordset $rs contains the result)
+	$rs = mysql_query($strSQL);
+    $non = "false";
+    if($rs){
+        if($username==NULL || $password==NULL){
+            echo "<h4>Error</h4>";
+            echo "Please fill in Username/Password<br>";
+        }
+        while($row = mysql_fetch_array($rs)) {
+            if($row['username']==$username && $row['password']==$password){
+                echo "<a href='./profile.html'>Login Complete GO TO Profile page</a>";
+            }
+            if($row['username']==$username && $row['password']!=$password){
+                echo "<a href='./museumhome.php#popup2'>ForgetPassword?</a>";
+            }
+            else{
+                $non="true";
+            }
+        }
+        if($non=="true"){
+            echo "<h4>Not Found</h4>";
+            echo "Username/Password is incorrect";
+        }
+        
+    }else {
+        
+    }
+    
+
+//	 Close the database connection
+	mysql_close();
+    ?>
+    </div>
+    </div>
+</div>
+</form>
+    
+<form action="#popup3" name="frmAdd2" method="post"> 
 <div id="popup2" class="overlay">
     <div class="popup">
         <h2>Chowtime</h2>
         <h4>Forget Password</h4>
     <a class="close" href="#">&times;</a>
     <div class="content">
-         
+        
         Email: <input type="text" name="email"><br><br>
         <input type="submit" class='button' value="Submit">
         <a href="./museumhome.php" class="button">cancel</a>
@@ -266,7 +269,7 @@
 </div>
 </form>
    
-<form action="answer.php" name="frmAdd3" method="post">     
+<form action="#popup4" name="frmAdd3" method="post">     
 <div id="popup3" class="overlay">
     <div class="popup">
         <h2>Chowtime</h2>
@@ -274,18 +277,34 @@
     <a class="close" href="#">&times;</a>
     <div class="content">
          
-        Question: 
         <?php
+           $email = $_POST['email'];
+        
             $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
             $objDB = mysql_select_db("chowtime");
-            $strSQL = "SELECT question FROM members WHERE email='$email'";
-            // Execute the query (the recordset $rs contains the result)
-            $rs = mysql_query($strSQL);
-            echo "$rs";
+            $strSQL = "SELECT * FROM members WHERE email='$email' ";
+        // Execute the query (the recordset $rs contains the result)
+
+        $rs = mysql_query($strSQL);
+        $row = mysql_fetch_array($rs);
+        $question = $row['secure_quest'];
+        
+        $correctans = $row['secure_ans'];
+        
+        if($row!=NULL){
+            echo "Question:$question<br>";
+            echo "Answer: <input type=\"text\" name=\"answer\">";
+        }else {
+            echo "email not found <a href='./museumhome.php#popup2'>Go back</a> <br>";
+            echo "<a href='./registration.php'>Register</a>";
+        }
+        mysql_close();
         ?>
-        <br><br>
-        Answer: <input type="text" name="answer"><br><br>
-        <input type="submit" class='button' value="Send">
+            <br><br>
+        <input type="hidden" value="<?php echo $email?>" name="email" />
+        <input type="hidden" value="<?php echo $correctans?>" name="var" />
+        <input type="submit" class='button' value="Submit">
+
         <a href="./museumhome.php" class="button">cancel</a>
         
     </div>
@@ -293,23 +312,85 @@
 </div>
 </form>    
     
+<form action="#popup5" method="post">  
 <div id="popup4" class="overlay">
     <div class="popup">
         <h2>Chowtime</h2>
         <h4>New Password</h4>
     <a class="close" href="#">&times;</a>
     <div class="content">
-         
-        New password: <input type="text" name="password"><br><br>
-        Confirm New Password: <input type="text" name="repassword"><br><br>
-        Question: <input type="text" name="question"><br><br>
-        Answer: <input type="text" name="answer"><br><br>
-        <a href="./profile.html" class="button">confirm</a>
-        <a href="./museumhome.php" class="button">cancel</a>
+
+        <?php
+            $email = $_POST['email'];
+            $answer = $_POST['answer'];
+//              echo $email;
+
+//        echo $answer;
+        $var = $_POST['var'];
+//        echo $var;
+        $say = "your answer is not correct <br><a href='./museumhome.php#popup2'>Try Again</a>";
+
+            if($var==$answer){
+                echo "<input type=\"hidden\" value=\"<?php echo \$email?>\" name=\"email\" />";
+                echo "New password: <input type=\"text\" name=\"password\"><br><br>
+        Confirm New Password: <input type=\"text\" name=\"repassword\"><br><br>
+        <input type=\"submit\" class='button' value=\"Submit\">
+        <a href=\"./museumhome.php\" class=\"button\">cancel</a>";
+            }
+        else {
+            echo $say;
+        }
+        
+        mysql_close();
+        ?>
+        <input type="hidden" value="<?php echo $email?>" name="email" />
+    </div>
+    </div>
+</div>
+</form>    
+    
+<form action="updatepass.php" method="post">  
+<div id="popup5" class="overlay">
+    <div class="popup">
+        <h2>Chowtime</h2>
+        <h4>New Password</h4>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+
+        <?php
+            $email = $_POST['email'];
+            $newpass = $_POST['password'];
+            $newrepass = $_POST['repassword'];
+//        echo $email;
+//        echo $newpass;
+//        echo $newrepass;
+      
+               // Create connection
+            $conn = mysqli_connect("localhost", "root", "root", "chowtime");
+            // Check connection
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            if($newpass==$newrepass){
+                $sql = "UPDATE members SET password='$newpass' WHERE email='$email' ";
+               
+                if (mysqli_query($conn, $sql)) {
+                    echo "Record updated successfully";
+                } else {
+                    echo "Error updating record: " . mysqli_error($conn);
+                }
+
+            }else {
+                echo "new password and confirm new password not match <br><a href='./museumhome.php#popup3'>Go back</a> ";
+            }
+            
+        mysql_close();
+        ?>
         
     </div>
     </div>
 </div>
+</form>    
 
     
     
