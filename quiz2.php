@@ -90,9 +90,6 @@
         $rs3 = mysqli_query($link,$ansSQL);
         $correctAns = mysqli_fetch_array($rs3);
              
-//        if($begin==$amount){
-//            echo "<script>location.href = 'quizresult.php';</script>";
-//        }
     ?>
             
         
@@ -118,6 +115,8 @@
 //                        alert(msg);
                    
                     });
+                }else{
+                    alert("CORRECT answer is " + correct);
                 }
                 if((endgame+1)==amount){
                     url = "quizresult.php";
