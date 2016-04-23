@@ -37,7 +37,15 @@
 </head>
 
 <body>
-   
+<?php
+    $eid = $_GET['id'];
+    $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+    $objDB = mysql_select_db("chowtime");
+    $estrSQL = "SELECT * FROM events WHERE event_id=".$eid;
+    $eobjQuery = mysql_query($estrSQL) or die ("Error Query [".$estrSQL."]");
+    $rstrSQL = "SELECT * FROM rounds WHERE event_id=".$eid;
+    $robjQuery = mysql_query($rstrSQL) or die ("Error Query [".$rstrSQL."]");
+    ?>
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -49,7 +57,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="eventcurrent.html">
+            <a class="navbar-brand page-scroll" href="eventcurrent.php">
                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" id="icon"></span>
                 
                 CANCEL RESERVATION
@@ -71,10 +79,19 @@
         
         
         <div class="container">
+            <?php
+                while($eobjResult = mysql_fetch_array($eobjQuery))
+                {
+            ?>
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
-                     <img class="eventimg" src="img/event/orchestra.jpg" />     
+                     <?php 
+                    $imgsql = "SELECT event_pics FROM events WHERE event_id=".$eobjResult["event_id"];
+                    $resultimg = mysql_query("$imgsql");
+                    $imgrow = mysql_fetch_assoc($resultimg);
+                        echo '<img width="100%" height="100%" src="data:image/jpeg;base64,'.base64_encode( $imgrow['event_pics'] ).'"/>';    
+                    ?>     
                 </div>
                 <div class="col-md-5">
                     <div class="page-item2 clearfix">
@@ -84,10 +101,10 @@
                             </h3>
                             <ul>
                                 <li>
-                                    NAME - CU Symphony Orchestra
+                                    NAME - <?php echo $eobjResult["ename"];?>
                                 </li>
                                 <li>
-                                    CONDUCTED IN - ENGLISH
+                                    CONDUCTED IN - <?php echo $eobjResult["language"];?>
                                 </li>
                             </ul>
                             
@@ -96,6 +113,9 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
+            <?php
+            }
+            ?>
         </div>
         
         
@@ -117,12 +137,20 @@
                         <div class="col-md-10">
                             <div class="timebutton">
                                 <ul class="segmented-control" id="dateradiobutton">
+                                    <?php
+                                        while($objResult = mysql_fetch_array($robjQuery))
+                                        {
+                                    ?>
+                                    
                                     <li class="segmented-control__item"> 
                                         <input class="segmented-control__input" type="radio" value="date1"   name="dateoption" id="date1"> 
                                         <label class="segmented-control__label" for="date1" value="date1" > 
-                                            Friday, April 7
+                                            <?php echo $objResult["datetime"];?>
                                         </label>  
                                     </li>
+                                    <?php
+                                        }
+                                    ?>
                                     <li class="segmented-control__item"> 
                                         <input class="segmented-control__input" type="radio" value="date2"   name="dateoption" id="date2" >  		
                                         <label class="segmented-control__label" for="date2" value="date2" >
@@ -273,7 +301,9 @@
 
 </section>
 
-
+<?php
+mysql_close($objConnect);
+?>
 
 
 </body>

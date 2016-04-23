@@ -94,7 +94,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="eventcurrent.html">Back to current events</a>
+            <a class="navbar-brand page-scroll" href="eventcurrent.php">Back to current events</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
