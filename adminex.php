@@ -24,6 +24,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/cssadmin.css" type="text/css">
     <link rel="stylesheet" href="css/admine.css" type="text/css">
+<script src="//cdn.ckeditor.com/4.5.8/full/ckeditor.js"></script> <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -67,7 +68,7 @@
         <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "00000000";
 $dbname = "chowtime";
 
 // Create connection
@@ -115,6 +116,10 @@ $conn->close();
                             <!-- POST -->
                             <div class="post" id="content">
                                 <form action="adminexposted.php" class="form newtopic" method="post">
+                                      <div>
+                                                <textarea name="description" id="desc" rows=15 placeholder="Description"  class="form-control" ></textarea>
+                                                 <script>CKEDITOR.replace( 'desc' );</script>
+                                            </div>
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
@@ -129,7 +134,7 @@ $conn->close();
                                         <div class="posttext pull-left">
 
                                            <div>
-                                                <input type="text" name="exhibition_id" placeholder="Enter Event ID" class="form-control" />
+                                                <input type="text" name="exhibition_id" placeholder="Enter Exhibition ID" class="form-control" />
                                             </div>
  <div>
                                                 <input type="text"
@@ -159,23 +164,12 @@ $conn->close();
 
                                           
 
-                                            <div>
-                                                <textarea name="desc" id="desc"
-                                                          name="description"
-                                                          placeholder="Description"  class="form-control" ></textarea>
-                                            </div>
-                                            
                                              <div>
                                                 <input type="text"
                                                        name="location"
                                                        placeholder="Enter Exhibition Location" class="form-control" />
                                             </div>
-                                              <div>
-                                                <input type="text"
-                                                       name="staff_id"
-                                                       placeholder="Enter Staff ID '1'" class="form-control" />
-                                            </div>
-                                      
+                                          
                                             
 
 
