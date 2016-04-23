@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+include "check-user.php"; 
+$user_id = $_SESSION['user_id']; 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -116,7 +124,7 @@ if($_GET["Action"] == "Save")
     if($content!=''){   
 	$newcommentSQL = "INSERT INTO comments (topic_id,user_id,datetime,content)
 VALUES
-($topicid,2,NOW(),'$content')";
+($topicid,$user_id,NOW(),'$content')";
         $objcommentQuery = mysql_query($newcommentSQL);
     
         echo "<script>location.href='topic.php?topicid=$topicid'</script>";
@@ -171,11 +179,13 @@ VALUES
                             <div class="dropdown pull-left">
                                 <a data-toggle="dropdown" href="#" >Webboard</a> <b class="caret"></b>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CU Museum</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">CU Music Hall</a></li>        
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Events</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Exhibitions</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-3" href="#">FAQ</a></li>
+                                    
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="webboard.php?category=1&page=1">CU Museum</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-2" href="webboard.php?category=2&page=1">CU Music Hall</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-3" href="webboard.php?category=3&page=1">Events</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-4" href="webboard.php?category=4&page=1">Exhibitons</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-5" href="webboard.php?category=5&page=1">FAQ</a></li>
+
 
                                 </ul>
                             </div>
@@ -198,11 +208,17 @@ VALUES
 <!--                            <div class="env pull-left"><i class="fa fa-envelope"></i></div>-->
 
                             <div class="avatar pull-right dropdown profilepic">
-                                <a data-toggle="dropdown" href="#"><img src="img/avatar.jpg" alt="" /></a> <b class="caret"></b>
+                                <a data-toggle="dropdown" href="#"><?php 
+    
+    if ($userimgrow['profile_pics'] == NULL) {
+        echo '<img width="40" height="40" src="img/avatar.jpg"/>';
+    } else { ?>
+    <img width="40" height="40" src= <?php echo $userimgrow['profile_pics']; ?> />
+   <?php }?></a> <b class="caret"></b>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Profile</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Log Out</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-4" href="04_new_account.html">Create account</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-4" href="registration.php">Create account</a></li>
                                 </ul>
                             </div>
                             
@@ -239,6 +255,11 @@ $sql="SELECT * FROM users WHERE user_id=$posterid";
 $result=mysql_query($sql);
 $users = array();
 
+//profilepics    
+$userimgsql = "SELECT profile_pics FROM users WHERE user_id=$user_id";
+$resultuserimg = mysql_query("$userimgsql");
+$userimgrow = mysql_fetch_assoc($resultuserimg); 
+
 //image    
 $imgsql = "SELECT profile_pics FROM users WHERE user_id=$posterid";
 $resultimg = mysql_query("$imgsql");
@@ -249,12 +270,13 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                 <div class="topwrap">
                                     <div class="userinfo pull-left">
                                         <div class="avatar">
-                                            <?php 
-                                            if ($imgrow['profile_pics'] == NULL) {
-                                            echo '<img width="50" height="50" src="img/avatar.jpg"/>';
-                                            } else { ?>
-                                            <img width="50" height="50" src= <?php echo $imgrow['profile_pics']; ?> />
-                                            <?php } ?>
+                                           <?php 
+    
+    if ($imgrow['profile_pics'] == NULL) {
+        echo '<img width="50" height="50" src="img/avatar.jpg"/>';
+    } else { ?>
+    <img width="50" height="50" src= <?php echo $imgrow['profile_pics']; ?> />
+   <?php }?>
                                             
                                         </div>
 
@@ -305,6 +327,8 @@ $sql="SELECT * FROM users WHERE user_id=$commenterid";
 $result=mysql_query($sql);
 $users = array();
 
+    
+    
 //image    
 $imgsql = "SELECT profile_pics FROM users WHERE user_id=$commenterid";
 $resultimg = mysql_query("$imgsql");
@@ -355,12 +379,18 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
-                                                <img src="img/avatar.jpg" alt="" />
+                                                <?php 
+    
+    if ($userimgrow['profile_pics'] == NULL) {
+        echo '<img width="40" height="40" src="img/avatar.jpg"/>';
+    } else { ?>
+    <img width="40" height="40" src= <?php echo $userimgrow['profile_pics']; ?> />
+   <?php }?>
                                                 
                                             </div>
 
                                             <div class="icons name">
-                                                Benzson
+                                                <em><?php echo $userimgrow['username']; ?></em>
                                             </div>
                                         </div>
                                         <div class="posttext pull-left">
@@ -407,7 +437,7 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                        <div class="col-lg-2 col-md-2"></div>
                         <div class="col-lg-8">
                             <!--<div class="pull-left"><a href="#" class="prevnext"><i class="fa fa-angle-left"></i></a></div>-->
-                            <div class="pull-left">
+                            <div align="center">
                                 <ul class="pager">
                                     <li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Prev_Page ?>">&larr; Previous</a></li>
                                 <ul class="paginationforum">
@@ -482,7 +512,7 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
         ?>
 
                         </ul>
-                                    <br>
+                                <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
                                 <li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Next_Page ?>">Next &rarr;</a></li>
                                 </ul>
                             </div>

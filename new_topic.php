@@ -1,4 +1,8 @@
 <?php 
+session_start();
+
+include "check-user.php"; 
+$user_id = $_SESSION['user_id']; 
 
 ?>
 <!DOCTYPE html>
@@ -42,6 +46,11 @@
 $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
 $objDB = mysql_select_db("chowtime");
 
+//profilepics    
+$userimgsql = "SELECT profile_pics FROM users WHERE user_id=$user_id";
+$resultuserimg = mysql_query("$userimgsql");
+$userimgrow = mysql_fetch_assoc($resultuserimg);         
+        
 ?>
         
     </head>
@@ -83,11 +92,13 @@ $objDB = mysql_select_db("chowtime");
                             <div class="dropdown pull-left">
                                 <a data-toggle="dropdown" href="#" >Webboard</a> <b class="caret"></b>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CU Museum</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">CU Music Hall</a></li>        
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Events</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Exhibitions</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-3" href="#">FAQ</a></li>
+                                    
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="webboard.php?category=1&page=1">CU Museum</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-2" href="webboard.php?category=2&page=1">CU Music Hall</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-3" href="webboard.php?category=3&page=1">Events</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-4" href="webboard.php?category=4&page=1">Exhibitons</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-5" href="webboard.php?category=5&page=1">FAQ</a></li>
+
 
                                 </ul>
                             </div>
@@ -104,17 +115,23 @@ $objDB = mysql_select_db("chowtime");
                         <div class="col-lg-4 col-xs-12 col-sm-5 col-md-4 avt">
                             <div class="stnt pull-left">                            
                                 <form action="#" method="post" class="form"> 
-                                    <a href="new_topic.html" role="button" class="btn btn-primary pinkbtn"  href="03_new_topic.html">Start New Topic</a>
+                                    <a role="button" class="btn btn-primary pinkbtn"  href="new_topic.php">Start New Topic</a>
                                 </form> 
                             </div>
 <!--                            <div class="env pull-left"><i class="fa fa-envelope"></i></div>-->
 
                             <div class="avatar pull-right dropdown profilepic">
-                                <a data-toggle="dropdown" href="#"><img src="img/avatar.jpg" alt="" /></a> <b class="caret"></b>
+                                <a data-toggle="dropdown" href="#"><?php 
+    
+    if ($userimgrow['profile_pics'] == NULL) {
+        echo '<img width="40" height="40" src="img/avatar.jpg"/>';
+    } else { ?>
+    <img width="40" height="40" src= <?php echo $userimgrow['profile_pics']; ?> />
+   <?php }?></a> <b class="caret"></b>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Profile</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Log Out</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-4" href="04_new_account.html">Create account</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-4" href="registration.php">Create account</a></li>
                                 </ul>
                             </div>
                             
@@ -137,12 +154,18 @@ $objDB = mysql_select_db("chowtime");
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
-                                                <img src="img/avatar.jpg" alt="" />
+                                                <?php 
+    
+    if ($userimgrow['profile_pics'] == NULL) {
+        echo '<img width="40" height="40" src="img/avatar.jpg"/>';
+    } else { ?>
+    <img width="40" height="40" src= <?php echo $userimgrow['profile_pics']; ?> />
+   <?php }?>
                                                 
                                             </div>
 
                                             <div class="icons">
-                                                Bnzson
+                                                <?php echo $userimgrow['username'];  ?>
                                             </div>
                                         </div>
                                         <div class="posttext pull-left">
@@ -190,7 +213,7 @@ $objDB = mysql_select_db("chowtime");
 
                                         <div class="pull-right postreply">
                                             
-                                            <div class="pull-left"><input name="topicimg" type="file" id="topicimg" style="width:200px"/>
+                                            <div class="pull-left"><input name="topicimg" type="file" id="topicimg"/>
     </div>
                                             
                                             <div class="pull-right"><input type="submit" class="btn btn-primary" value="Post"></input></div>

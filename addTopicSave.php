@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+include "check-user.php"; 
+$user_id = $_SESSION['user_id']; 
+
+?>
+
 <html>
 <head>
 <title>PHP & MySQL Tutorial</title>
@@ -23,43 +31,36 @@
         break;
         default: $category="none";    
     }
-    $user_id=1;
-    $staff_id=1;
     $topicn = $_POST["topicName"];
     $desc = $_POST["desc"];
     $date = date("Y-m-d H:i:s", strtotime(str_replace('-', '/', $date)));
 
-    
-    $storeImgPath = "images/topic_pics/";
-        $storeImgPath = $storeImgPath . basename( $_FILES['topicimg']['name']);
-    //This gets all the other information from the form
-    $Filename=basename( $_FILES['topicimg']['name']);
-    
+if(count($_FILES) > 0) {
+if(is_uploaded_file($_FILES['topicimg']['tmp_name'])) {
 
-if(move_uploaded_file($_FILES['topicimg']['tmp_name'], $storeImgPath)) {
-    //Tells you if its all ok
-    echo "The file ". basename( $_FILES['topicimg']['name']). " has been uploaded, and";
-    
-            $filetmp = $_FILES["topicimg"]['tmp_name'];
-            $filename = $_FILES["topicimg"]['name'];
-            $filetype = $_FILES["topicimg"]['type'];
-            $filepath = $storeImgPath.$filename;
-                  
-            if($filetmp){
-               move_uploaded_file($filetmp,$filepath);
-            }else{
-                $filepath = "no picture";
-            }
+$imgData =addslashes(file_get_contents($_FILES['topicimg']['tmp_name']));
+$imageProperties = getimageSize($_FILES['topicimg']['tmp_name']);
 }
-    
-    echo $storeImgPath;
-    echo 'path' .$filepath;
+}
+    /*
+        $sql="INSERT INTO eikones (auxon, path) VALUES ('','$file')";
+
+     if (!mysql_query($sql))
+     {
+        die('Error: ' . mysql_error());
+     }
+     echo "<font size = '5'><font color=\"#0CF44A\">SAVED TO DATABASE";
+
+   }
+
+   mysql_close();
+*/
     
 	//*** Insert topics ***//
 
     $strSQL="INSERT INTO topics (user_id, category, title, content, datetime, topic_pics)
 VALUES
-($user_id,'$category','$topicn','$desc',NOW(), '$filepath')";
+($user_id,'$category','$topicn','$desc',NOW(), $imgData)";
     
    
     
