@@ -41,7 +41,7 @@
     <?php
       // connect to database
      
-      $con = mysql_connect("localhost", "root", "");
+      $con = mysql_connect("localhost", "root", "root");
       $db = mysql_select_db("chowtime");
         
         // session_save_path("./session/");

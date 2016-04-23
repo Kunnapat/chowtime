@@ -4,7 +4,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
 
     <meta charset="utf-8">
@@ -225,7 +225,9 @@ session_start();
         }
         while($row = mysql_fetch_array($rs)) {
             if($row['username']==$username && $row['password']==$password){
-                echo "<a href='./profile.html'>Login Complete GO TO Profile page</a>";
+                echo "<a href='./profile.php'>Login Complete GO TO Profile page</a>";
+                $non = "false";
+                break;
             }
             if($row['username']==$username && $row['password']!=$password){
                 echo "<a href='./museumhome.php#popup2'>ForgetPassword?</a>";
@@ -238,7 +240,7 @@ session_start();
             echo "<h4>Not Found</h4>";
             echo "Username/Password is incorrect";
         }
-        
+        $non = "false";
     }else {
         
     }
@@ -287,6 +289,7 @@ session_start();
 
         $rs = mysql_query($strSQL);
         $row = mysql_fetch_array($rs);
+        $username = $row['username'];
         $question = $row['secure_quest'];
         
         $correctans = $row['secure_ans'];
@@ -301,6 +304,8 @@ session_start();
         mysql_close();
         ?>
             <br><br>
+        
+        <input type="hidden" value="<?php echo $username?>" name="username" />
         <input type="hidden" value="<?php echo $email?>" name="email" />
         <input type="hidden" value="<?php echo $correctans?>" name="var" />
         <input type="submit" class='button' value="Submit">
@@ -321,6 +326,7 @@ session_start();
     <div class="content">
 
         <?php
+            $username = $_POST['username'];
             $email = $_POST['email'];
             $answer = $_POST['answer'];
 //              echo $email;
@@ -344,12 +350,14 @@ session_start();
         mysql_close();
         ?>
         <input type="hidden" value="<?php echo $email?>" name="email" />
+        <input type="hidden" value="<?php echo $username?>" name="username" />
+        <input type="hidden" value="<?php echo $email?>" name="email" />
     </div>
     </div>
 </div>
 </form>    
     
-<form action="updatepass.php" method="post">  
+<form action="#login" method="post">  
 <div id="popup5" class="overlay">
     <div class="popup">
         <h2>Chowtime</h2>
@@ -358,9 +366,11 @@ session_start();
     <div class="content">
 
         <?php
+            $username = $_POST['username'];
             $email = $_POST['email'];
             $newpass = $_POST['password'];
             $newrepass = $_POST['repassword'];
+               
 //        echo $email;
 //        echo $newpass;
 //        echo $newrepass;
@@ -373,9 +383,10 @@ session_start();
             }
             if($newpass==$newrepass){
                 $sql = "UPDATE members SET password='$newpass' WHERE email='$email' ";
-               
+                
                 if (mysqli_query($conn, $sql)) {
-                    echo "Record updated successfully";
+                    
+                    echo "Password updated successfully";
                 } else {
                     echo "Error updating record: " . mysqli_error($conn);
                 }
@@ -386,19 +397,53 @@ session_start();
             
         mysql_close();
         ?>
+        <input type="hidden" value="<?php echo $username?>" name="username" />
         
     </div>
     </div>
 </div>
 </form>    
-
-    
     
     
 </body>
     
-    <div class= "login">
-                <a href="#popup1" class="loginButton">Login</a> 
-            </div>   
+    <div class= "login" id="login">
+        <a href="
+        <?php
+            $username = $_POST['username'];  
+               if($username!=null){
+                   echo "/profile.php";
+               }else{
+                   echo "#popup1";
+               }
+        ?>
+                 " class="loginButton">
+        <?php
+            $username = $_POST['username']; 
+         
+            $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+            $objDB = mysql_select_db("chowtime");
+            $strSQL = "SELECT * FROM members ";
+        // Execute the query (the recordset $rs contains the result)
+        $rs = mysql_query($strSQL);
+        $try = "false";
+        if($rs){
+            while($row = mysql_fetch_array($rs)) {
+                if($row['username']==$username){
+                    echo $username;
+                    $try = "false";
+                    break;
+                }else{
+                    $try = "true";
+                }
+            }
+            if($try=="true"){
+                echo "Login";
+            }
+        }
+                     
+        ?>
+           </a>
+        </div>   
 
 </html>
