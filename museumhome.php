@@ -183,6 +183,7 @@ session_start();
         });
 
     </script>
+<<<<<<< Updated upstream
     
       <div class= "login" id="login">
         <a href="
@@ -195,12 +196,20 @@ session_start();
                }
         ?>
                  " class="loginButton">
+=======
+      <div class= "login" id="login">
+        <a href="#popup1" class="loginButton">
+>>>>>>> Stashed changes
         <?php
             $username = $_POST['username']; 
          
             $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
             $objDB = mysql_select_db("chowtime");
+<<<<<<< Updated upstream
             $strSQL = "SELECT * FROM users ";
+=======
+            $strSQL = "SELECT * FROM users";
+>>>>>>> Stashed changes
         // Execute the query (the recordset $rs contains the result)
         $rs = mysql_query($strSQL);
         $try = "false";
@@ -209,7 +218,10 @@ session_start();
                 if($row['username']==$username){
                     echo $username;
                     $try = "false";
+<<<<<<< Updated upstream
                     $_SESSION['user_id'] = $row['user_id'];
+=======
+>>>>>>> Stashed changes
                     break;
                 }else{
                     $try = "true";
