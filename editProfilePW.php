@@ -129,19 +129,19 @@
                     <h2 style="margin-left:20px">Change Password</h2><hr>
                     
                     <div class="inputField">
-                        Old Password:<font color="red">*</font> <br> <input type="text" name="oldPw" value="<?php echo $row['password']; ?>" style="margin-top:2%" ><br>
+                        Old Password:<font color="red">*</font> <br> <input type="password" name="oldPw" style="margin-top:2%" ><br>
                     </div>
                     
                     <div class="inputField">
-                        New Password:<font color="red">*</font> <br> <input type="text" name="newPw" style="margin-top:2%">
+                        New Password:<font color="red">*</font> <br> <input type="password" name="newPw" style="margin-top:2%">
                     </div>
                     
                     <div class="inputField">
-                        New Password Confirmation:<font color="red">*</font> <br> <input type="text" name="newPwCon" style="margin-top:2%">
+                        New Password Confirmation:<font color="red">*</font> <br> <input type="password" name="newPwCon" style="margin-top:2%">
                     </div>
                     
                     <div class="inputField">
-                        Please answer your security question: <?php echo $row['secure_quest']; ?><font color="red">*</font> <br> <input type="text" name="secureAns" value="xxx" style="margin-top:2%">
+                        <b>Please answer your security question:</b><font color="red">*</font><br> <?php echo $row['secure_quest']; ?> <br> <input type="text" name="secureAns" style="margin-top:2%">
                     </div>
                     
                     <hr>
