@@ -165,8 +165,10 @@
                     
                     <div class="inputField">
                          Bio
-                        <textarea name="user_des" width="100px" rows="5" id="bio" value=" <?php if(!empty($row['fname'])){echo $row['fname'];}
-                        else echo "none" ?>" style="margin-left:120px" rows="4" cols="50"></textarea>
+                        <textarea name="user_des" width="100px" rows="5" id="bio" style="margin-left:120px" rows="4" cols="50">
+                        <?php echo $row['user_des']; ?>
+                        
+                        </textarea>
 
                     </div>                     
                     
