@@ -1,11 +1,3 @@
-<?php 
-session_start();
-
-$user_id = $_SESSION['user_id']; 
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -59,7 +51,7 @@ if (isset($_GET['page'])) {
  $Page = 1;
  }
 
-//echo $Page;
+echo $Page;
         
 $Page_Start = (($Per_Page*$Page)-$Per_Page);
 
@@ -105,10 +97,7 @@ if ($Page == $Num_Pages) {
 $Before_Last = $Num_Pages - 1;
 $Pagination = ""; //display the page number
 
-//profilepics    
-$userimgsql = "SELECT profile_pics FROM users WHERE user_id=$user_id";
-$resultuserimg = mysql_query("$userimgsql");
-$userimgrow = mysql_fetch_assoc($resultuserimg);           
+          
         
 // retrieve topic
 $strSQL = "SELECT * FROM topics WHERE topic_id='".$topicid."' ";
@@ -124,16 +113,10 @@ if($_GET["Action"] == "Save")
     $content = $_POST["reply"];
     
 	//*** Insert Reply ***//
-    if($content!=''){   
 	$newcommentSQL = "INSERT INTO comments (topic_id,user_id,datetime,content)
 VALUES
-($topicid,$user_id,NOW(),'$content')";
-        $objcommentQuery = mysql_query($newcommentSQL);
-    
-        echo "<script>location.href='topic.php?topicid=$topicid'</script>";
-//    header("Location:0; url=topic.php?topicid=$topicid");
-    }
-	
+($topicid,2,NOW(),'$content')";
+	$objcommentQuery = mysql_query($newcommentSQL);
 		
 }
         
@@ -158,8 +141,8 @@ VALUES
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand page-scroll" href="#page-top"><div class="currentpage">CHOWTIME</div></a>
-                    <a class="navbar-brand page-scroll" href="museumhome.php"><div>Museum</div></a>
-                    <a class="navbar-brand page-scroll" href="musichallhome.php">Music Hall</a>
+                    <a class="navbar-brand page-scroll" href="museumhome.html"><div>Museum</div></a>
+                    <a class="navbar-brand page-scroll" href="event.html">Music Hall</a>
                 </div>
 
                 
@@ -182,13 +165,11 @@ VALUES
                             <div class="dropdown pull-left">
                                 <a data-toggle="dropdown" href="#" >Webboard</a> <b class="caret"></b>
                                 <ul class="dropdown-menu" role="menu">
-                                    
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="webboard.php?category=1&page=1">CU Museum</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-2" href="webboard.php?category=2&page=1">CU Music Hall</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-3" href="webboard.php?category=3&page=1">Events</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-4" href="webboard.php?category=4&page=1">Exhibitons</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-5" href="webboard.php?category=5&page=1">FAQ</a></li>
-
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CU Museum</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">CU Music Hall</a></li>        
+                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Events</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Exhibitions</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-3" href="#">FAQ</a></li>
 
                                 </ul>
                             </div>
@@ -211,19 +192,11 @@ VALUES
 <!--                            <div class="env pull-left"><i class="fa fa-envelope"></i></div>-->
 
                             <div class="avatar pull-right dropdown profilepic">
-                                 <?php if($user_id != NULL) { ?>
-                                <a data-toggle="dropdown" href="#"><?php 
-    
-    if ($userimgrow['profile_pics'] == NULL) {
-        echo '<img width="40" height="40" src="img/avatar.jpg"/>';
-    } else { ?>
-    <img width="40" height="40" src= <?php echo $userimgrow['profile_pics']; ?> />
-   <?php }?></a> <b class="caret"></b>
+                                <a data-toggle="dropdown" href="#"><img src="img/avatar.jpg" alt="" /></a> <b class="caret"></b>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Profile</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-3" href="logout.php">Log Out</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-4" href="registration.php">Create account</a></li>
-                                    <?php } ?>
+                                    <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Log Out</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-4" href="04_new_account.html">Create account</a></li>
                                 </ul>
                             </div>
                             
@@ -260,7 +233,6 @@ $sql="SELECT * FROM users WHERE user_id=$posterid";
 $result=mysql_query($sql);
 $users = array();
 
-
 //image    
 $imgsql = "SELECT profile_pics FROM users WHERE user_id=$posterid";
 $resultimg = mysql_query("$imgsql");
@@ -271,13 +243,12 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                 <div class="topwrap">
                                     <div class="userinfo pull-left">
                                         <div class="avatar">
-                                           <?php 
-    
-    if ($imgrow['profile_pics'] == NULL) {
-        echo '<img width="50" height="50" src="img/avatar.jpg"/>';
-    } else { ?>
-    <img width="50" height="50" src= <?php echo $imgrow['profile_pics']; ?> />
-   <?php }?>
+                                            <?php 
+                                            if ($imgrow['profile_pics'] == NULL) {
+                                            echo '<img width="50" height="50" src="img/avatar.jpg"/>';
+                                            } else {
+                                            echo '<img width="50" height="50" src="data:image/jpeg;base64,'.base64_encode(      $imgrow['profile_pics'] ).'"/>';
+                                            } ?>
                                             
                                         </div>
 
@@ -297,11 +268,6 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                         
                                         <h2><?php echo $objResult['title']; ?></h2>
                                         <p><?php echo $objResult['content']; ?></p>
-                                        <p><?php 
-    if ($objResult['topic_pics'] != NULL) {
-    echo '<img src="data:image/jpeg;base64,'.base64_encode( $objResult['topic_pics'] ).'"/>'; }
-        else {
-    }; ?></p>
                                         
                                     </div>
                                     <div class="clearfix"></div>
@@ -333,8 +299,6 @@ $sql="SELECT * FROM users WHERE user_id=$commenterid";
 $result=mysql_query($sql);
 $users = array();
 
-    
-    
 //image    
 $imgsql = "SELECT profile_pics FROM users WHERE user_id=$commenterid";
 $resultimg = mysql_query("$imgsql");
@@ -349,12 +313,11 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                     <div class="userinfo pull-left">
                                         <div class="avatar">
                                             <?php 
-    
-    if ($imgrow['profile_pics'] == NULL) {
-        echo '<img width="50" height="50" src="img/avatar.jpg"/>';
-    } else { ?>
-    <img width="50" height="50" src= <?php echo $imgrow['profile_pics']; ?> />
-   <?php }?>
+                                            if ($imgrow['profile_pics'] == NULL) {
+                                            echo '<img width="50" height="50" src="img/avatar.jpg"/>';
+                                            } else {
+                                            echo '<img width="50" height="50" src="data:image/jpeg;base64,'.base64_encode(      $imgrow['profile_pics'] ).'"/>';
+                                            } ?>
                                             
                                         </div>
 
@@ -382,34 +345,31 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
 
                             <!-- POST -->
                             <div class="post comment">
+<<<<<<< Updated upstream
                               <?php  if($user_id != NULL) {
 
 //	exit;
 ?>
                                 <form action="topic.php?topicid=<?php echo $_GET["topicid"]; ?>&Action=Save" class="form" method="post">
+=======
+                                <form action="topic.php?topicid=<?php echo $_GET["topicid"];?>&Action=Save" class="form" method="post">
+>>>>>>> Stashed changes
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
-                                                <?php 
-    
-    if ($userimgrow['profile_pics'] == NULL) {
-        echo '<img width="40" height="40" src="img/avatar.jpg"/>';
-    } else { ?>
-    <img width="40" height="40" src= <?php echo $userimgrow['profile_pics']; ?> />
-   <?php }?>
+                                                <img src="img/avatar.jpg" alt="" />
                                                 
                                             </div>
 
                                             <div class="icons name">
-                                                <em><?php echo $userimgrow['username']; ?></em>
+                                                Benzson
                                             </div>
                                         </div>
                                         <div class="posttext pull-left">
                                             <div class="textwraper">
                                                 <div class="postreply">Post a Reply</div>
                                                 <div>
-                                                <font color="red">*</font>
-                                                <textarea name="reply" id="reply" placeholder="Type your message here" required></textarea>
+                                                <textarea name="reply" id="reply" placeholder="Type your message here"></textarea>
                                                 <script>CKEDITOR.replace( 'reply' );</script>
                                                 </div>
                                             </div>
@@ -421,7 +381,7 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                     <div class="postinfobot">
 
                                         <div class="pull-right postreply">
-                                           
+                                            <div class="pull-left smile"><a href="#"><i class="fa fa-camera"></i></a></div>
                                             <div class="pull-left"><button type="submit" class="btn btn-primary pinkbtn">Post Reply</button></div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -450,7 +410,7 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                        <div class="col-lg-2 col-md-2"></div>
                         <div class="col-lg-8">
                             <!--<div class="pull-left"><a href="#" class="prevnext"><i class="fa fa-angle-left"></i></a></div>-->
-                            <div align="center">
+                            <div class="pull-left">
                                 <ul class="pager">
                                     <li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Prev_Page ?>">&larr; Previous</a></li>
                                 <ul class="paginationforum">
@@ -525,7 +485,7 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
         ?>
 
                         </ul>
-                                <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                                    <br>
                                 <li><a href="topic.php?topicid=<?php echo $topicid ?>&page=<?php echo $Next_Page ?>">Next &rarr;</a></li>
                                 </ul>
                             </div>

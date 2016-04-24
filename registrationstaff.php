@@ -1,4 +1,14 @@
+<?php
+    $staffcode = $_POST['staffcode'];
+    $isstaff = false;
+    if($staffcode=="1234"){
+        $isstaff = true;
+    }
+?>
 <!DOCTYPE html>
+<?php
+    if($isstaff=="true"){
+?>
 <html lang="en">
 
 <head>
@@ -69,7 +79,7 @@
             <div class="col-sm-1 col-md-2"></div>
             <div class="registcontent col-sm-10 col-md-8">
                 
-                <form action="registersave.php" name="frmAdd" method="post" enctype="multipart/form-data">
+                <form action="registrationsavestaff.php" name="frmAdd" method="post" enctype="multipart/form-data">
                     <br>
                     <h1 style="margin-top:10%; margin-bottom:5%"><font color="#EF788C">Registration</font></h1>
             
@@ -122,8 +132,13 @@
         
     </body>
         
-        
-     
-    
+ 
 </html>
+<?php 
+    } else {
+        echo "<h3>Staff code is incorrect</h3>";
+        echo "<br><a href='./homepage.php'>Go back</a>";
+}
+?>
+
 

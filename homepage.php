@@ -215,10 +215,24 @@ session_start();
     <div class="content">
         Username: <input type="text" name="username"><br>
         Password:&nbsp; <input type="password" name="password"><br>
-        <lable><a href="#popup2" style="margin-top=10%;">forget password?</a></lable><br><br>
-       
+        <lable><a href="#popup2" style="margin-top=10%;">forget password?</a></lable>
+       <lable><a href="#checkstaff" style="margin-top=10%;">Staff?</a></lable><br><br>
         <input type="submit" class='button' value="Login">
         <a href="./registration.php" class="button">Register</a>
+    </div>
+  </div>
+</div>
+</form>       
+    
+<form action="registrationstaff.php" name="frmAdd" method="post">   
+<div id="checkstaff" class="overlay">
+  <div class="popup">
+    <h2>Chowtime</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+        Staff Code: <input type="text" name="staffcode"><br><br>
+        <input type="submit" class='button' value="Submit">
+        <a href="./homepage.php" class="button">Go back</a>
     </div>
   </div>
 </div>
