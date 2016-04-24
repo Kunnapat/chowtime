@@ -129,15 +129,15 @@
                     <h2 style="margin-left:20px">Change Password</h2><hr>
                     
                     <div class="inputField">
-                        Old Password:<font color="red">*</font> <br> <input type="password" name="oldPw" style="margin-top:2%" ><br>
+                      <b>  Old Password:</b><font color="red">*</font> <br> <input type="password" name="oldPw" style="margin-top:2%" ><br>
                     </div>
                     
                     <div class="inputField">
-                        New Password:<font color="red">*</font> <br> <input type="password" name="newPw" style="margin-top:2%">
+                      <b>  New Password:</b><font color="red">*</font> <br> <input type="password" name="newPw" style="margin-top:2%">
                     </div>
                     
                     <div class="inputField">
-                        New Password Confirmation:<font color="red">*</font> <br> <input type="password" name="newPwCon" style="margin-top:2%">
+                       <b> New Password Confirmation: </b><font color="red">*</font> <br> <input type="password" name="newPwCon" style="margin-top:2%">
                     </div>
                     
                     <div class="inputField">
