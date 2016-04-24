@@ -155,7 +155,7 @@
                      <div class="inputField" >
                         Sex 
                      <select name "gender" style="margin-left:117px">
-                         <option value="male" <?php if ($row['gender'] === 'm') echo ' selected="selected"'?>>
+                         <option value="male" <?php if ($row['gender'] === 'm') echo ' selected="selected"' ?>>
                          Male</option>
                          <option value="female" <?php if ($row['gender'] === 'f') echo ' selected="selected"'?>>Female</option>
                      </select>
@@ -165,7 +165,7 @@
                     
                     <div class="inputField">
                          Bio
-                        <textarea name="user_des" width:"100px" rows="5" id="bio" value=" <?php if(!empty($row['fname'])){echo $row['fname'];}
+                        <textarea name="user_des" width="100px" rows="5" id="bio" value=" <?php if(!empty($row['fname'])){echo $row['fname'];}
                         else echo "none" ?>" style="margin-left:120px" rows="4" cols="50"></textarea>
 
                     </div>                     
