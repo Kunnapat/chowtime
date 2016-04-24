@@ -7,10 +7,9 @@ if(!isset($_SESSION['user_id'])) {
 	header("Location: museumhome.php#popup1");
 //	exit;
 }else{
-<<<<<<< Updated upstream
+
 //    echo "user_id: ".$_SESSION['user_id'];
-=======
     //echo "user_id: ".$_SESSION['user_id'];
->>>>>>> Stashed changes
+
 }
 ?>
