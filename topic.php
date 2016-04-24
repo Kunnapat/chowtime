@@ -120,7 +120,6 @@ $objResult = mysql_fetch_array($objQuery);
 
 if($_GET["Action"] == "Save")
 {
-    include "check-user.php"; 
     $topicid = $_GET["topicid"];
     $content = $_POST["reply"];
     
@@ -383,7 +382,10 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
 
                             <!-- POST -->
                             <div class="post comment">
-                                
+                              <?php  if($user_id != NULL) {
+
+//	exit;
+?>
                                 <form action="topic.php?topicid=<?php echo $_GET["topicid"]; ?>&Action=Save" class="form" method="post">
                                     <div class="topwrap">
                                         <div class="userinfo pull-left">
@@ -428,6 +430,7 @@ while ($row = mysql_fetch_assoc($result)) { $users[] = $row; } ?>
                                         <div class="clearfix"></div>
                                     </div>
                                 </form>
+                                <?php } ?>
                             </div><!-- POST -->
 
 
