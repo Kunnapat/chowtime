@@ -93,13 +93,11 @@
     </nav>
     
     
-     <div class="login">
-        <a href="profile.html" class="loginButton">Logout</a> 
-    </div>
+    
     
     <body style="font-family:sans-serif; background-color:lavenderblush;">
         
-        <form action= <?php echo "update_profile.php?"."mid=".$mid ?> name="frmAdd" method="post" enctype="multipart/form-data">
+        <form action="update_profile.php?mid=<?php echo $mid; ?>" name="frmAdd" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-3">
                 
@@ -109,7 +107,7 @@
                     <ul class="leftList">
                                              
                          <?php $pic_path = $row['profile_pics'];
-                            echo "<img src =".$pic_path." width="."'247'"."'height='200'"." >";
+                            echo "<img src =".$pic_path." width="."'200'"."'height='200'"." >";
                         ?>
                         <li class="withBorder"><a href=<?php echo "editProfile.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li>
                         <li class="withBorder"><a href=<?php echo "editProfilePW.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li>
@@ -154,10 +152,15 @@
                     
                      <div class="inputField" >
                         Sex 
+<<<<<<< HEAD
+                     <select name="gender" style="margin-left:117px">
+                         <option value="male" <?php if ($row['gender'] === 'm') echo ' selected="selected"'; ?>>
+=======
                      <select name "gender" style="margin-left:117px">
                          <option value="male" <?php if ($row['gender'] === 'm') echo ' selected="selected"' ?>>
+>>>>>>> origin/master
                          Male</option>
-                         <option value="female" <?php if ($row['gender'] === 'f') echo ' selected="selected"'?>>Female</option>
+                         <option value="female" <?php if ($row['gender'] === 'f') echo ' selected="selected"'; ?>>Female</option>
                      </select>
 
 
@@ -165,10 +168,16 @@
                     
                     <div class="inputField">
                          Bio
-                        <textarea name="user_des" width="100px" rows="5" id="bio" style="margin-left:120px" rows="4" cols="50">
-                        <?php echo $row['user_des']; ?>
-                        
-                        </textarea>
+<<<<<<< HEAD
+                        <textarea name="user_des" width="100px" rows="5" id="bio" value=" 
+                        <?php if(!empty($row['fname'])){
+                            echo $row['fname'];
+                        }else{ echo "none";} ?>" 
+                        style="margin-left:120px" rows="4" cols="50"></textarea>
+=======
+                        <textarea name="user_des" width="100px" rows="5" id="bio" value=" <?php if(!empty($row['fname'])){echo $row['fname'];}
+                        else echo "none" ?>" style="margin-left:120px" rows="4" cols="50"></textarea>
+>>>>>>> origin/master
 
                     </div>                     
                     
@@ -177,7 +186,7 @@
                     </div>
                     
                     <div class="submitButton">
-                        <input type="submit" class='button' value="Confirm" style="margin-bottom:4%">
+                        <input type="submit" class='button' value="Confirm">
                     </div>      
                     
                 
@@ -193,5 +202,12 @@
         
        </form> 
     </body>
+<<<<<<< HEAD
+     <div class="login">
+        <a href="museumhome.php" class="loginButton">Logout</a> 
+    </div>
+</html>\
+=======
     
 </html>
+>>>>>>> origin/master

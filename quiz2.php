@@ -1,7 +1,8 @@
+
 <?php  
     session_start();
 
-//    include "check-user.php";
+    include "check-user.php";
     include "connection.php";
     if (isset($_REQUEST['quiz_id'])) {
         $quiz_id = $_REQUEST['quiz_id'];
@@ -16,7 +17,7 @@
         
         exit;
     }else{
-        $amount = 4;
+        $amount = 3;
     }
 ?>
 <html>
@@ -91,6 +92,8 @@
         $correctAns = mysqli_fetch_array($rs3);
              
     ?>
+            </div>
+        </div>
             
         
         
@@ -134,3 +137,4 @@
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
+

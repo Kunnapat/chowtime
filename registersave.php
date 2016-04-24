@@ -188,32 +188,17 @@ if($errmsg1 != "") {
     }
 
 
-    $defaultBio ='This is your profile Bio';
-    
+
     $strSQL = "INSERT INTO users ";
-    $strSQL .="(user_id,is_member,fname,lname,username,password,email,tel,gender,birthdate, user_des, active,secure_quest,secure_ans,profile_pics)";
+    $strSQL .="(user_id,is_member,fname,lname,username,password,email,tel,gender,birthdate,active,secure_quest,secure_ans,profile_pics)";
     $strSQL .="VALUES ";
-    $strSQL .="('".'0'."',
-    '".'1'."',
-    '".$_POST["fname"]."',
-    '".$_POST["lname"]."',
-    '".$_POST["username"]."',
-    '".$_POST["password"]."',
-    '".$_POST["email"]."',
-    '".$_POST["tel"]."',
-    '".$_POST["gender"]."',
-    '".$_POST["birthdate"]."',
-    '$defaultBio',
-    '1',
-    '".$_POST["question"]."',
-    '".$_POST["answer"]."'";
-    
+    $strSQL .="('".'0'."','".'1'."','".$_POST["fname"]."','".$_POST["lname"]."','".$_POST["username"]."','".$_POST["password"]."','".$_POST["email"]."','".$_POST["tel"]."','".$_POST["gender"]."','".$_POST["birthdate"]."','1','".$_POST["question"]."','".$_POST["answer"]."'";
     $strSQL .=",'".$filepath."')";
     $objQuery = mysql_query($strSQL,$objConnect);
     $lastID = mysql_insert_id();
     if($objQuery){
         $mname=$_POST['username'];
-        echo "<script type='text/javascript'>window.top.location='profile.php?mid=$lastID&mname=$mname';</script>";
+        echo "<script type='text/javascript'>window.top.location='museumhome.php#popup1';</script>";
         //header('Location: profile.php?mid='.$lastID."&"."mname=".$mname);
     }else{
         echo "ERROR: Could not able to execute $objQuery. ";
@@ -228,7 +213,7 @@ mysql_close($objConnect);
 
 <script>
 
-    $.post("profile.html", {mid:mid, function(results){
+    $.post("museumhome.php/#popup1", {mid:mid, function(results){
         // the output of the response is now handled via a variable call 'results'
         console.log("Result: "+results);
     });

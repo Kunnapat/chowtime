@@ -78,37 +78,37 @@
 
                 <div class="row">
                   <div class="col-md-6" name = "left-content">
-                        Username<font color="red">*</font>:</br>
-                        <input type="text" class="form-control" name="username" placeholder="username"required/></br>
-                        Password<font color="red">*</font>:</br>
-                        <input type="password" class="form-control" name="password" placeholder="password"required/></br>
-                        Confirm Password<font color="red">*</font>:</br>
-                        <input type="password" class="form-control" name="repassword" placeholder="confirm your password" required/></br>
-                        Security Question<font color="red">*</font>:</br>
-                        <input type="text" class="form-control" name="question" placeholder="your question" required/></br>
-                        Answer<font color="red">*</font>:</br>
-                        <input type="text" class="form-control" name="answer" placeholder="your answer" required/></br>
-                        Gender:</br>
+                        Username<font color="red">*</font>:<br>
+                        <input type="text" class="form-control" name="username" placeholder="username"required/><br>
+                        Password<font color="red">*</font>:<br>
+                        <input type="password" class="form-control" name="password" placeholder="password"required/><br>
+                        Confirm Password<font color="red">*</font>:<br>
+                        <input type="password" class="form-control" name="repassword" placeholder="confirm your password" required/><br>
+                        Security Question<font color="red">*</font>:<br>
+                        <input type="text" class="form-control" name="question" placeholder="your question" required/><br>
+                        Answer<font color="red">*</font>:<br>
+                        <input type="text" class="form-control" name="answer" placeholder="your answer" required/><br>
+                        Gender:<br>
                         <input type="radio" name="gender" value="male" checked> Male
-                        <input type="radio" name="gender" value="female"> Female</br>
+                        <input type="radio" name="gender" value="female"> Female<br>
                        
 
                   </div>
                   <div class="col-md-6" name = "right-content" >
 
-                        Firstname<font color="red">*</font>:</br>    
-                        <input type="text" class="form-control" name="fname" placeholder="firstname" required/></br>  
-                        Lastname<font color="red">*</font>:</br> 
-                        <input type="text" class="form-control" name="lname" placeholder="lastname" required/></br>
+                        Firstname<font color="red">*</font>:<br>    
+                        <input type="text" class="form-control" name="fname" placeholder="firstname" required/><br>  
+                        Lastname<font color="red">*</font>:<br> 
+                        <input type="text" class="form-control" name="lname" placeholder="lastname" required/><br>
                         Birthdate:
-                        <input type="date" class="form-control" name="birthdate"  required/></br>
+                        <input type="date" class="form-control" name="birthdate"  required/><br>
                         Your profile picture:
-                        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"></br>
-                        <input name="user_picture_file" type="file" id="user_picture_file"></br>
-                        Email<font color="red">*</font>:</br>
-                        <input type="text" name="email" class="form-control" placeholder="email" required/></br>
-                        <td>Phone Number<font color="red">*</font>:</br>
-                        <input type="text" name="tel" class="form-control" placeholder="phone number" required/></br>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"><br>
+                        <input name="user_picture_file" type="file" id="user_picture_file"><br>
+                        Email<font color="red">*</font>:<br>
+                        <input type="text" name="email" class="form-control" placeholder="email" required/><br>
+                        <td>Phone Number<font color="red">*</font>:<br>
+                        <input type="text" name="tel" class="form-control" placeholder="phone number" required/><br>
                         <input type="submit" class='button' value="Confirm">      
                         <input type ="button" class='button' onclick="window.location.href='./museumhome.php'" 
                         value="Go back to main page">
@@ -119,7 +119,6 @@
                
             </div>
         </div>
-    </div>
         
     </body>
         

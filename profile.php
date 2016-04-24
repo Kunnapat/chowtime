@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include "check-user.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,14 +52,15 @@
         // session_save_path("./session/");
         // session_start();
 
-        $mname = $_GET['mname'];
-        $mid = $_GET['mid'];
+        $user_id = $_SESSION['user_id'];
 
         // $mid = $_SESSION["mid"];
 
-        $query = mysql_query("SELECT * FROM users WHERE user_id =".$mid);
+        $query = mysql_query("SELECT * FROM users WHERE user_id ='$user_id'");
         while ($row = mysql_fetch_array($query)) {    
-
+            $profile_pics  =  $row['profile_pics'];
+            $username = $row['username'];
+        }
     ?>
     
     
@@ -72,13 +78,13 @@
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">CHOWTIME</a>
                 <a class="navbar-brand page-scroll" href="museumhome.php"><div class="currentpage">Museum</div></a>
-                <a class="navbar-brand page-scroll" href="event.html">Music Hall</a>
+                <a class="navbar-brand page-scroll" href="event.php">Music Hall</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    
+                    v
                     <li>
                         <a class="page-scroll"><div id="menubutton">MUSEUM MENU</div></a>
                     </li>
@@ -89,9 +95,7 @@
         <!-- /.container-fluid -->
     </nav>
     
-    <div class="login">
-        <a href="profile.html" class="loginButton">Logout</a> 
-    </div>
+    
      
     
     <body>
@@ -101,7 +105,7 @@
         <div class="col-md-5">
             <div> 
                 <div class="profilepicTab">               
-                  <img class="profilepic" src= "<?php echo $row['profile_pics']; ?>" width="200" height="200"  >
+                  <img class="profilepic" src= "<?php echo $profile_pics; ?>" width="200" height="200"  >
                 </div>
               
             </div>
@@ -113,11 +117,11 @@
             <div class="textTab">
                 <div> 
                     <h2 name = "mid"value="">
-                        <?php echo $row['username']; ?>
+                        <?php echo $username; ?>
                         <button class="editProfile" id = "editbutton" >Edit profile</button>              
                     </h2>  
                     
-                    <p name="user_des"><strong></strong><?php echo $row['user_des']; ?></p>
+                    <p><strong></strong> An engineering student who loves to watch classical music show. <br> SJC boyellow:3, CU Engineering!</p>
                 </div>
             
                 <hr>
@@ -229,10 +233,14 @@
                 
     <div class="container">
                     <h2>Quiz
-                         <button class="add">play more</button> 
+                         <button class="add" onclick="gotoquiz()">play more</button> 
         
                     </h2>
-
+<script>
+function gotoquiz(){
+    location.href = "quizhome.php"
+}        
+</script>
 <div class="rightTab">
         
       <div class="panel-group" id="accordion">
@@ -278,24 +286,19 @@
 
     };
 </script>
-
-<?php
-
-}
-?>              
-        
-</div>
   
-
+</div>
             </div>
         
-        
-        
     </div>
+        </div>
         
         
         
     
     </body>
+        <div class="login">
+        <a href="logout.php" class="loginButton">Logout</a> 
+    </div>
     
 </html>

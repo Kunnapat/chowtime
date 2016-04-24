@@ -1,11 +1,10 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
 
     <meta charset="utf-8">
@@ -28,7 +27,7 @@ session_start();
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/museumhome.css" type="text/css">
+    <link rel="stylesheet" href="css/gettinghere.css" type="text/css">
     <link rel="stylesheet" href="css/popup.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -46,7 +45,7 @@ session_start();
         <div class="active-nav">
             <ul style="list-style-type:none;">
                 <li class="nav-list">MUSEUM</li>
-                <li class="nav-list visitpluspic">
+                <li class="nav-list">
                     <img src="img/plus32.png" class="pluspic" id="visitpluspic"/>
                     <img src="img/minus32.png" class="minuspic" id="visitminuspic">
                     Visit and do
@@ -85,9 +84,7 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="homepage.php">CHOWTIME</a>
-                <a class="navbar-brand page-scroll" href="#page-top"><div class="currentpage">Museum</div></a>
-                <a class="navbar-brand page-scroll" href="musichallhome.php">Music Hall</a>
+                <a class="navbar-brand page-scroll" href="plan-your-visit.php"><- PLAN Your Visit></-></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -95,7 +92,7 @@ session_start();
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li>
-                        <a class="page-scroll"><div id="menubutton">MUSEUM MENU</div></a>
+                        <a class="page-scroll"><div class="menubutton" id="menubutton">MUSEUM MENU</div></a>
                     </li>
                 </ul>
             </div>
@@ -103,32 +100,184 @@ session_start();
         </div>
         <!-- /.container-fluid -->
     </nav>
+    
+    <div class="container">
+      <img src="img/museumlogo.png" class="logo" />
+   
+    </div>
+        
+    <div class="container">
+      <img src="img/gettingheresym.png" class="symbol" />
+   
+    </div>
+        
+    <div class="container">
+        <section class="component page-description">
+            <p class="line labels">
+            </p>
+
+            <h1>
+                <p><span>Getting Here</span></p>
+            </h1>
+
+            <div class="component-content">
+      
+                <div class="intro">
+                    <div class="rich-text"><p><strong>Chulalongkorn University Museum</strong>
+                        <br>254 Phayathai Road, Pathumwan
+                        <br>Bangkok 10330</p>
+                    </div>
+                </div>
 
 
-    <header>
-        <div class="header-content">
-               
-            <div class="header-content-inner">
-                <div class = "maintext">CHULA MUSEUM</div>
-                <hr>
-                <p id="1234">Discover a new look of Chula and watch a great performance. Slow your pace down and visit us at Chula Museum!</p>
-                <!-- <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
             </div>
-        </div>
-    </header>
+        </section>
+    </div>
+    
+    <div class="page-components">
 
-    <section class="bg-primary" id="about">
+
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Open on Weekdays 09.00 - 16.00</h2>
-                    <hr class="light">
-                    <p class="text-faded">Chulalongkorn University</p>
-                    <a href="#" class="btn btn-default btn-xl">Plan your visit</a>
+            <div class="component embed-component ">
+                <div class="html">
+                    <div class="prevent-scroll-overlay" onclick="style.pointerEvents='none'"></div>
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d968.9125682627097!2d100.53179357919437!3d13.739611052126632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ed487f85c31%3A0xe171215ee57ffa3!2sExhibition+Hall%2C+Pathum+Wan%2C+Bangkok+10330!5e0!3m2!1sen!2sth!4v1455202816017" width="880" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+     
+                    <a onclick=trackOutboundLink(&#39;http://www.google.co.uk/maps/place/Design+Museum/@51.502976,-0.071935,17z/data=!3m1!4b1!4m2!3m1!1s0x48760347a6e741b3:0xae7123fe55183526&#39;) class="" target="_blank" href="https://www.google.co.th/maps/place/Exhibition+Hall,+Pathum+Wan,+Bangkok+10330/@13.739615,100.5301521,17z/data=!3m1!4b1!4m6!1m3!3m2!1s0x30e29ed50f9c6f4b:0xf0100b33d0b32c0!2sChulalongkorn+University!3m1!1s0x30e29ed487f85c31:0xe171215ee57ffa3?hl=en"><div class="googlelink">View on Google Map</div>
+                    </a>
+
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+        
+    
+    
+    
+    <div class="container">
+        <div class="component quote-component">
+            <div class="rich-text"><p>by foot</p>
+
+            </div>
+        </div>
+    </div>
+        
+    <div class="container">
+      <div class="page-items-component component clearfix  ">
+          <div class="page-item clearfix">
+              <div class="item-content">
+                  <h2>From Sala Prakiew</h2>
+
+                  <div class="rich-text">
+                      <p>7 minutes walk north through faculty of engineering. Across the field or Dhevalai.</p>
+                  </div>
+                  <ul class="link-list">
+                      <li>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div class="page-item clearfix">
+            <div class="item-content">
+                <h2>From Siam Square</h2>
+                <div class="rich-text">
+                    <p>10 minutes walk south on Henri Dunant road. Enter the first university entrance on your right and walk in behind faculty of arts.</p>
+                </div>
+                <ul class="link-list">
+                    <li>
+                    </li>
+                </ul>
+            </div></div>
+      </div>
+    </div>
+    <div class="container">
+        <div class="image-component component ">
+            <figure>
+                <img src="img/museumfront.jpg" />     
+            </figure>
+        </div>
+    </div>
+        
+        
+    <div class="container">
+        <div class="component quote-component">
+            <div class="rich-text"><p>by public transport</p>
+
+            </div>
+        </div>
+    </div>
+        
+    <div class="container">
+      <div class="page-items-component component clearfix  ">
+          <div class="page-item clearfix">
+              <div class="item-content">
+                  <h2>BTS</h2>
+
+                  <div class="rich-text">
+                      <p>The Siam Station and National Stadium Station are relatively close to the university. Once you arrive at the station, there are University shuttle buses number 1 that will take you right to the museum.</p>
+                  </div>
+                  <ul class="link-list">
+                      <li>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div class="page-item clearfix">
+            <div class="item-content">
+                <h2>MRT</h2>
+                <div class="rich-text">
+                    <p>The Sam Yan station is right next to the university. Just take off through Exit 2 at the base of the Chamchuri Square , which is one of the university buildings where you can begin your visit. From here, you can then either walk. Board a shuttle bus or hire a taxi to the museum</p>
+                </div>
+                <ul class="link-list">
+                    <li>
+                    </li>
+                </ul>
+            </div>
+          </div>
+          <div class="page-item clearfix">
+              <div class="item-content">
+                  <h2>Bus</h2>
+
+                  <div class="rich-text">
+                    
+                      <p>
+                          There are a number of public buses that stop at the university. These can be classified according to four roads surrounding the campus.
+                          <ul>
+                              <li>Phayathai Road : Bus Numbers 27, 29, 36, 36ก (36 Kor), 65 and 501</li>
+                              <li>Henry Dunant Road : Bus Numbers 16, 21 and 141</li>
+                          </ul>
+                      <p>
+                  </div>
+                  <ul class="link-list">
+                      <li>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+    </div>
+   
+
+    
+        
+        
+    <br>
+    <br>
+        
+
+    </div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
 
 
     <!-- jQuery -->
@@ -184,9 +333,8 @@ session_start();
         });
 
     </script>
-    
-     
-<form action="#checklogin" name="frmAdd" method="post">   
+
+ <form action="#checklogin" name="frmAdd" method="post">   
 <div id="popup1" class="overlay">
   <div class="popup">
     <h2>Chowtime</h2>
@@ -235,7 +383,7 @@ session_start();
                 break;
             }
             if($row['username']==$username && $row['password']!=$password){
-                echo "<a href='./museumhome.php#popup2'>ForgetPassword?</a>";
+                echo "<a href='./plan-your-visit.php#popup2'>ForgetPassword?</a>";
             }
             else{
                 $non="true";
@@ -269,7 +417,7 @@ session_start();
         
         Email: <input type="text" name="email"><br><br>
         <input type="submit" class='button' value="Submit">
-        <a href="./museumhome.php" class="button">cancel</a>
+        <a href="./plan-your-visit.php" class="button">cancel</a>
         
     </div>
     </div>
@@ -303,9 +451,9 @@ session_start();
             echo "Question:$question<br>";
             echo "Answer: <input type=\"text\" name=\"answer\">";
             echo "<input type=\"submit\" class='button' value=\"Submit\">
-        <a href=\"./museumhome.php\" class=\"button\">cancel</a>";
+        <a href=\"./plan-your-visit.php\" class=\"button\">cancel</a>";
         }else {
-            echo "email not found <a href='./museumhome.php#popup2'>Go back</a> <br>";
+            echo "email not found <a href='./plan-your-visit.php#popup2'>Go back</a> <br>";
             echo "<a href='./registration.php'>Register</a>";
         }
         mysql_close();
@@ -338,14 +486,14 @@ session_start();
 //        echo $answer;
         $var = $_POST['var'];
 //        echo $var;
-        $say = "your answer is not correct <br><a href='./museumhome.php#popup2'>Try Again</a>";
+        $say = "your answer is not correct <br><a href='./plan-your-visit.php#popup2'>Try Again</a>";
 
             if($var==$answer){
                 echo "<input type=\"hidden\" value=\"<?php echo \$email?>\" name=\"email\" />";
                 echo "New password: <input type=\"text\" name=\"password\"><br><br>
         Confirm New Password: <input type=\"text\" name=\"repassword\"><br><br>
         <input type=\"submit\" class='button' value=\"Submit\">
-        <a href=\"./museumhome.php\" class=\"button\">cancel</a>";
+        <a href=\"./plan-your-visit.php\" class=\"button\">cancel</a>";
             }
         else {
             echo $say;
@@ -396,7 +544,7 @@ session_start();
                 }
 
             }else {
-                echo "new password and confirm new password not match <br><a href='./museumhome.php#popup3'>Go back</a> ";
+                echo "new password and confirm new password not match <br><a href='./plan-your-visit.php#popup3'>Go back</a> ";
             }
             
         mysql_close();
@@ -487,6 +635,6 @@ session_start();
             }
         ?>
         
-        </div> 
+        </div>
 
 </html>

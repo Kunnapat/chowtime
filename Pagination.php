@@ -48,11 +48,11 @@ if ($Page == $Num_Pages) {
 } else {        
     $Next_Page = $Page+1;
 }
-*/
+
 
 $Before_Last = $Num_Pages - 1;
 $Pagination = ""; //display the page number
-
+*/
 
 ?>
 
