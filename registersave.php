@@ -188,11 +188,26 @@ if($errmsg1 != "") {
     }
 
 
-
+    $defaultBio ='This is your profile Bio';
+    
     $strSQL = "INSERT INTO users ";
-    $strSQL .="(user_id,is_member,fname,lname,username,password,email,tel,gender,birthdate,active,secure_quest,secure_ans,profile_pics)";
+    $strSQL .="(user_id,is_member,fname,lname,username,password,email,tel,gender,birthdate, user_des, active,secure_quest,secure_ans,profile_pics)";
     $strSQL .="VALUES ";
-    $strSQL .="('".'0'."','".'1'."','".$_POST["fname"]."','".$_POST["lname"]."','".$_POST["username"]."','".$_POST["password"]."','".$_POST["email"]."','".$_POST["tel"]."','".$_POST["gender"]."','".$_POST["birthdate"]."','1','".$_POST["question"]."','".$_POST["answer"]."'";
+    $strSQL .="('".'0'."',
+    '".'1'."',
+    '".$_POST["fname"]."',
+    '".$_POST["lname"]."',
+    '".$_POST["username"]."',
+    '".$_POST["password"]."',
+    '".$_POST["email"]."',
+    '".$_POST["tel"]."',
+    '".$_POST["gender"]."',
+    '".$_POST["birthdate"]."',
+    '$defaultBio',
+    '1',
+    '".$_POST["question"]."',
+    '".$_POST["answer"]."'";
+    
     $strSQL .=",'".$filepath."')";
     $objQuery = mysql_query($strSQL,$objConnect);
     $lastID = mysql_insert_id();

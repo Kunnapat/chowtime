@@ -117,7 +117,7 @@
                         <button class="editProfile" id = "editbutton" >Edit profile</button>              
                     </h2>  
                     
-                    <p><strong></strong> An engineering student who loves to watch classical music show. <br> SJC boyellow:3, CU Engineering!</p>
+                    <p name="user_des"><strong></strong><?php echo $row['user_des']; ?></p>
                 </div>
             
                 <hr>
