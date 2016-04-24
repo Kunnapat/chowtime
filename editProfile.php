@@ -109,7 +109,7 @@
                     <ul class="leftList">
                                              
                          <?php $pic_path = $row['profile_pics'];
-                            echo "<img src =".$pic_path." width="."'200'"."'height='200'"." >";
+                            echo "<img src =".$pic_path." width="."'247'"."'height='200'"." >";
                         ?>
                         <li class="withBorder"><a href=<?php echo "editProfile.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile</a></li>
                         <li class="withBorder"><a href=<?php echo "editProfilePW.php?"."mid=".$mid ?>>&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a></li>
