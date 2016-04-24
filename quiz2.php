@@ -16,7 +16,7 @@
         
         exit;
     }else{
-        $amount = 3;
+        $amount = 4;
     }
 ?>
 <html>

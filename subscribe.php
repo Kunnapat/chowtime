@@ -6,7 +6,7 @@
 	<meta name = "format-detection" content = "telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Current Event</title>
+    <title>Subscribe Email</title>
     
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/grid.css">
@@ -79,7 +79,40 @@
             
         </div>
         <div class="container">
-            
+<?php
+ include "connection.php";
+
+if($_REQUEST) {
+    $email = $_REQUEST['email'];
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $msg = "invalid email";
+    }else {
+        if($_REQUEST['subscribe']=="subscribe") {
+            $sql = "SELECT COUNT(*) FROM email WHERE address = '$email'";
+            $rs = mysqli_query($link, $sql);
+            $data = mysqli_fetch_array($rs);
+            if($data[0] != 0) {
+                $msg = "You are already subscribed";
+            }
+            else {
+                $sql = "INSERT INTO email VALUES(0,'$email',DATE_SUB(CURRENT_DATE(),INTERVAL 1 DAY))";
+                mysqli_query($link, $sql);
+                $msg = "Subscribed";
+                
+            }
+        }
+        else if($_REQUEST['unsubscribe']=="unsubscribe") {
+            $sql = "DELETE FROM email WHERE address = '$email'";
+            mysqli_query($link, $sql);
+            $msg = "You are unsubscribed";
+        }
+        echo $msg;
+    }
+    
+    
+    mysqli_close($link);
+}
+?>
             <div class="row">
                 <div class="col-md-4">
                 </div>
@@ -94,13 +127,14 @@
             </div>
         </div>
     </div>
+    <form>
     <div class="container">
             
             <div class="row">
                 <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon2">@</span>
-                        <input type="text" class="form-control" placeholder="Your email" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" placeholder="Your email" aria-describedby="basic-addon2" name="email">
                         
                         </div>
 
@@ -120,10 +154,10 @@
                 
                 <div class="col-md-3">
                     <div class="buttonarea" style="text-align: center;">
-                        <a href="#" class="myButton">
+                        <button class="myButton" name="subscribe" value="subscribe">
                             <span class="glyphicon glyphicon-ok" aria-hidden="true" id="icon3"></span>
                             SUBSCIBE
-                        </a>
+                        </button>
                     </div>
                     
     
@@ -131,10 +165,10 @@
                 
                 <div class="col-md-3">
                     <div class="buttonarea" style="text-align: center;">
-                        <a href="#" class="myButton">
+                        <button class="myButton" name="unsubscribe" value="unsubscribe">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true" id="icon3"></span>
                             UNSUBSCIBE
-                        </a>
+                        </button>
                     </div>
     
                 </div>
@@ -143,6 +177,7 @@
                 
             </div>
         </div>
+    </form>
 </section> 
     
 
