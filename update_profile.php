@@ -68,22 +68,25 @@
 
             $storeImgPath = "images/member_profile_img/";
 
-            if($lastpic!="no picture"){
-                unlink($storeImgPath.$lastpic);
+            if($_FILES["user_picture_file"]["tmp_name"]){
+                unlink($lastpic); //delete picture from folder.
+           
+   
+                $filetmp = $_FILES["user_picture_file"]["tmp_name"];
+                $filename = $_FILES["user_picture_file"]["name"];
+                $filetype = $_FILES["user_picture_file"]["type"];
+                $filepath = $storeImgPath.$filename;
+
+                if($filetmp){
+                   move_uploaded_file($filetmp,$filepath);
+                }else{
+                    $filepath = "no picture";
+                }
+            }else{
+                $filepath = $lastpic;
             }
             
-                   
-            $filetmp = $_FILES["user_picture_file"]["tmp_name"];
-            $filename = $_FILES["user_picture_file"]["name"];
-            $filetype = $_FILES["user_picture_file"]["type"];
-            $filepath = $storeImgPath.$filename;
-                  
-            if($filetmp){
-               move_uploaded_file($filetmp,$filepath);
-            }else{
-                $filepath = "no picture";
-            }
-
+        
 
         $gender = isset($_POST["gender"]) ? $_POST["gender"] : "";
                   
