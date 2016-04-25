@@ -1,4 +1,8 @@
-
+<?php
+    session_start();
+    include "check-user.php";
+    $userid = $_SESSION['user_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +62,7 @@
                 </li>
                 <ul style="list-style-type:none;margin-left:30px;" id="ex">
                     <li class="nav-sublist"><a href="eventcurrent.php">Current Events</a></li>
-                    <li class="nav-sublist">Future Events</li>
+                    <li class="nav-sublist"><a href="eventfuture.php">Future Events</a></li>
                 </ul>
                 <li class="nav-list">
                     <img src="img/plus32.png" />

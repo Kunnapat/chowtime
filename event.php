@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Current Event</title>
+    <?php
+    $eid = $_GET['id'];
+    $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+    $objDB = mysql_select_db("chowtime");
+    $strSQL = "SELECT * FROM events WHERE event_id=".$eid;
+    $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+    $tempstring = "SELECT ename FROM events WHERE event_id=".$eid;
+    $tempResult = mysql_query($tempstring) or die ("Error Query [".$strSQL."]");
+    while($tempObj = mysql_fetch_array($tempResult))
+    {
+          $eventname = $tempObj["ename"];
+    } 
+    ?>
+    
+	<title><?php echo $eventname;?></title>
+    
 	<meta charset="utf-8">
 	<meta name = "format-detection" content = "telephone=no" />
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -42,13 +57,7 @@
 </head>
 
 <body>
-    <?php
-    $eid = $_GET['id'];
-    $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
-    $objDB = mysql_select_db("chowtime");
-    $strSQL = "SELECT * FROM events WHERE event_id=".$eid;
-    $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-    ?>
+    
    <div class="menuarea fullscreen" id="menuarea">
 
     <div class="closebutton" id="closemenu">X</div>
@@ -71,8 +80,8 @@
                 Events
             </li>
             <ul style="list-style-type:none;margin-left:30px;" id="ex">
-                <li class="nav-sublist"><a href="eventcurrent.html">Current Events</a></li>
-                <li class="nav-sublist"><a href="eventfuture.html">Future Events</a></li>
+                <li class="nav-sublist"><a href="eventcurrent.php">Current Events</a></li>
+                <li class="nav-sublist"><a href="eventfuture.php">Future Events</a></li>
             </ul>
             <li class="nav-list">
                 <img src="img/plus32.png" />
@@ -94,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="eventcurrent.php">Back to current events</a>
+            <a class="navbar-brand page-scroll" href="javascript:history.back()">Back to events</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -167,7 +176,7 @@
                                     ORGANISED BY - <?php echo $objResult["organiser"];?>
                                 </li>
                                 <li>
-                                    Conducted in  - <?php echo $objResult["language"];?>
+                                    CONDUCTED IN - <?php echo $objResult["language"];?>
                                 </li>
                                 <li>
                                     TYPE - <?php echo $objResult["type"];?>

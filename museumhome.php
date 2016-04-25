@@ -86,7 +86,7 @@ session_start();
                 </button>
                 <a class="navbar-brand page-scroll" href="homepage.html">CHOWTIME</a>
                 <a class="navbar-brand page-scroll" href="#page-top"><div class="currentpage">Museum</div></a>
-                <a class="navbar-brand page-scroll" href="musichallhome.html">Music Hall</a>
+                <a class="navbar-brand page-scroll" href="musichallhome.php">Music Hall</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -183,6 +183,47 @@ session_start();
         });
 
     </script>
+    
+      <div class= "login" id="login">
+        <a href="
+        <?php
+            $username = $_POST['username'];  
+               if($username!=null){
+                   echo "/profile.php";
+               }else{
+                   echo "#popup1";
+               }
+        ?>
+                 " class="loginButton">
+        <?php
+            $username = $_POST['username']; 
+         
+            $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+            $objDB = mysql_select_db("chowtime");
+            $strSQL = "SELECT * FROM users ";
+        // Execute the query (the recordset $rs contains the result)
+        $rs = mysql_query($strSQL);
+        $try = "false";
+        if($rs){
+            while($row = mysql_fetch_array($rs)) {
+                if($row['username']==$username){
+                    echo $username;
+                    $try = "false";
+                    $_SESSION['user_id'] = $row['user_id'];
+                    break;
+                }else{
+                    $try = "true";
+                }
+            }
+            if($try=="true"){
+                echo "Login";
+            }
+        }
+                     
+
+        ?>
+           </a>
+        </div> 
 
 <form action="#checklogin" name="frmAdd" method="post">   
 <div id="popup1" class="overlay">
@@ -214,7 +255,7 @@ session_start();
      
         $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
         $objDB = mysql_select_db("chowtime");
-        $strSQL = "SELECT * FROM members ";
+        $strSQL = "SELECT * FROM users ";
 	// Execute the query (the recordset $rs contains the result)
 	$rs = mysql_query($strSQL);
     $non = "false";
@@ -284,7 +325,7 @@ session_start();
         
             $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
             $objDB = mysql_select_db("chowtime");
-            $strSQL = "SELECT * FROM members WHERE email='$email' ";
+            $strSQL = "SELECT * FROM users WHERE email='$email' ";
         // Execute the query (the recordset $rs contains the result)
 
         $rs = mysql_query($strSQL);
@@ -382,7 +423,7 @@ session_start();
                 die("Connection failed: " . mysqli_connect_error());
             }
             if($newpass==$newrepass){
-                $sql = "UPDATE members SET password='$newpass' WHERE email='$email' ";
+                $sql = "UPDATE users SET password='$newpass' WHERE email='$email' ";
                 
                 if (mysqli_query($conn, $sql)) {
                     
@@ -407,6 +448,7 @@ session_start();
     
 </body>
     
+
     <div class= "login" id="login">
         <a href="
         <?php
@@ -419,12 +461,29 @@ session_start();
         ?>
                  " class="loginButton">
         <?php
-            $username = $_POST['username'];  
-               if($username!=null){
-                   echo $username;
-               }else{
-                   echo "Login";
-               }
+            $username = $_POST['username']; 
+         
+            $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
+            $objDB = mysql_select_db("chowtime");
+            $strSQL = "SELECT * FROM users ";
+        // Execute the query (the recordset $rs contains the result)
+        $rs = mysql_query($strSQL);
+        $try = "false";
+        if($rs){
+            while($row = mysql_fetch_array($rs)) {
+                if($row['username']==$username){
+                    echo $username;
+                    $try = "false";
+                    break;
+                }else{
+                    $try = "true";
+                }
+            }
+            if($try=="true"){
+                echo "Login";
+            }
+        }
+       
         ?>
            </a>
         </div>   

@@ -37,7 +37,7 @@
     <?php
     $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
     $objDB = mysql_select_db("chowtime");
-    $strSQL = "SELECT * FROM events WHERE start_date < SYSDATE() AND end_date > SYSDATE()";
+    $strSQL = "SELECT * FROM events WHERE start_date > SYSDATE()";
     $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
     ?>
    <div class="menuarea fullscreen" id="menuarea">

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +7,7 @@
 	<meta name = "format-detection" content = "telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Current Event</title>
+    <title>Reservation</title>
     
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/grid.css">
@@ -62,6 +62,13 @@
                 
                 CANCEL RESERVATION
             </a>
+            
+            <a class="navbar-brand page-scroll" href="reservation.php?id=<?php echo $eid ?>">
+                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" id="icon"></span>
+                RESET
+            </a>
+            
+            </div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -207,9 +214,9 @@
                                         {
                                     ?>
                                     <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="<?php echo $robjResult["round_id"];?>"   name="roundoption" id="<?php echo $robjResult["round_id"];?>"> 
+                                        <input class="segmented-control__input" type="radio" value="<?php echo substr($robjResult["time"],0,5);?>"   name="roundoption" id="<?php echo $robjResult["round_id"];?>"> 
                                         <label class="segmented-control__label" for="<?php echo $robjResult["round_id"];?>" value="<?php echo $robjResult["round_id"];?>" > 
-                                            <?php echo $robjResult["time"];?>
+                                            <?php echo substr($robjResult["time"],0,5);?>
                                         </label> 
                                     </li>
                                     
@@ -590,10 +597,10 @@
                                        <div class="seat" id="A10">A10</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="A9">A9</div>
+                                       <div class="seat" id="A09">A9</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="A8">A8</div>
+                                       <div class="seat" id="A08">A8</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -626,10 +633,10 @@
                                        <div class="seat" id="B10">B10</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B9">B9</div>
+                                       <div class="seat" id="B09">B9</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B8">B8</div>
+                                       <div class="seat" id="B08">B8</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -659,10 +666,10 @@
                                        <div class="seat" id="C10">C10</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="C9">C9</div>
+                                       <div class="seat" id="C09">C9</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="C8">C8</div>
+                                       <div class="seat" id="C08">C8</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -695,10 +702,10 @@
                                        <div class="seat" id="D10">D10</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="D9">D9</div>
+                                       <div class="seat" id="D09">D9</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="D8">D8</div>
+                                       <div class="seat" id="D08">D8</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -728,13 +735,13 @@
                                        <div class="seat" id="F10">F10</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="F9">F9</div>
+                                       <div class="seat" id="F09">F9</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="F8">F8</div>
+                                       <div class="seat" id="F08">F8</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="F7">F7</div>
+                                       <div class="seat" id="F07">F7</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -756,25 +763,25 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="A7">A7</div>
+                                       <div class="seat" id="A07">A7</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="A6">A6</div>
+                                       <div class="seat" id="A06">A6</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="A5">A5</div>
+                                       <div class="seat" id="A05">A5</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="A4">A4</div>
+                                       <div class="seat" id="A04">A4</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="A3">A3</div>
+                                       <div class="seat" id="A03">A3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="A2">A2</div>
+                                       <div class="seat" id="A02">A2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="A1">A1</div>
+                                       <div class="seat" id="A01">A1</div>
                                    </div>
                                    <div class="col-md-2">
                                    </div>
@@ -783,25 +790,25 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B7">B7</div>
+                                       <div class="seat" id="B07">B7</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B6">B6</div>
+                                       <div class="seat" id="B06">B6</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B5">B5</div>
+                                       <div class="seat" id="B05">B5</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B4">B4</div>
+                                       <div class="seat" id="B04">B4</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B3">B3</div>
+                                       <div class="seat" id="B03">B3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B2">B2</div>
+                                       <div class="seat" id="B02">B2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="B1">B1</div>
+                                       <div class="seat" id="B01">B1</div>
                                    </div>
                                    <div class="col-md-2">
                                    </div>
@@ -810,25 +817,25 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="C7">C7</div>
+                                       <div class="seat" id="C07">C7</div>
                                    </div>
                                    <div class="col-md-1" >
-                                       <div class="seat" id="C6">C6</div>
+                                       <div class="seat" id="C06">C6</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="C5">C5</div>
+                                       <div class="seat" id="C05">C5</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="C4">C4</div>
+                                       <div class="seat" id="C04">C4</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="C3">C3</div>
+                                       <div class="seat" id="C03">C3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="C2">C2</div>
+                                       <div class="seat" id="C02">C2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="C1">C1</div>
+                                       <div class="seat" id="C01">C1</div>
                                    </div>
                                    <div class="col-md-2">
                                    </div>
@@ -837,25 +844,25 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="D7">D7</div>
+                                       <div class="seat" id="D07">D7</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="D6">D6</div>
+                                       <div class="seat" id="D06">D6</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="D5">D5</div>
+                                       <div class="seat" id="D05">D5</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="D4">D4</div>
+                                       <div class="seat" id="D04">D4</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="D3">D3</div>
+                                       <div class="seat" id="D03">D3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="D2">D2</div>
+                                       <div class="seat" id="D02">D2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="D1">D1</div>
+                                       <div class="seat" id="D01">D1</div>
                                    </div>
                                    <div class="col-md-2">
                                    </div>
@@ -864,25 +871,25 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="E7">E7</div>
+                                       <div class="seat" id="E07">E7</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="E6">E6</div>
+                                       <div class="seat" id="E06">E6</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="E5">E5</div>
+                                       <div class="seat" id="E05">E5</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="E4">E4</div>
+                                       <div class="seat" id="E04">E4</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="E3">E3</div>
+                                       <div class="seat" id="E03">E3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="E2">E2</div>
+                                       <div class="seat" id="E02">E2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="E1">E1</div>
+                                       <div class="seat" id="E01">E1</div>
                                    </div>
                                    <div class="col-md-2">
                                    </div>
@@ -1040,13 +1047,13 @@
                                        <div class="seat" id="G10">G10</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="G9">G9</div>
+                                       <div class="seat" id="G09">G9</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="G8">G8</div>
+                                       <div class="seat" id="G08">G8</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="G7">G7</div>
+                                       <div class="seat" id="G07">G7</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -1073,16 +1080,16 @@
                                        <div class="seat" id="H10">H10</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="H9">H9</div>
+                                       <div class="seat" id="H09">H9</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="H8">H8</div>
+                                       <div class="seat" id="H08">H8</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="H7">H7</div>
+                                       <div class="seat" id="H07">H7</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="H6">H6</div>
+                                       <div class="seat" id="H06">H6</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -1103,19 +1110,19 @@
                                        <div class="seat" id="I10">I10</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="I9">I9</div>
+                                       <div class="seat" id="I09">I9</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="I8">I8</div>
+                                       <div class="seat" id="I08">I8</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="I7">I7</div>
+                                       <div class="seat" id="I07">I7</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="I6">I6</div>
+                                       <div class="seat" id="I06">I6</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="I5">I5</div>
+                                       <div class="seat" id="I05">I5</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -1139,19 +1146,19 @@
                                        <div class="seat" id="J10">J10</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="J9">J9</div>
+                                       <div class="seat" id="J09">J9</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="J8">J8</div>
+                                       <div class="seat" id="J08">J8</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="J7">J7</div>
+                                       <div class="seat" id="J07">J7</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="J6">J6</div>
+                                       <div class="seat" id="J06">J6</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="J5">J5</div>
+                                       <div class="seat" id="J05">J5</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -1169,22 +1176,22 @@
                                        <div class="seat" id="K10">K10</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="K9">K9</div>
+                                       <div class="seat" id="K09">K9</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="K8">K8</div>
+                                       <div class="seat" id="K08">K8</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="K7">K7</div>
+                                       <div class="seat" id="K07">K7</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="K6">K6</div>
+                                       <div class="seat" id="K06">K6</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="K5">K5</div>
+                                       <div class="seat" id="K05">K5</div>
                                    </div>
                                     <div class="col-md-1">
-                                       <div class="seat" id="K4">K4</div>
+                                       <div class="seat" id="K04">K4</div>
                                    </div>
                                    <div class="col-md-1">
                                    </div>
@@ -1207,22 +1214,22 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="F6">F6</div>
+                                       <div class="seat" id="F06">F6</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="F5">F5</div>
+                                       <div class="seat" id="F05">F5</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="F4">F4</div>
+                                       <div class="seat" id="F04">F4</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="F3">F3</div>
+                                       <div class="seat" id="F03">F3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="F2">F2</div>
+                                       <div class="seat" id="F02">F2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="F1">F1</div>
+                                       <div class="seat" id="F01">F1</div>
                                    </div>
                                    <div class="col-md-3">
                                    </div>
@@ -1231,19 +1238,19 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="H5">H5</div>
+                                       <div class="seat" id="H05">H5</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="H4">H4</div>
+                                       <div class="seat" id="H04">H4</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="H3">H3</div>
+                                       <div class="seat" id="H03">H3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="H2">H2</div>
+                                       <div class="seat" id="H02">H2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="H1">H1</div>
+                                       <div class="seat" id="H01">H1</div>
                                    </div>
                                    <div class="col-md-4">
                                    </div>
@@ -1252,16 +1259,16 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="I4">I4</div>
+                                       <div class="seat" id="I04">I4</div>
                                    </div>
                                    <div class="col-md-1" >
-                                       <div class="seat" id="I3">I3</div>
+                                       <div class="seat" id="I03">I3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="I2">I2</div>
+                                       <div class="seat" id="I02">I2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="I1">I1</div>
+                                       <div class="seat" id="I01">I1</div>
                                    </div>
                                    <div class="col-md-5">
                                    </div>
@@ -1270,16 +1277,16 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="J4">J4</div>
+                                       <div class="seat" id="J04">J4</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="J3">J3</div>
+                                       <div class="seat" id="J03">J3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="J2">J2</div>
+                                       <div class="seat" id="J02">J2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="J1">J1</div>
+                                       <div class="seat" id="J01">J1</div>
                                    </div>
                                    <div class="col-md-5">
                                    </div>
@@ -1288,13 +1295,13 @@
                                    <div class="col-md-3">
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="K3">K3</div>
+                                       <div class="seat" id="K03">K3</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="K2">K2</div>
+                                       <div class="seat" id="K02">K2</div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div class="seat" id="K1">K1</div>
+                                       <div class="seat" id="K01">K1</div>
                                    </div>
                                    <div class="col-md-6">
                                    </div>
@@ -1354,7 +1361,7 @@
     var seatcount = 0;
     var zone;
     var seattext= "";
-    var seatarray = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20", "B21", "B22", "B23", "B24","C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C11", "C12", "C13", "C14", "C15", "C16", "C17", "C18", "C19", "C20", "C21", "C22", "C23", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "D21", "D22", "D23", "D24", "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10", "E11", "E12", "E13", "E14", "E15", "E16", "E17", "E18", "E19", "E20", "E21", "E22", "E23", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20", "F21", "F22", "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9", "G10", "G11", "G12", "G13", "G14", "G15", "G16", "G17", "G18", "G19", "G20", "G21", "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "H11", "H12", "H13", "H14", "H15", "H16", "H17", "H18", "H19", "H20","I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8", "I9", "I10", "I11", "I12", "I13", "I14", "I15", "I16", "I17", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11", "J12", "J13", "J14", "J15", "J16", "J17", "J18", "K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9", "K10", "K11", "K12", "K13", "K14", "K15"];
+    var seatarray = ["A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20", "B21", "B22", "B23", "B24","C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C12", "C13", "C14", "C15", "C16", "C17", "C18", "C19", "C20", "C21", "C22", "C23", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "D21", "D22", "D23", "D24", "E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10", "E11", "E12", "E13", "E14", "E15", "E16", "E17", "E18", "E19", "E20", "E21", "E22", "E23", "F01", "F02", "F03", "F04", "F05", "F06", "F07", "F08", "F09", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20", "F21", "F22", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11", "G12", "G13", "G14", "G15", "G16", "G17", "G18", "G19", "G20", "G21", "H01", "H02", "H03", "H04", "H05", "H6", "H7", "H8", "H9", "H10", "H11", "H12", "H13", "H14", "H15", "H16", "H17", "H18", "H19", "H20","I01", "I02", "I03", "I04", "I05", "I06", "I07", "I08", "I09", "I10", "I11", "I12", "I13", "I14", "I15", "I16", "I17", "J01", "J02", "J03", "J04", "J05", "J06", "J07", "J08", "J09", "J10", "J11", "J12", "J13", "J14", "J15", "J16", "J17", "J18", "K01", "K02", "K03", "K04", "K05", "K06", "K07", "K08", "K09", "K10", "K11", "K12", "K13", "K14", "K15"];
     
     
     
@@ -1408,33 +1415,34 @@
     }
     
     <?php
-    $strSQL = "SELECT DISTINCT date FROM rounds WHERE event_id=".$eid;
-    $dobjQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-    while($dobjResult = mysql_fetch_array($dobjQuery))
-    {
+        $strSQL = "SELECT DISTINCT date FROM rounds WHERE event_id=".$eid;
+        $dobjQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+        while($dobjResult = mysql_fetch_array($dobjQuery))
+        {   
     ?>
-        $('#roundof<?php echo $dobjResult["date"];?>').hide();
-        $('#<?php echo $dobjResult["date"];?>').click(function(){
-            $('#step2').show();
-            $('#roundof<?php echo $dobjResult["date"];?>').show();
-            <?php
-            $strSQL = "SELECT DISTINCT date FROM rounds WHERE event_id=".$eid." AND date !='".$dobjResult["date"]."'" ;
-            $ddobjQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-            while($ddobjResult = mysql_fetch_array($ddobjQuery))
-            {
-            ?>
-                $('#roundof<?php echo $ddobjResult["date"];?>').hide();
-            <?php
-            }
-            ?>
-            $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-            date = $(this).attr('id');
-            console.log(date);
-        });
+            $('#roundof<?php echo $dobjResult["date"];?>').hide();
+            $('#<?php echo $dobjResult["date"];?>').click(function(){
+                $('#step2').show();
+                $('#roundof<?php echo $dobjResult["date"];?>').show();
+                <?php
+                    $strSQL = "SELECT DISTINCT date FROM rounds WHERE event_id=".$eid." AND date !='".$dobjResult["date"]."'" ;
+                    $ddobjQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+                    while($ddobjResult = mysql_fetch_array($ddobjQuery))
+                    {
+                ?>
+                        $('#roundof<?php echo $ddobjResult["date"];?>').hide();
+                <?php
+                    }
+                ?>
+
+                $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+                date = $(this).attr('id');
+                console.log(date);
+            });
     
     
     <?php
-    }
+        }
     ?>
     
     <?php
@@ -1444,38 +1452,38 @@
         {
     ?>
         $('#<?php echo $robjResult["round_id"];?>').click(function(){
-            
-            round = <?php echo $robjResult["round_id"];?>
-            
+            var roundtime = $(this).attr('value')
+            round = <?php echo $robjResult["round_id"];?>;
             $('#dateselection').hide();
             $('#roundselection').hide();
+            
+            
             document.getElementById("roundtexttile").className = "texttilesmall";
             document.getElementById("datetexttile").className = "texttilesmall";
             document.getElementById("datetexttile").innerHTML = "DATE : "+date;
-            document.getElementById("roundtexttile").innerHTML = "ROUND : "+round;
+            document.getElementById("roundtexttile").innerHTML = "ROUND : "+roundtime;
             $('#step3').show();
             $('html, body').animate({scrollTop:$(document).height()}, 'slow'); 
             console.log(round);
             
            <?php
-                $strSQL = "SELECT * FROM seats WHERE round_id=".$robjResult["round_id"];  
+                $rid = $robjResult["round_id"];
+         
+                $strSQL = "SELECT * FROM seats WHERE round_id=$rid";  
                 $sobjQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
                 while($sobjResult = mysql_fetch_array($sobjQuery))
                 {
             ?>
-                
                 var temp = <?php echo $sobjResult["seat_number"];?>.id;
-                console.log(temp);
-            
-                
-                
                 document.getElementById(temp).className = "seatx";
                 document.getElementById(temp).disabled = true;
             
             
             <?php
                 }
-            ?> 
+            ?>
+            
+
             
         });
         
@@ -1485,13 +1493,7 @@
     
     $('#amount1').click(function(){
         amount = 1;
-        $('#dateselection').hide();
-        $('#roundselection').hide();
         $('#amountselection').hide();
-        document.getElementById("datetexttile").className = "texttilesmall";
-        document.getElementById("datetexttile").innerHTML = "DATE : "+date;
-        document.getElementById("roundtexttile").className = "texttilesmall";
-        document.getElementById("roundtexttile").innerHTML = "ROUND : "+round;
         document.getElementById("amounttexttile").className = "texttilesmall";
         document.getElementById("amounttexttile").innerHTML = "AMOUNT : "+amount;
         $('#step4').show();
@@ -1503,13 +1505,7 @@
     });
     $('#amount2').click(function(){
         amount = 2;
-        $('#dateselection').hide();
-        $('#roundselection').hide();
         $('#amountselection').hide();
-        document.getElementById("datetexttile").className = "texttilesmall";
-        document.getElementById("datetexttile").innerHTML = "DATE : "+date;
-        document.getElementById("roundtexttile").className = "texttilesmall";
-        document.getElementById("roundtexttile").innerHTML = "ROUND : "+round;
         document.getElementById("amounttexttile").className = "texttilesmall";
         document.getElementById("amounttexttile").innerHTML = "AMOUNT : "+amount;
         $('#step4').show();
@@ -1520,13 +1516,7 @@
     });
     $('#amount3').click(function(){
         amount = 3;
-        $('#dateselection').hide();
-        $('#roundselection').hide();
         $('#amountselection').hide();
-        document.getElementById("datetexttile").className = "texttilesmall";
-        document.getElementById("datetexttile").innerHTML = "DATE : "+date;
-        document.getElementById("roundtexttile").className = "texttilesmall";
-        document.getElementById("roundtexttile").innerHTML = "ROUND : "+round;
         document.getElementById("amounttexttile").className = "texttilesmall";
         document.getElementById("amounttexttile").innerHTML = "AMOUNT : "+amount;
         $('#step4').show();
@@ -1537,13 +1527,7 @@
     });
     $('#amount4').click(function(){
         amount = 4;
-        $('#dateselection').hide();
-        $('#roundselection').hide();
         $('#amountselection').hide();
-        document.getElementById("datetexttile").className = "texttilesmall";
-        document.getElementById("datetexttile").innerHTML = "DATE : "+date;
-        document.getElementById("roundtexttile").className = "texttilesmall";
-        document.getElementById("roundtexttile").innerHTML = "ROUND : "+round;
         document.getElementById("amounttexttile").className = "texttilesmall";
         document.getElementById("amounttexttile").innerHTML = "AMOUNT : "+amount;
         $('#step4').show();
@@ -1554,13 +1538,7 @@
     });
     $('#amount5').click(function(){
         amount = 5;
-        $('#dateselection').hide();
-        $('#roundselection').hide();
         $('#amountselection').hide();
-        document.getElementById("datetexttile").className = "texttilesmall";
-        document.getElementById("datetexttile").innerHTML = "DATE : "+date;
-        document.getElementById("roundtexttile").className = "texttilesmall";
-        document.getElementById("roundtexttile").innerHTML = "ROUND : "+round;
         document.getElementById("amounttexttile").className = "texttilesmall";
         document.getElementById("amounttexttile").innerHTML = "AMOUNT : "+amount;
         $('#step4').show();
@@ -1644,42 +1622,43 @@
     });
     
     
+   
+    
     $('#reservebutton').click(function(){
-       console.log(round);
-        
-        <?php
-            $sql="INSERT INTO reservations VALUES(0,)";
-        ?>
-         
-        
-       if(amount == 1){
-         var s1 = seattext;  
-       }
-       if(amount == 2){
-         var s1 = seattext.substring(0,3);
-         var s2 = seattext.substring(3);
-       }
-       if(amount == 3){
-         var s1 = seattext.substring(0,3);
-         var s2 = seattext.substring(3,6);
-         var s3 = seattext.substring(6);      
-       }
-       if(amount == 4){
-         var s1 = seattext.substring(0,3);
-         var s2 = seattext.substring(3,6);
-         var s3 = seattext.substring(6,9);
-         var s4 = seattext.substring(9);    
-       }
-       if(amount == 5){
-         var s1 = seattext.substring(0,3);
-         var s2 = seattext.substring(3,6);
-         var s3 = seattext.substring(6,9);
-         var s4 = seattext.substring(9,12); 
-         var s5 = seattext.substring(12);
-       }    
+                if(amount == 1){
+                 var s1 = seattext;
+                 var newUrl = "reservationcon.php?id="+<?php echo $eid ?> +"&rid="+round+"&amount="+amount+"&s1="+s1;
+               }
+               if(amount == 2){
+                 var s1 = seattext.substring(0,3);
+                 var s2 = seattext.substring(3);
+                 var newUrl = "reservationcon.php?id="+<?php echo $eid ?> +"&rid="+round+"&amount="+amount+"&s1="+s1+"&s2="+s2;
+               }
+               if(amount == 3){
+                 var s1 = seattext.substring(0,3);
+                 var s2 = seattext.substring(3,6);
+                 var s3 = seattext.substring(6);
+                 var newUrl = "reservationcon.php?id="+<?php echo $eid ?> +"&rid="+round+"&amount="+amount+"&s1="+s1+"&s2="+s2+"&s3="+s3;
+               }
+               if(amount == 4){
+                 var s1 = seattext.substring(0,3);
+                 var s2 = seattext.substring(3,6);
+                 var s3 = seattext.substring(6,9);
+                 var s4 = seattext.substring(9);  
+                 var newUrl = "reservationcon.php?id="+<?php echo $eid ?> +"&rid="+round+"&amount="+amount+"&s1="+s1+"&s2="+s2+"&s3="+s3+"&s4="+s4;
+               }
+               if(amount == 5){
+                 var s1 = seattext.substring(0,3);
+                 var s2 = seattext.substring(3,6);
+                 var s3 = seattext.substring(6,9);
+                 var s4 = seattext.substring(9,12); 
+                 var s5 = seattext.substring(12);
+                   var newUrl = "reservationcon.php?id="+<?php echo $eid ?> +"&rid="+round+"&amount="+amount+"&s1="+s1+"&s2="+s2+"&s3="+s3+"&s4="+s4+"&s5="+s5;
+               }    
+                
+                document.location.href = newUrl;
+                console.log(<?php echo $eid ?>+" "+round+" "+amount); 
     });
-    
-    
     
   
    
@@ -1694,356 +1673,3 @@ mysql_close($objConnect);
 
 </html>
 
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	
-	<meta charset="utf-8">
-	<meta name = "format-detection" content = "telephone=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>Current Event</title>
-    
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="css/grid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/touchTouch.css">
-	
-	<!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
-
-    
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-    <link rel="stylesheet" href="css/reservation.css" type="text/css">
-
-    <script src="js/jquery.js"></script>
-    <script src="js/touchTouch.jquery.js"></script>
-    <script src="js/jquery-migrate-1.2.1.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/packery.pkgd.min.js"></script>
-    <!--[if (gt IE 9)|!(IE)]><!-->
-    <script src="js/jquery.mobile.customized.min.js"></script>
-    <script src="js/wow.js"></script>
-
-</head>
-
-<body>
-<?php
-    $eid = $_GET['id'];
-    $objConnect = mysql_connect("localhost","root","root") or die("Error Connect to Database");
-    $objDB = mysql_select_db("chowtime");
-    $estrSQL = "SELECT * FROM events WHERE event_id=".$eid;
-    $eobjQuery = mysql_query($estrSQL) or die ("Error Query [".$estrSQL."]");
-    $rstrSQL = "SELECT * FROM rounds WHERE event_id=".$eid;
-    $robjQuery = mysql_query($rstrSQL) or die ("Error Query [".$rstrSQL."]");
-    ?>
-
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand page-scroll" href="eventcurrent.php">
-                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" id="icon"></span>
-                
-                CANCEL RESERVATION
-            </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>    
-
-
-
-
-<section id="content">
-    <div class="full-width-container block-1">
-        
-        
-        <div class="container">
-            <?php
-                while($eobjResult = mysql_fetch_array($eobjQuery))
-                {
-            ?>
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
-                     <?php 
-                    $imgsql = "SELECT event_pics FROM events WHERE event_id=".$eobjResult["event_id"];
-                    $resultimg = mysql_query("$imgsql");
-                    $imgrow = mysql_fetch_assoc($resultimg);
-                        echo '<img width="100%" height="100%" src="data:image/jpeg;base64,'.base64_encode( $imgrow['event_pics'] ).'"/>';    
-                    ?>     
-                </div>
-                <div class="col-md-5">
-                    <div class="page-item2 clearfix">
-                        <div class="item-content2">
-                            <h3>
-                                <b>EVENT SUMMARY</b> 
-                            </h3>
-                            <ul>
-                                <li>
-                                    NAME - <?php echo $eobjResult["ename"];?>
-                                </li>
-                                <li>
-                                    CONDUCTED IN - <?php echo $eobjResult["language"];?>
-                                </li>
-                            </ul>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <?php
-            }
-            ?>
-        </div>
-        
-        
-        <div class="container">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                        <div class="texttile">
-                            CHOOSE DATE
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                    </div>
-                </div>
-                
-                <div class="row">
-                        <div class="col-md-1">
-                        </div>
-                        <div class="col-md-10">
-                            <div class="timebutton">
-                                <ul class="segmented-control" id="dateradiobutton">
-                                    <?php
-                                        while($objResult = mysql_fetch_array($robjQuery))
-                                        {
-                                    ?>
-                                    
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="date1"   name="dateoption" id="date1"> 
-                                        <label class="segmented-control__label" for="date1" value="date1" > 
-                                            <?php echo $objResult["datetime"];?>
-                                        </label>  
-                                    </li>
-                                    <?php
-                                        }
-                                    ?>
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="date2"   name="dateoption" id="date2" >  		
-                                        <label class="segmented-control__label" for="date2" value="date2" >
-                                            Thursday, April 8
-                                        </label> 
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="col-md-1">
-                        </div>
-                </div>
-            </div>
-        
-        <div id="step2">
-            
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                        <div class="texttile">
-                            CHOOSE ROUND
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                    </div>
-                </div>
-                
-                <div class="row">
-                        <div class="col-md-1">
-                        </div>
-                        <div class="col-md-10">
-                            <div class="timebutton" >
-                                <ul class="segmented-control" id="roundradiobutton">
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="round1"   name="roundoption" id="round1"> 
-                                        <label class="segmented-control__label" for="round1" value="round1" > 
-                                            13.00
-                                        </label> 
-                                    </li>
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="round2"   name="roundoption" id="round2" >  		
-                                        <label class="segmented-control__label" for="round2" value="round2" >
-                                            19.00
-                                            
-                                        </label> 
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="col-md-1">
-                        </div>
-                </div>
-            </div>
-            
-            
-            
-        </div>
-        
-        
-        <div id="step3">
-            
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                        <div class="texttile">
-                            CHOOSE AMOUNT
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                    </div>
-                </div>
-                
-                <div class="row">
-                        <div class="col-md-1">
-                        </div>
-                        <div class="col-md-10">
-                            <div class="timebutton" >
-                                <ul class="segmented-control" id="amountradiobutton">
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="amount1"   name="amountoption" id="amount1"> 
-                                        <label class="segmented-control__label" for="amount1" value="amount1" > 
-                                            1
-                                        </label> 
-                                    </li>
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="amount2"   name="amountoption" id="amount2"> 
-                                        <label class="segmented-control__label" for="amount2" value="amount2" > 
-                                            2
-                                        </label> 
-                                    </li>
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="amount3"   name="amountoption" id="amount3"> 
-                                        <label class="segmented-control__label" for="amount3" value="amount3" > 
-                                            3
-                                        </label> 
-                                    </li>
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="amount4"   name="amountoption" id="amount4"> 
-                                        <label class="segmented-control__label" for="amount4" value="amount4" > 
-                                            4
-                                        </label> 
-                                    </li>
-                                    <li class="segmented-control__item"> 
-                                        <input class="segmented-control__input" type="radio" value="amount5"   name="amountoption" id="amount5"> 
-                                        <label class="segmented-control__label" for="amount5" value="amount5" > 
-                                            5
-                                        </label> 
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="col-md-1">
-                        </div>
-                </div>
-            </div>
-            
-            
-            
-        </div>
-        
-        <div id="step4">
-            <div class="container" id="step4">
-            <div class="row">
-                <div class="col-md-1">
-                </div>
-                <div class="col-md-10">
-                    <a href="#">
-                        <div class="texttile2">
-                            reserve
-                        </div>
-                    </a>
-                    
-                </div>
-                <div class="col-md-1">
-                </div>
-            </div>
-        </div>
-        </div>
-         
-    
-        
-    </div>
-
-</section>
-
-<?php
-mysql_close($objConnect);
-?>
-
-
-</body>
-<script>
-    $('#step2').hide();
-    $('#step4').hide();
-    function pageScroll() {
-    	window.scrollBy(0,220); // horizontal and vertical scroll increments
-    	scrolldelay = setTimeout('pageScroll()',0.001); // scrolls every 100 milliseconds
-    }
-    $('#date1').click(function(){
-        $('#step2').show();
-        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-        var temp = $(this).attr('id');
-        console.log(temp);
-    });
-    
-    $('#date2').click(function(){
-        $('#step2').show();
-        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-        var temp = $(this).attr('id');
-        console.log(temp);
-    });
-    $('#round1').click(function(){
-        $('#step4').show();
-        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-        var temp = $(this).attr('id');
-        console.log(temp);
-    });
-    
-    $('#round2').click(function(){
-        $('#step4').show();
-        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-        var temp = $(this).attr('id');
-        console.log(temp);
-    });
-  
-  
-   
-    
-</script>
-    
-
-</html>
-
->>>>>>> origin/master
